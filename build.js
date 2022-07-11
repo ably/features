@@ -56,11 +56,11 @@ console.log(`levelCount = ${levelCount}`);
 
 // Create output directory in standard location within working directory.
 // The expectation is that this tool is run from the root of the repository.
-const outputDirectoryPath = path.join('output', 'features');
+const outputDirectoryPath = 'output';
 createDirectory(outputDirectoryPath);
 
 const title = 'Ably';
-const subTitle = 'SDK Features';
+const subTitle = 'SDK Features Matrix';
 const documentWriter = new DocumentWriter(
   { title: `${subTitle} | ${title}` },
   fs.createWriteStream(path.join(outputDirectoryPath, 'index.html')),

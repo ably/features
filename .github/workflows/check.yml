@@ -1,0 +1,27 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Read Tool Versions
+        id: tool-versions
+        run: echo "::set-output name=nodejs::$(sed -nr 's/nodejs ([0-9]+)/\1/p' .tool-versions)"
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.tool-versions.outputs.nodejs }}
+
+      - run: |
+          npm ci
+          npm run lint
+          npm test
+          npm run build:features
