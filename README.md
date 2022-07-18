@@ -39,6 +39,11 @@ They will be moved to the SDK repositories to which they pertain, to be managed 
 
 Once they've moved, they will be treated as first-class citizens in their SDK repository homes. It will be a requirement that we run checks in CI, within each SDK repository, that validate that SDK's manifest against the canonical feature list - hence the `common-version` root node in manifests, as this will need to be anchored to allow the content of _this_ repository (`ably/features`) to evolve independently.
 
+Within the contents of each SDK repository, the manifest files will be located under a standard filename, in a standard location:
+
+- Location: `.ably/`
+- Filename: `capabilities.yaml`
+
 :magic_wand: At that point, it is anticipated that the real magic can start...
 
 #### Per-SDK Magic
