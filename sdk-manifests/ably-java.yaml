@@ -17,6 +17,7 @@ compliance:
       Key:
       Query Time:
       Token Details:
+      Token Request:
       Token String:
       URL:
       Use Token Authentication:
@@ -27,6 +28,9 @@ compliance:
     Fallback Hosts:
     HTTP Connection Open Timeout:
     Log Handling:
+    Maximum Frame Size:
+    Maximum Message Size:
+    Plugins:
     Port:
     Proxy:
     TLS Port:
@@ -50,26 +54,49 @@ compliance:
     Channel:
       Attach:
       Presence:
+        Enter:
+          Client:
         Get:
+        History:
         Subscribe:
+        Update:
+          Client:
+      Publish:
       Subscribe:
         Deltas:
     Options:
       Automatic Connection:
       Channel Retry Timeout:
       Connection Recovery String:
+      Disconnected Retry Timeout:
       Host:
       Message Echoes:
       Message Queuing:
+      Suspended Retry Timeout:
       Transport Parameters:
   REST:
     Authentication:
+      Authorize:
+      Create Token Request:
+      Get Client Identifier:
+      Request Token:
+    Channel:
+      Existence Check:
+      Get:
+      History:
+      IterateIterate:
+      Name:
+      Presence:
+        History:
+          Member List:
+      Release:
     Options:
       Fallback Retry Timeout:
       Host:
       HTTP Request Timeout:
       Idempotent Publishing:
       Maximum HTTP Retry Count:
+      Maximum HTTP Retry Duration:
       Request Identifiers:
 variants:
   Android:
