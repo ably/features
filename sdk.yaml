@@ -158,7 +158,7 @@ Options:
       Disable TLS, for development environments only.
 Push Notifications:
   Activation:
-    .specification: [RSH2, RSH3, RSH4, RSH5, RSH6, RSH7, RSH8]
+    .specification: [RSH2, RSH3, RSH4, RSH5, RSH6, RSH7]
     .synopsis: |
       Only available on platforms that support receiving push notifications.
   Administration:
