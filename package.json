@@ -1,6 +1,6 @@
 {
   "name": "@ably/features",
-  "version": "1.2.0",
+  "version": "1.2.0-alpha.1",
   "scripts": {
     "build": "npm-run-all build:generate build:tailwind",
     "build:generate": "node build.js",
