@@ -46,6 +46,7 @@ compliance:
         Remove:
         Save:
       Publish:
+    Local Device State:
   Realtime:
     Channel:
       Attach:
