@@ -12,6 +12,14 @@ The focus of the contents of this repository is on our SDKs (sometimes referred 
 Our SDKs provide the primary, language/platform-idiomatic APIs that our customers - software application developers -
 use in order to integrate and leverage the Ably platform in their solutions.
 
+---
+
+:warning: **Incubating** :warning:  
+The contents of this repository (state of `HEAD` of `main` branch) are currently in a [`pre-release` state](https://semver.org/#spec-item-9), hence the `-alpha` suffix on the value of the `version` field in [package.json](package.json).  
+This will change once all of the issues under [the **1.2.0 Release / GA** milestone](https://github.com/ably/features/milestone/1) have been completed. See the description on that milestone for more detail.
+
+---
+
 ## Introduction
 
 The data and code files in this repository are incubating as a prototype, formulating the foundations of Ably's approach to SDK feature tracking going forwards.
