@@ -417,7 +417,7 @@ REST:
     .synopsis: |
       Operations relating to Ably application statistics (a.k.a. 'stats').
     Query:
-      .specification: RSC6
+      .specification: [RSC6, RTC5]
       .synopsis: |
         Obtain statistics at 1 minute intervals, or aggregated up to the hour, day, or month.
         Uses the `/stats` REST endpoint.
