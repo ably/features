@@ -72,6 +72,7 @@ compliance:
       Idempotent Publishing:
       Maximum HTTP Retry Count:
       Request Identifiers:
+    Request:
 variants:
   Android:
     .synopsis: |
