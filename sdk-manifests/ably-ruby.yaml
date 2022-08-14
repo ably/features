@@ -91,5 +91,7 @@ compliance:
       Maximum HTTP Retry Duration:
       Request Identifiers:
     Request:
+    Service:
+      Get Time:
     Statistics:
       Query:
