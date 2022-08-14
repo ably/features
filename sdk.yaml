@@ -235,7 +235,7 @@ Realtime:
     Additional functionality offered by Ably client instances that offer Realtime connectivity.
   Authentication:
     Get Confirmed Client Identifier:
-      .specification: [RTC4, RTC17, RSA7a, RSA7b, RSA12, RSA8f]
+      .specification: [RTC4, RTC17, RSA7a, RSA7b, RSA12, RSA8f, CD2a]
       .synopsis: |
         Get the `clientId` confirmed with the Ably service for this client instance, once a connection has been established.
   Channel:
