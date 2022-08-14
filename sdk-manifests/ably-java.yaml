@@ -48,6 +48,7 @@ compliance:
       Publish:
     Local Device State:
   Realtime:
+    Authentication:
     Channel:
       Attach:
       Presence:

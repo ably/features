@@ -44,6 +44,7 @@ compliance:
         Save:
       Publish:
   Realtime:
+    Authentication:
     Channel:
       Attach:
       Presence:
