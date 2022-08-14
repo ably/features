@@ -58,6 +58,7 @@ compliance:
       Publish:
       Subscribe:
     Connection:
+      Get Identifier:
       Ping:
       Queryable State:
     Options:
