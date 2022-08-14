@@ -57,6 +57,7 @@ compliance:
       Subscribe:
         Deltas:
     Connection:
+      Ping:
       Queryable State:
     Options:
       Channel Retry Timeout:

@@ -58,6 +58,7 @@ compliance:
       Publish:
       Subscribe:
     Connection:
+      Ping:
       Queryable State:
     Options:
       Channel Retry Timeout:
