@@ -56,6 +56,8 @@ compliance:
         Subscribe:
       Subscribe:
         Deltas:
+    Connection:
+      Queryable State:
     Options:
       Channel Retry Timeout:
       Connection Lifecycle Control:
