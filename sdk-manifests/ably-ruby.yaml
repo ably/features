@@ -58,8 +58,8 @@ compliance:
       Publish:
       Subscribe:
     Options:
-      Automatic Connection:
       Channel Retry Timeout:
+      Connection Lifecycle Control:
       Connection Recovery String:
       Disconnected Retry Timeout:
       Host:

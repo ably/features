@@ -288,17 +288,18 @@ Realtime:
   Options:
     .synopsis: |
       `ClientOptions` that only apply to Realtime clients.
-    Automatic Connection:
-      .specification: [RTC1b, RTN3, RTL4b1, TO3e]
-      .synopsis: |
-        `autoConnect`:
-        Disable the automatic initiation of a connection when a client instance is instantiated.
     Channel Retry Timeout:
       .specification: [RTL13b, TO3l7]
       .synopsis: |
         `channelRetryTimeout`:
         Channel reattachement is attempted after this amount of time in the `SUSPENDED` connection state,
         following a server-initiated channel detach, if the connection state is `CONNECTED`.
+    Connection Lifecycle Control:
+      .specification: [RTC1b, RTN3, RTL4b1, TO3e, RTC15, RTC16, RTN11, RTN12]
+      .synopsis: |
+        `autoConnect`:
+        Disable the automatic initiation of a connection when a client instance is instantiated.
+        Implies the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
     Connection Recovery String:
       .specification: [RTC1c, TO3i]
       .synopsis: |

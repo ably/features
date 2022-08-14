@@ -57,8 +57,8 @@ compliance:
       Subscribe:
         Deltas:
     Options:
-      Automatic Connection:
       Channel Retry Timeout:
+      Connection Lifecycle Control:
       Connection Recovery String:
       Host:
       Message Echoes:
