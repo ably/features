@@ -58,6 +58,7 @@ compliance:
           Client:
       Publish:
       Subscribe:
+        Rewind:
     Connection:
       Get Identifier:
       Ping:

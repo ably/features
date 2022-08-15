@@ -58,6 +58,7 @@ compliance:
       Publish:
       Subscribe:
         Deltas:
+        Rewind:
     Connection:
       Get Identifier:
       Ping:

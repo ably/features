@@ -287,6 +287,13 @@ Realtime:
           Support for VCDiff-encoded delta streams.
           SDKs may choose to offer this only if a plugin is supplied via client options
           (optional functionality).
+      Rewind:
+        .documentation:
+          - https://ably.com/docs/realtime/channels/channel-parameters/rewind
+        .specification: [RTL16, TB2c, RTS3c]
+        .synopsis: |
+          The option to specify that attachment to this channel start from a given number of messages or point in time in the past.
+          This is done by setting channel parameters using the `setOptions` method on the channel.
   Connection:
     .specification: RTC2
     Get Identifier:
