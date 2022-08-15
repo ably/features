@@ -70,6 +70,8 @@ compliance:
       Transport Parameters:
   REST:
     Authentication:
+    Channel:
+      Publish:
     Options:
       Fallback Retry Timeout:
       Host:

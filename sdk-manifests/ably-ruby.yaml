@@ -86,6 +86,7 @@ compliance:
       Presence:
         History:
         Member List:
+      Publish:
       Release:
     Options:
       Fallback Retry Timeout:

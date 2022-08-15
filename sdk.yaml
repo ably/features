@@ -396,6 +396,10 @@ REST:
       Member List:
         .documentation: https://ably.com/docs/rest/presence#member-list
         .specification: RSP3
+    Publish:
+      .specification: RSL1
+      .synopsis: |
+        Send a message on this channel.
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
