@@ -47,6 +47,7 @@ compliance:
     Authentication:
     Channel:
       Attach:
+      Encryption: # setOptions on existing channel instance is missing (i.e. it works but is inelegant, requiring soft-deprecated mechanism)
       Presence:
         Enter:
           Client:
