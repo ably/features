@@ -35,5 +35,5 @@ jobs:
       - name: Debug Lint - Prettier, in particular
         if: failure() && steps.lint.outcome == 'failure'
         run: |
-          npm format data
+          npm format:data
           git diff
