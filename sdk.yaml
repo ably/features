@@ -248,6 +248,13 @@ Realtime:
       .synopsis: |
         The option to configure a `cipher`, specifying encryption algorithm and attributes.
         Used for subscribe and publish on this channel.
+    Mode:
+      .documentation:
+        - https://faqs.ably.com/what-are-channel-mode-flags-and-how-do-i-use-them
+      .specification: [RTL16, TB2d, TR3, RTS3c]
+      .synopsis: |
+        Specify a subset of the permissions given in your token/key for use with this channel, specified using channel mode flags.
+        This feature uses Ably service-side filtering, so it can be used to save unnecessary messages counting towards your usage such as preventing presence updates going to all users.
     Presence:
       Enter:
         .specification: [RTP8, RTP10]
