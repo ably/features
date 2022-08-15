@@ -400,6 +400,12 @@ REST:
       .specification: RSL1
       .synopsis: |
         Send a message on this channel.
+      Idempotence:
+        .specification: [RSL1k, RTL6a1, TO3n]
+        .synopsis: |
+          Using the `idempotentRestPublishing` client option:
+          Overrides the client library default, from version 1.2 of the features specification,
+          that makes REST publish operations idempotent.
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
@@ -419,12 +425,6 @@ REST:
       .specification: TO3l4
       .synopsis: |
         `httpRequestTimeout`
-    Idempotent Publishing:
-      .specification: [RSL1k, RTL6a1, TO3n]
-      .synopsis: |
-        `idempotentRestPublishing`:
-        Overrides the client library default, from version 1.2 of the features specification,
-        that makes REST publish operations idempotent.
     Maximum HTTP Retry Count:
       .specification: [TO3l5, RSC15a]
       .synopsis: |

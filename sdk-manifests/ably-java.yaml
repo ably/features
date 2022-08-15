@@ -72,11 +72,11 @@ compliance:
     Authentication:
     Channel:
       Publish:
+        Idempotence:
     Options:
       Fallback Retry Timeout:
       Host:
       HTTP Request Timeout:
-      Idempotent Publishing:
       Maximum HTTP Retry Count:
       Request Identifiers:
     Request:
