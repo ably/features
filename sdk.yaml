@@ -296,7 +296,8 @@ Realtime:
         Mechanisms to get connection state synchronously, as well as to receive events asynchronously when connection state changes.
         Also provides access to an error reason object in case of failure.
     Recovery:
-      .specification: [RTN9, RTN10, RTN16, RTC1c, TO3i, RTN11d, RTN15a, RTN15b, RTN15d]
+      .specification:
+        [RTN9, RTN10, RTN16, RTC1c, TO3i, RTN11d, RTN15a, RTN15b, RTN15d]
       .synopsis: |
         Capability to recover a connection by explicitly providing a recovery key when instantiating a Realtime client instance,
         where that recovery key has been sourced from a previous instance.
