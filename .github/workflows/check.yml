@@ -20,8 +20,20 @@ jobs:
         with:
           node-version: ${{ steps.tool-versions.outputs.nodejs }}
 
-      - run: |
-          npm ci
-          npm run lint
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        id: lint
+        run: npm run lint
+
+      - name: Test and Build
+        run: |
           npm test
           npm run build
+
+      - name: Debug Lint - Prettier, in particular
+        if: steps.lint.outcome == 'failure'
+        run: |
+          npm format data
+          git diff
