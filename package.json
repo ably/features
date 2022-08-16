@@ -8,7 +8,7 @@
     "lint": "npm-run-all format:*:check",
     "format:js-code:check": "eslint --max-warnings=0 .",
     "format:data": "prettier --write **/{*.json,*.yaml,.*.yaml}",
-    "format:data:check": "prettier --check **/{*.json,*.yaml,.*.yaml}",
+    "format:data:check": "prettier --check **/{*.json,*.yaml,.*.yaml} --loglevel debug",
     "format:documentation:check": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
     "test": "jest"
   },
