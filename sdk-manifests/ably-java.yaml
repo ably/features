@@ -60,8 +60,8 @@ compliance:
     Connection:
       Get Identifier:
       Ping:
-      Queryable State:
       Recovery:
+      State Events:
     Options:
       Channel Retry Timeout:
       Connection Lifecycle Control:
