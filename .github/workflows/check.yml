@@ -24,16 +24,9 @@ jobs:
         run: npm ci
 
       - name: Lint
-        id: lint
         run: npm run lint
 
       - name: Test and Build
         run: |
           npm test
           npm run build
-
-      - name: Debug Lint - Prettier, in particular
-        if: failure() && steps.lint.outcome == 'failure'
-        run: |
-          npm run format:data
-          git diff
