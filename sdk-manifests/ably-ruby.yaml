@@ -57,6 +57,7 @@ compliance:
         Update:
           Client:
       Publish:
+      State Events:
       Subscribe:
         Rewind:
     Connection:

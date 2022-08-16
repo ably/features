@@ -57,6 +57,7 @@ compliance:
         Get:
         Subscribe:
       Publish:
+      State Events:
       Subscribe:
         Deltas:
         Rewind:

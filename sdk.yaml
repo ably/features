@@ -286,6 +286,11 @@ Realtime:
       .synopsis: |
         Send a message on this channel.
         This is a message over the Realtime connection, not a REST operation.
+    State Events:
+      .specification: [RTL2, TH1, TH2, TH3, TH4, TH5]
+      .synopsis: |
+        `ChannelEvent` events can be received asynchronously when channel state changes.
+        The current `ChannelState` can be synchronously queried (e.g. via a `state` property on the channel instance).
     Subscribe:
       .specification: [RTL7, RTL8]
       Deltas:
