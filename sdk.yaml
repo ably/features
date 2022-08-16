@@ -281,7 +281,7 @@ Realtime:
           (optional functionality).
   Connection:
     .specification: RTC2
-    Queryable State:
+    State Events:
       .specification: [RTN4, RTN25]
       .synopsis: |
         Mechanisms to get connection state synchronously, as well as to receive events asynchronously when connection state changes.
