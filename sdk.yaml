@@ -290,7 +290,7 @@ Realtime:
       .synopsis: |
         Sends a message to the Ably service and asynchronously returns the time to response, or an error if the operation failed.
         This can be useful for measuring true roundtrip client to Ably server latency for a simple message, or for checking that an underlying transport is responding currently.
-    Queryable State:
+    State Events:
       .specification: [RTN4, RTN25]
       .synopsis: |
         Mechanisms to get connection state synchronously, as well as to receive events asynchronously when connection state changes.
