@@ -256,11 +256,15 @@ Realtime:
         Specify a subset of the permissions given in your token/key for use with this channel, specified using channel mode flags.
         This feature uses Ably service-side filtering, so it can be used to save unnecessary messages counting towards your usage such as preventing presence updates going to all users.
     Presence:
+      .documentation:
+        - https://ably.com/docs/realtime/presence
+      .specification: [RTL9, RTP1, RTP2, RTP4, RTP5, RTP13, RTP16, RTP17, RTP18, RTP19]
       Enter:
         .specification: [RTP8, RTP10]
         .synopsis: |
           Methods to enter and leave presence on channels for this client.
         Client:
+          .specification: [RTP14, RTP15]
           .synopsis: |
             Methods to enter and leave presence for a given `clientId`,
             not necessarily the id for this client.
@@ -278,6 +282,7 @@ Realtime:
       Update:
         .specification: RTP9
         Client:
+          .specification: RTP15
           .synopsis: |
             Method to update presence data and/or extras for a `clientId`,
             not necessarily the id for this client.
