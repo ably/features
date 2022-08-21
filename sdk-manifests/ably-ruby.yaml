@@ -18,7 +18,6 @@ compliance:
       Token String:
       URL:
       Use Token Authentication:
-    Binary Protocol:
     Client Identifier:
     Default Token Parameters:
     Environment:
@@ -26,10 +25,13 @@ compliance:
     HTTP Connection Open Timeout:
     Log Handling:
     Maximum Frame Size:
-    Maximum Message Size:
     Port:
     TLS Port:
     Transport Layer Security:
+  Protocol:
+    JSON:
+    Maximum Message Size:
+    MessagePack:
   Push Notifications:
     Administration:
       Channel Subscription:

@@ -20,7 +20,6 @@ compliance:
       Token String:
       URL:
       Use Token Authentication:
-    Binary Protocol:
     Client Identifier:
     Default Token Parameters:
     Environment:
@@ -31,6 +30,9 @@ compliance:
     Proxy:
     TLS Port:
     Transport Layer Security:
+  Protocol:
+    JSON:
+    MessagePack:
   Push Notifications:
     Activation:
       .variants: Android
