@@ -19,6 +19,53 @@ Agent Identifier:
       Includes a product component indicating the type of runtime, as discrete from the OS type.
       This does not always include a version (e.g. for `browser` runtime emitted by `ably-js`
       and the `uwp` runtime emitted by `ably-dotnet`).
+Authentication:
+  .documentation:
+    - https://ably.com/docs/core-features/authentication
+  .specification: [AO1, AO2]
+  .synopsis: |
+    Mechanisms authenticating with the Ably service.
+    Encapsulated by the `AuthOptions` class.
+  Basic:
+    .documentation:
+      - https://ably.com/docs/core-features/authentication#basic-authentication
+    .specification: [RSA11, TO3j1, AO2a]
+    .synopsis: |
+      Capability to use a 'raw', full Ably key string, as obtained from the dashboard, for authentication.
+      Specified using the `key` client option and features a key name and key secret.
+      Should only be used server-side in production applications.
+      Client-side applications should always use token authentication in production.
+  Token:
+    .documentation:
+      - https://ably.com/docs/core-features/authentication#token-authentication
+    .specification: [RSA4, RSA14, TO3j4]
+    .synopsis: |
+      Capability to have a trusted device, such as one of your own servers possessing an API key configured via the dashboard, create short-lived access tokens for this client.
+      The trusted device uses the API key to distribute time-limited tokens with limited sets of access rights or capabilities, or with specific identities to untrusted clients.
+      The `useTokenAuth` client option can be used to specify that the client library should not use basic authentication,
+      guaranteeing failure if none of `authCallback`, `authUrl`, `token` or `tokenDetails` are also supplied in client options.
+    Callback:
+      .specification: [RSA4a, RSA4, TO3j5, AO2b]
+      .synopsis: |
+        Capability for the application to service `Auth#requestToken` calls by supplying a callback using the `authCallback` client option.
+    Static:
+      .specification: [RSA4a, RSA4, TO3j2, TO3j3]
+      .synopsis: |
+        Providing a literal `token` or `tokenDetails` in client options.
+        Mostly only used for testing, since tokens are short-lived - this method does not provide the client library with a means to renew the token automatically when the previous one expires.
+    URL:
+      .specification:
+        [RSA8c, TO3j6, TO3j7, TO3j8, TO3j9, AO2c, AO2d, AO2e, AO2f, RSA4]
+      .synopsis: |
+        `authUrl`, `authMethod`, `authHeaders` and `authParams`:
+        Capability for the application to instruct the client library to service `Auth#requestToken` calls by querying a provided URL (`authURL` client option) to obtain a token request,
+        or the token itself.
+        Supports specification of other HTTP request properties (method, headers and params) using the `authMethod`, `authHeaders` and `authParams` client options respectively.
+      Query Time:
+        .specification: [TO3j10, RSA9d, RSA10k, AO2g]
+        .synopsis: |
+          Capability for the application to instruct the library, when issuing a token request, to query the Ably service for the current time instead of relying on a locally-available time of day.
+          Enabled using `queryTime` client option.
 Client Instance Creation:
   .specification: RSC1
   .synopsis: |
@@ -33,49 +80,6 @@ Client Instance Creation:
 Options:
   .synopsis: |
     `ClientOptions` that apply to both client types (REST and Realtime).
-  Authentication:
-    .synopsis: |
-      `AuthOptions`
-    Callback:
-      .specification: [RSA4a, RSA4, TO3j5, AO2b]
-      .synopsis: |
-        `authCallback`:
-        Service `Auth#requestToken` calls by invoking a callback (`authCallback`).
-    Key:
-      .specification: [RSA11, TO3j1, AO2a]
-      .synopsis: |
-        `key`:
-        Authenticate using a full Ably key string, as obtained from the dashboard,
-        featuring a key name and key secret.
-    Query Time:
-      .specification: [TO3j10, RSA9d, RSA10k, AO2g]
-      .synopsis: |
-        `queryTime`:
-        Query the Ably system for the current time when making token requests.
-    Token Details:
-      .specification: [RSA4a, RSA4, TO3j3]
-      .synopsis: |
-        `tokenDetails`
-    Token Request:
-      .specification: [TO3j2]
-      .synopsis: |
-        `token`
-    Token String:
-      .specification: [RSA4a, RSA4, TO3j2]
-      .synopsis: |
-        `token`
-    URL:
-      .specification:
-        [RSA8c, TO3j6, TO3j7, TO3j8, TO3j9, AO2c, AO2d, AO2e, AO2f, RSA4]
-      .synopsis: |
-        `authUrl`, `authMethod`, `authHeaders` and `authParams`:
-        Service `Auth#requestToken` calls by querying a provided URL (`authURL`) to obtain a token request,
-        or the token itself. Supports specification of other HTTP request properties (method, headers and params).
-    Use Token Authentication:
-      .specification: [RSA4, RSA14, TO3j4]
-      .synopsis: |
-        `useTokenAuth`:
-        Specifies that Token Auth, not Basic Auth, must be used.
   Client Identifier:
     .specification: [RSC17, RSA7, RSA15, RTN2d, TO3a]
     .synopsis: |

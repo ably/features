@@ -5,19 +5,17 @@ compliance:
   Agent Identifier:
     Agents:
     Runtime:
+  Authentication:
+    Basic:
+    Token:
+      Callback:
+      Static:
+      URL:
+        Query Time:
   Client Instance Creation:
     With Client Options:
     With String:
   Options:
-    Authentication:
-      Callback:
-      Key:
-      Query Time:
-      Token Details:
-      Token Request:
-      Token String:
-      URL:
-      Use Token Authentication:
     Client Identifier:
     Default Token Parameters:
     Environment:
