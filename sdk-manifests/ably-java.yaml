@@ -21,7 +21,6 @@ compliance:
     Environment:
     Fallback Hosts:
     Log Handling:
-    Proxy:
   Protocol:
     JSON:
     MessagePack:
@@ -88,6 +87,7 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
+    Proxy:
 variants:
   Android:
     .synopsis: |

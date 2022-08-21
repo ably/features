@@ -106,12 +106,6 @@ Options:
       `plugins`:
       Defines a mechanism that SDKs may use to allow users to specify optional functionality
       at runtime.
-  Proxy:
-    .synopsis: |
-      `proxy`:
-      Support for specify an HTTP proxy server to use for making REST and Realtime connections through.
-      Typically includes options for `host`, `port`, `username`, `password` and HTTP authentication type.
-      May also include option to specify host names that are not to be proxied.
 Protocol:
   .synopsis: |
     Relating to the Ably service protocols used by REST and Realtime client instances.
@@ -515,3 +509,9 @@ Transport:
     .synopsis: |
       Capability to override the default value of the `maxFrameSize` client option,
       the maximum size of a single REST POST body or Realtime Websocket frame.
+  Proxy:
+    .synopsis: |
+      `proxy`:
+      Support for specify an HTTP proxy server to use for making REST and Realtime connections through.
+      Typically includes options for `host`, `port`, `username`, `password` and HTTP authentication type.
+      May also include option to specify host names that are not to be proxied.
