@@ -15,7 +15,6 @@ compliance:
   Debugging:
     Logs:
   Options:
-    Client Identifier:
     Default Token Parameters:
   Protocol:
     JSON:
