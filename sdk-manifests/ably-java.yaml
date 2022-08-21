@@ -52,22 +52,21 @@ compliance:
         Get:
         Subscribe:
       Publish:
+      Retry Timeout:
       State Events:
       Subscribe:
         Deltas:
         Rewind:
     Connection:
       Get Identifier:
+      Lifecycle Control:
       Ping:
       Recovery:
       State Events:
-    Options:
-      Channel Retry Timeout:
-      Connection Lifecycle Control:
-      Host:
-      Message Echoes:
-      Message Queuing:
-      Transport Parameters:
+    Host:
+    Message Echoes:
+    Message Queuing:
+    Transport Parameters:
   REST:
     Authentication:
     Channel:

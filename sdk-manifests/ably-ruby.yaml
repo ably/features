@@ -50,23 +50,22 @@ compliance:
         Update:
           Client:
       Publish:
+      Retry Timeout:
       State Events:
       Subscribe:
         Rewind:
     Connection:
+      Disconnected Retry Timeout:
       Get Identifier:
+      Lifecycle Control:
       Ping:
       Recovery:
       State Events:
-    Options:
-      Channel Retry Timeout:
-      Connection Lifecycle Control:
-      Disconnected Retry Timeout:
-      Host:
-      Message Echoes:
-      Message Queuing:
       Suspended Retry Timeout:
-      Transport Parameters:
+    Host:
+    Message Echoes:
+    Message Queuing:
+    Transport Parameters:
   REST:
     Authentication:
       Authorize:

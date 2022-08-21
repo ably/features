@@ -274,6 +274,12 @@ Realtime:
       .synopsis: |
         Send a message on this channel.
         This is a message over the Realtime connection, not a REST operation.
+    Retry Timeout:
+      .specification: [RTL13b, TO3l7]
+      .synopsis: |
+        Capability to override this value using the `channelRetryTimeout` client option.
+        Channel reattachement is attempted after this amount of time in the `SUSPENDED` connection state,
+        following a server-initiated channel detach, if the connection state is `CONNECTED`.
     State Events:
       .specification:
         [RTL2, TH1, TH2, TH3, TH4, TH5, RTN11d, RTL4e, RTL3a, RTL4g, RTL14, RTL24, RTP5]
@@ -301,10 +307,20 @@ Realtime:
           This is done by setting channel parameters using the `setOptions` method on the channel.
   Connection:
     .specification: RTC2
+    Disconnected Retry Timeout:
+      .specification: [TO3l1, RTN14d]
+      .synopsis: |
+        Capability to override this value using the `disconnectedRetryTimeout` client option.
+        Reconnection is attempted after this amount of time in the `DISCONNECTED` connection state.
     Get Identifier:
       .specification: RTN8
       .synopsis: |
         Get the `id` of the active connection, which is a public string provided by the Ably service and is unique for this connection.
+    Lifecycle Control:
+      .specification: [RTC1b, RTN3, RTL4b1, TO3e, RTC15, RTC16, RTN11, RTN12]
+      .synopsis: |
+        Capability to disable the automatic initiation of a connection when a client instance is instantiated using the `autoConnect` client option.
+        Implies the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
     Ping:
       .specification: RTN13
       .synopsis: |
@@ -326,56 +342,34 @@ Realtime:
       .synopsis: |
         Mechanisms to get connection state synchronously, as well as to receive events asynchronously when connection state changes.
         Also provides access to an error reason object in case of failure.
+    Suspended Retry Timeout:
+      .specification: [TO3l2, RTN14e]
+      .synopsis: |
+        Capability to override this value using the `suspendedRetryTimeout` client option.
+        Reconnection is attempted after this amount of time in the `SUSPENDED` connection state.
   # TODO (DF1a) connectionStateTtl [ably-java]
   # TODO (DF1b) realtimeRequestTimeout [ably-java]
   # TODO asyncHttpThreadpoolSize [ably-java]
   # TODO pushFullWait [ably-java]
   # TODO localStorage [ably-java]
-  Options:
+  Host:
+    .specification: [RTC1d, TO3k3]
     .synopsis: |
-      `ClientOptions` that only apply to Realtime clients.
-    Channel Retry Timeout:
-      .specification: [RTL13b, TO3l7]
-      .synopsis: |
-        `channelRetryTimeout`:
-        Channel reattachement is attempted after this amount of time in the `SUSPENDED` connection state,
-        following a server-initiated channel detach, if the connection state is `CONNECTED`.
-    Connection Lifecycle Control:
-      .specification: [RTC1b, RTN3, RTL4b1, TO3e, RTC15, RTC16, RTN11, RTN12]
-      .synopsis: |
-        `autoConnect`:
-        Disable the automatic initiation of a connection when a client instance is instantiated.
-        Implies the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
-    Disconnected Retry Timeout:
-      .specification: [TO3l1, RTN14d]
-      .synopsis: |
-        `disconnectedRetryTimeout`:
-        Reconnection is attempted after this amount of time in the `DISCONNECTED` connection state.
-    Host:
-      .specification: [RTC1d, TO3k3]
-      .synopsis: |
-        `realtimeHost`:
-        Override the Realtime endpoint, for development environments only.
-    Message Echoes:
-      .specification: [RTC1a, RTL7f, TO3h]
-      .synopsis: |
-        `echoMessages`:
-        Suppress messages originating from this connection from being echoed back on the same connection.
-    Message Queuing:
-      .specification: [RTL6c2, RTP16, TO3g]
-      .synopsis: |
-        `queueMessages`:
-        Suppress queuing of messages when connection state antipates imminent connection.
-    Suspended Retry Timeout:
-      .specification: [TO3l2, RTN14e]
-      .synopsis: |
-        `suspendedRetryTimeout`:
-        Reconnection is attempted after this amount of time in the `SUSPENDED` connection state.
-    Transport Parameters:
-      .specification: RTC1f
-      .synopsis: |
-        `transportParams`:
-        Sent in query string when initiating the Realtime connection.
+      Capability to override the Realtime endpoint using the `realtimeHost` client option.
+      Should only be overridden for development environments.
+  Message Echoes:
+    .specification: [RTC1a, RTL7f, TO3h]
+    .synopsis: |
+      Capability to suppress messages originating from this connection from being echoed back on the same connection,
+      using the `echoMessages` client option.
+  Message Queuing:
+    .specification: [RTL6c2, RTP16, TO3g]
+    .synopsis: |
+      Capability to suppress queuing of messages when connection state antipates imminent connection using the `queueMessages` client option.
+  Transport Parameters:
+    .specification: RTC1f
+    .synopsis: |
+      Capability to send opaque string key/value pairs to the service on connection using the `transportParams` client option.
 REST:
   .synopsis: |
     Functionality offered by all Ably client instances (REST and Realtime).
