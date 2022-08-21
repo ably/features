@@ -29,7 +29,7 @@ Authentication:
   Basic:
     .documentation:
       - https://ably.com/docs/core-features/authentication#basic-authentication
-    .specification: [RSA11, TO3j1, AO2a]
+    .specification: [RSA11, RSC1, TO3j1, AO2a]
     .synopsis: |
       Capability to use a 'raw', full Ably key string, as obtained from the dashboard, for authentication.
       Specified using the `key` client option and features a key name and key secret.
@@ -49,7 +49,7 @@ Authentication:
       .synopsis: |
         Capability for the application to service `Auth#requestToken` calls by supplying a callback using the `authCallback` client option.
     Static:
-      .specification: [RSA4a, RSA4, TO3j2, TO3j3]
+      .specification: [RSA4a, RSA4, RSC1, TO3j2, TO3j3]
       .synopsis: |
         Providing a literal `token` or `tokenDetails` in client options.
         Mostly only used for testing, since tokens are short-lived - this method does not provide the client library with a means to renew the token automatically when the previous one expires.
@@ -66,17 +66,6 @@ Authentication:
         .synopsis: |
           Capability for the application to instruct the library, when issuing a token request, to query the Ably service for the current time instead of relying on a locally-available time of day.
           Enabled using `queryTime` client option.
-Client Instance Creation:
-  .specification: RSC1
-  .synopsis: |
-    An SDK announcing support for any of these construction inputs must support those
-    inputs for all client types it offers.
-  With Client Options:
-  With String:
-    .specification: RSC1a
-    .synopsis: |
-      Where that string is treated as an API key if it includes a ':' (colon) delimiter,
-      otherwise it is treated as a token string.
 Options:
   .synopsis: |
     `ClientOptions` that apply to both client types (REST and Realtime).

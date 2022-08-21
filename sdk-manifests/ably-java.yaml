@@ -15,9 +15,6 @@ compliance:
       Static:
       URL:
         Query Time:
-  Client Instance Creation:
-    With Client Options:
-    With String:
   Options:
     Client Identifier:
     Default Token Parameters:
