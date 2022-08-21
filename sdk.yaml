@@ -66,6 +66,17 @@ Authentication:
         .synopsis: |
           Capability for the application to instruct the library, when issuing a token request, to query the Ably service for the current time instead of relying on a locally-available time of day.
           Enabled using `queryTime` client option.
+Debugging:
+  .synopsis: |
+    Capability to alter client library SDK behaviour in ways that are not necessarily suitable for production environments,
+    however may need to be enabled - even when running against production environments and executing on end-customer/consumer devices - to debug issues.
+  Logs:
+    .specification: [TO3b, TO3c]
+    .synopsis: |
+      What level of log messages to generate and where to send them, using the `logLevel` and `logHandler` client options.
+      Typically a handler/sink and a verbosity level, but some logging systems may express
+      this differently for idiomatic reasons that make sense for the language, framework
+      or runtime platform.
 Options:
   .synopsis: |
     `ClientOptions` that apply to both client types (REST and Realtime).
@@ -79,14 +90,6 @@ Options:
     .synopsis: |
       `defaultTokenParams`:
       Overrides client library defaults for `TokenParams`.
-  Log Handling:
-    .specification: [TO3b, TO3c]
-    .synopsis: |
-      `logLevel` and `logHandler`:
-      What level of log messages to generate and where to send them.
-      Typically a handler/sink and a verbosity level, but some logging systems may express
-      this differently for idiomatic reasons that make sense for the language, framework
-      or runtime platform.
   Plugins:
     .specification: [PC1, PC2, TO3o]
     .synopsis: |

@@ -15,10 +15,11 @@ compliance:
       Static:
       URL:
         Query Time:
+  Debugging:
+    Logs:
   Options:
     Client Identifier:
     Default Token Parameters:
-    Log Handling:
   Protocol:
     JSON:
     MessagePack:
