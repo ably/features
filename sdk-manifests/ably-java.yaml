@@ -77,13 +77,12 @@ compliance:
     Channel:
       Publish:
         Idempotence:
+    Fallback Retry Timeout:
+    Host:
     Opaque Request:
-    Options:
-      Fallback Retry Timeout:
-      Host:
-      HTTP Request Timeout:
-      Maximum HTTP Retry Count:
     Request Identifiers:
+    Request Timeout:
+    Retry Count:
     Service:
       Get Time:
     Statistics:

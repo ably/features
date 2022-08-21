@@ -441,40 +441,43 @@ REST:
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
+  Fallback Retry Timeout:
+    .specification: [TO3l10, RSC15f]
+    .synopsis: |
+      Capability to override the default value of the `fallbackRetryTimeout` client option.
+      After a failed request to the default endpoint, followed by a successful request to a fallback endpoint),
+      this is the period in milliseconds before HTTP requests are retried against the default endpoint.
+  Host:
+    .specification: [RSC11, RSC12, RSC15b1, RSC15e, RSC15f, TO3k2]
+    .synopsis: |
+      Capability to override the default value of the `restHost` client option,
+      the REST endpoint.
+      Should only be overridden for development environments.
   Opaque Request:
     .specification: [RSC19, RTC9]
     .synopsis: |
       Convenience for customers who wish to use REST API functionality that is either not documented or is not included in the API for our client libraries.
       The REST client library provides a function to issue HTTP requests to the Ably endpoints with all the built in functionality of the library such as authentication, pagination, fallback hosts, MessagePack and JSON support etc..
-  Options:
-    .synopsis: |
-      `ClientOptions` that only apply to REST clients.
-    Fallback Retry Timeout:
-      .specification: [TO3l10, RSC15f]
-      .synopsis: |
-        `fallbackRetryTimeout`
-    Host:
-      .specification: [RSC11, RSC12, RSC15b1, RSC15e, RSC15f, TO3k2]
-      .synopsis: |
-        `restHost`:
-        Override the REST endpoint, for development environments only.
-    HTTP Request Timeout:
-      .specification: TO3l4
-      .synopsis: |
-        `httpRequestTimeout`
-    Maximum HTTP Retry Count:
-      .specification: [TO3l5, RSC15a]
-      .synopsis: |
-        `httpMaxRetryCount`
-    Maximum HTTP Retry Duration:
-      .specification: TO3l6
-      .synopsis: |
-        `httpMaxRetryDuration`
   Request Identifiers:
     .specification: [RSC7c, TO3p]
     .synopsis: |
-      Adds a query string parameter, based on a source of randomnes, to all REST requests.
+      Adds a query string parameter, based on a source of randomness, to all REST requests.
       Enabled using the `addRequestIds` client option.
+  Request Timeout:
+    .specification: TO3l4
+    .synopsis: |
+      Capability to override the default value of the `httpRequestTimeout` client option,
+      the timeout for any single HTTP request and response.
+  Retry Count:
+    .specification: [TO3l5, RSC15a]
+    .synopsis: |
+      Capability to override the default value of the `httpMaxRetryCount` client option,
+      the maximum number of fallback hosts to use as a fallback when an HTTP request to the primary host is unreachable or indicates that it is unserviceable.
+  Retry Duration:
+    .specification: TO3l6
+    .synopsis: |
+      Capability to override the default value of the `httpMaxRetryDuration` client option,
+      the maximum elapsed time in which fallback host retries for HTTP requests will be attempted.
   Service:
     .synopsis: |
       Global operations against the Ably service, not necessarily specific to the Ably application project being used.
