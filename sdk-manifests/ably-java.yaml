@@ -24,12 +24,8 @@ compliance:
     Default Token Parameters:
     Environment:
     Fallback Hosts:
-    HTTP Connection Open Timeout:
     Log Handling:
-    Port:
     Proxy:
-    TLS Port:
-    Transport Layer Security:
   Protocol:
     JSON:
     MessagePack:
@@ -92,6 +88,12 @@ compliance:
       Get Time:
     Statistics:
       Query:
+  Testing:
+    Disable TLS:
+    TCP Insecure Port:
+    TCP Secure Port:
+  Transport:
+    Connection Open Timeout:
 variants:
   Android:
     .synopsis: |

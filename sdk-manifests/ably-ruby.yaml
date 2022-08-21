@@ -22,12 +22,7 @@ compliance:
     Default Token Parameters:
     Environment:
     Fallback Hosts:
-    HTTP Connection Open Timeout:
     Log Handling:
-    Maximum Frame Size:
-    Port:
-    TLS Port:
-    Transport Layer Security:
   Protocol:
     JSON:
     Maximum Message Size:
@@ -107,3 +102,10 @@ compliance:
       Get Time:
     Statistics:
       Query:
+  Testing:
+    Disable TLS:
+    TCP Insecure Port:
+    TCP Secure Port:
+  Transport:
+    Connection Open Timeout:
+    Maximum Frame Size:
