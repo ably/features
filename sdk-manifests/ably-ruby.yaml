@@ -15,8 +15,6 @@ compliance:
   Options:
     Client Identifier:
     Default Token Parameters:
-    Environment:
-    Fallback Hosts:
     Log Handling:
   Protocol:
     JSON:
@@ -95,8 +93,11 @@ compliance:
       Get Time:
     Statistics:
       Query:
+  Service:
+    Environment:
   Testing:
     Disable TLS:
+    Fallback Hosts:
     TCP Insecure Port:
     TCP Secure Port:
   Transport:
