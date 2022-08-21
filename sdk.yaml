@@ -6,6 +6,11 @@ Agent Identifier:
     Sends an `Ably-Agent` HTTP header for REST and Realtime Websocket connections,
     identifying the library version,
     as well as relevant information describing any underlying layers and the client platform.
+  Agents:
+    .specification: RSC7d6
+    .synopsis: |
+      Capability to supply additional product/version key-value pairs using an `agents` client option.
+      For use only by other Ably-authored SDKs, on a need-to-have basis.
   Operating System:
     .synopsis: |
       Includes a product component indicating the runtime OS type and version.
@@ -28,11 +33,6 @@ Client Instance Creation:
 Options:
   .synopsis: |
     `ClientOptions` that apply to both client types (REST and Realtime).
-  Agents:
-    .specification: RSC7d6
-    .synopsis: |
-      `agents`:
-      For use only by other Ably-authored SDKs, on a need-to-have basis.
   Authentication:
     .synopsis: |
       `AuthOptions`

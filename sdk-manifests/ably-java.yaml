@@ -3,6 +3,7 @@
 common-version: 1.2.0-alpha.1
 compliance:
   Agent Identifier:
+    Agents:
     Operating System:
       .variants: Android
     Runtime:
@@ -11,7 +12,6 @@ compliance:
     With Client Options:
     With String:
   Options:
-    Agents:
     Authentication:
       Callback:
       Key:
