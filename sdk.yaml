@@ -39,12 +39,13 @@ Authentication:
   Token:
     .documentation:
       - https://ably.com/docs/core-features/authentication#token-authentication
-    .specification: [RSA4, RSA14, TO3j4]
+    .specification: [RSA4, RSA14, TO3j4, TO3j11, RSA7a4]
     .synopsis: |
       Capability to have a trusted device, such as one of your own servers possessing an API key configured via the dashboard, create short-lived access tokens for this client.
       The trusted device uses the API key to distribute time-limited tokens with limited sets of access rights or capabilities, or with specific identities to untrusted clients.
       The `useTokenAuth` client option can be used to specify that the client library should not use basic authentication,
       guaranteeing failure if none of `authCallback`, `authUrl`, `token` or `tokenDetails` are also supplied in client options.
+      The `defaultTokenParams` client option overrides client library defaults for `TokenParams`.
     Callback:
       .specification: [RSA4a, RSA4, TO3j5, AO2b]
       .synopsis: |
@@ -78,14 +79,6 @@ Debugging:
       Typically a handler/sink and a verbosity level, but some logging systems may express
       this differently for idiomatic reasons that make sense for the language, framework
       or runtime platform.
-Options:
-  .synopsis: |
-    `ClientOptions` that apply to both client types (REST and Realtime).
-  Default Token Parameters:
-    .specification: [TO3j11, RSA7a4]
-    .synopsis: |
-      `defaultTokenParams`:
-      Overrides client library defaults for `TokenParams`.
 Protocol:
   .synopsis: |
     Relating to the Ably service protocols used by REST and Realtime client instances.

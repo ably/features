@@ -17,8 +17,6 @@ compliance:
         Query Time:
   Debugging:
     Logs:
-  Options:
-    Default Token Parameters:
   Protocol:
     JSON:
     MessagePack:
