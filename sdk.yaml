@@ -466,6 +466,11 @@ REST:
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
+  Opaque Request:
+    .specification: [RSC19, RTC9]
+    .synopsis: |
+      Convenience for customers who wish to use REST API functionality that is either not documented or is not included in the API for our client libraries.
+      The REST client library provides a function to issue HTTP requests to the Ably endpoints with all the built in functionality of the library such as authentication, pagination, fallback hosts, MessagePack and JSON support etc..
   Options:
     .synopsis: |
       `ClientOptions` that only apply to REST clients.
@@ -490,16 +495,11 @@ REST:
       .specification: TO3l6
       .synopsis: |
         `httpMaxRetryDuration`
-    Request Identifiers:
-      .specification: [RSC7c, TO3p]
-      .synopsis: |
-        `addRequestIds`:
-        Adds a query string parameter, based on a source of randomnes, to all REST requests.
-  Request:
-    .specification: [RSC19, RTC9]
+  Request Identifiers:
+    .specification: [RSC7c, TO3p]
     .synopsis: |
-      Convenience for customers who wish to use REST API functionality that is either not documented or is not included in the API for our client libraries.
-      The REST client library provides a function to issue HTTP requests to the Ably endpoints with all the built in functionality of the library such as authentication, pagination, fallback hosts, MsgPack and JSON support etc.
+      Adds a query string parameter, based on a source of randomnes, to all REST requests.
+      Enabled using the `addRequestIds` client option.
   Service:
     .synopsis: |
       Global operations against the Ably service, not necessarily specific to the Ably application project being used.

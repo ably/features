@@ -95,14 +95,14 @@ compliance:
       Publish:
         Idempotence:
       Release:
+    Opaque Request:
     Options:
       Fallback Retry Timeout:
       Host:
       HTTP Request Timeout:
       Maximum HTTP Retry Count:
       Maximum HTTP Retry Duration:
-      Request Identifiers:
-    Request:
+    Request Identifiers:
     Service:
       Get Time:
     Statistics:
