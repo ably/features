@@ -408,3 +408,8 @@ REST:
       .synopsis: |
         `addRequestIds`:
         Adds a query string parameter, based on a source of randomnes, to all REST requests.
+  Request:
+    .specification: [RSC19, RTC9]
+    .synopsis: |
+      Convenience for customers who wish to use REST API functionality that is either not documented or is not included in the API for our client libraries.
+      The REST client library provides a function to issue HTTP requests to the Ably endpoints with all the built in functionality of the library such as authentication, pagination, fallback hosts, MsgPack and JSON support etc.
