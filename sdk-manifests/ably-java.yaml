@@ -73,6 +73,8 @@ compliance:
       Maximum HTTP Retry Count:
       Request Identifiers:
     Request:
+    Service:
+      Get Time:
     Statistics:
       Query:
 variants:

@@ -413,6 +413,14 @@ REST:
     .synopsis: |
       Convenience for customers who wish to use REST API functionality that is either not documented or is not included in the API for our client libraries.
       The REST client library provides a function to issue HTTP requests to the Ably endpoints with all the built in functionality of the library such as authentication, pagination, fallback hosts, MsgPack and JSON support etc.
+  Service:
+    .synopsis: |
+      Global operations against the Ably service, not necessarily specific to the Ably application project being used.
+    Get Time:
+      .specification: [RSC16, RTC6]
+      .synopsis: |
+        Obtain the Ably service time, to millisecond precision.
+        This may be required by clients that do not have access to a sufficiently well maintained time source, to provide timestamps for use in token requests.
   Statistics:
     .documentation: https://ably.com/docs/general/statistics
     .synopsis: |
