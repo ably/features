@@ -284,7 +284,7 @@ Realtime:
     Ping:
       .specification: RTN13
       .synopsis: |
-        Sends a message to the Ably service and asynchronously returns the time to response, or an error if the operation failed.
+        Sends a heartbeat message to the Ably service and returns the time taken to receive a corresponding heartbeat in response, or an error if the operation failed.
         This can be useful for measuring true roundtrip client to Ably server latency for a simple message, or for checking that an underlying transport is responding currently.
     State Events:
       .specification: [RTN4, RTN25]
