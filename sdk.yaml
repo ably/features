@@ -299,7 +299,7 @@ Realtime:
       .synopsis: |
         `autoConnect`:
         Disable the automatic initiation of a connection when a client instance is instantiated.
-        Implies the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
+        Requires the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
     Connection Recovery String:
       .specification: [RTC1c, TO3i]
       .synopsis: |
