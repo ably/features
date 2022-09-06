@@ -73,6 +73,8 @@ compliance:
       Maximum HTTP Retry Count:
       Request Identifiers:
     Request:
+    Statistics:
+      Query:
 variants:
   Android:
     .synopsis: |
