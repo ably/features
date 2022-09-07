@@ -279,7 +279,13 @@ Realtime:
           Support for VCDiff-encoded delta streams.
           SDKs may choose to offer this only if a plugin is supplied via client options
           (optional functionality).
-
+  Connection:
+    .specification: RTC2
+    State Events:
+      .specification: [RTN4, RTN25]
+      .synopsis: |
+        Mechanisms to get connection state synchronously, as well as to receive events asynchronously when connection state changes.
+        Also provides access to an error reason object in case of failure.
   # TODO (DF1a) connectionStateTtl [ably-java]
   # TODO (DF1b) realtimeRequestTimeout [ably-java]
   # TODO asyncHttpThreadpoolSize [ably-java]
