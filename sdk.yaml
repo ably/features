@@ -281,6 +281,11 @@ Realtime:
           (optional functionality).
   Connection:
     .specification: RTC2
+    Get Identifier:
+      .specification: RTN8
+      .synopsis: |
+        Get the `id` of the connection, which is a public string provided by the Ably service and is unique for this connection.
+        Unavailable until connected.
     Ping:
       .specification: RTN13
       .synopsis: |

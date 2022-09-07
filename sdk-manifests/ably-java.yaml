@@ -57,6 +57,7 @@ compliance:
       Subscribe:
         Deltas:
     Connection:
+      Get Identifier:
       Ping:
       State Events:
     Options:
