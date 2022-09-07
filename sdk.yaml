@@ -427,6 +427,7 @@ REST:
         Obtain the Ably service time, to millisecond precision.
         This may be required by clients that do not have access to a sufficiently well maintained time source, to provide timestamps for use in token requests.
   Statistics:
+    .documentation: https://ably.com/docs/general/statistics
     .synopsis: |
       Operations relating to Ably application statistics (a.k.a. 'stats').
     Query:
