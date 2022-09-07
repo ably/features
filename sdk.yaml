@@ -273,7 +273,6 @@ Realtime:
       .specification: RTL6
       .synopsis: |
         Send a message on this channel.
-        This is a message over the Realtime connection, not a REST operation.
     Subscribe:
       .specification: [RTL7, RTL8]
       Deltas:
