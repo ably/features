@@ -288,7 +288,7 @@ Realtime:
     Ping:
       .specification: RTN13
       .synopsis: |
-        Sends a message to the Ably service and asynchronously returns the time to response, or an error if the operation failed.
+        Sends a heartbeat message to the Ably service and returns the time taken to receive a corresponding heartbeat in response, or an error if the operation failed.
         This can be useful for measuring true roundtrip client to Ably server latency for a simple message, or for checking that an underlying transport is responding currently.
     State Events:
       .specification: [RTN4, RTN25]
@@ -314,7 +314,7 @@ Realtime:
       .synopsis: |
         `autoConnect`:
         Disable the automatic initiation of a connection when a client instance is instantiated.
-        Implies the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
+        Requires the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
     Connection Recovery String:
       .specification: [RTC1c, TO3i]
       .synopsis: |
@@ -442,6 +442,7 @@ REST:
         Obtain the Ably service time, to millisecond precision.
         This may be required by clients that do not have access to a sufficiently well maintained time source, to provide timestamps for use in token requests.
   Statistics:
+    .documentation: https://ably.com/docs/general/statistics
     .synopsis: |
       Operations relating to Ably application statistics (a.k.a. 'stats').
     Query:
