@@ -248,6 +248,20 @@ Realtime:
       .synopsis: |
         The option to configure a `cipher`, specifying encryption algorithm and attributes.
         Used for subscribe and publish on this channel.
+    Mode:
+      .documentation:
+        - https://faqs.ably.com/what-are-channel-mode-flags-and-how-do-i-use-them
+      .specification: [RTL16, TB2d, TR3, RTS3c]
+      .synopsis: |
+        Specify a subset of the permissions given in your token/key for use with this channel, specified using channel mode flags.
+
+        This feature uses Ably service-side filtering, so it can be used to save unnecessary messages counting towards your usage such as:
+        - preventing presence updates going to all users
+        - attaching to a channel to enter presence, specifying that messages on that channel should not be received
+
+        This feature differs from capabilities in two ways:
+        - It's optional and specified by the client itself, versus capabilities which are mandatory and specified by the key or customer's auth server
+        - It's more granualar - for example we have a `subscribe` capability, but that doesn't distinguish between message and presence subscriptions, whereas modes can
     Presence:
       Enter:
         .specification: [RTP8, RTP10]
