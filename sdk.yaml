@@ -297,9 +297,12 @@ Realtime:
         Capability to recover a connection by explicitly providing a recovery key when instantiating a Realtime client instance,
         where that recovery key has been sourced from a previous instance.
 
-        Client instances provide:
-        - a unique private connection `key` provided by the Ably service that is used to reconnect and retain connection state following an unexpected disconnection
+        Client instances may provide:
+        - a unique private connection `key` provided by the Ably service that can be used to publish over REST on behalf of a Realtime connection
         - a `serial` attribute, set from the `connectionSerial` received from the Ably service when `CONNECTED` state is confirmed
+          (TODO establish why this is user-facing at all)
+
+        Client instances must provide:
         - a `recoveryKey`, commposed from the connection key, latest connection serial (`connectionSerial`) and the current message serial (`msgSerial`)
     State Events:
       .specification: [RTN4, RTN25]
