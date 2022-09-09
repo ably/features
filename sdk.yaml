@@ -263,7 +263,14 @@ Realtime:
       .specification: [RTL16, TB2d, TR3, RTS3c]
       .synopsis: |
         Specify a subset of the permissions given in your token/key for use with this channel, specified using channel mode flags.
-        This feature uses Ably service-side filtering, so it can be used to save unnecessary messages counting towards your usage such as preventing presence updates going to all users.
+
+        This feature uses Ably service-side filtering, so it can be used to save unnecessary messages counting towards your usage such as:
+        - preventing presence updates going to all users
+        - attaching to a channel to enter presence, specifying that messages on that channel should not be received
+
+        This feature differs from capabilities in two ways:
+        - It's optional and specified by the client itself, versus capabilities which are mandatory and specified by the key or customer's auth server
+        - It's more granualar - for example we have a `subscribe` capability, but that doesn't distinguish between message and presence subscriptions, whereas modes can
     Presence:
       .documentation:
         - https://ably.com/docs/realtime/presence
@@ -299,7 +306,6 @@ Realtime:
       .specification: RTL6
       .synopsis: |
         Send a message on this channel.
-        This is a message over the Realtime connection, not a REST operation.
     State Events:
       .specification:
         [RTL2, TH1, TH2, TH3, TH4, TH5, RTN11d, RTL4e, RTL3a, RTL4g, RTL14, RTL24, RTP5]
@@ -317,24 +323,25 @@ Realtime:
           Support for VCDiff-encoded delta streams.
           SDKs may choose to offer this only if a plugin is supplied via client options
           (optional functionality).
-          Deltas are enabled for a channel by setting parameters using the `setOptions` method on the channel.
+          Deltas are enabled for a channel by setting the `delta` channel parameter to `vcdiff` using the `setOptions` method on the channel.
       Rewind:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/rewind
         .specification: [RTL16, TB2c, RTS3c]
         .synopsis: |
           The option to specify that attachment to this channel start from a given number of messages or point in time in the past.
-          This is done by setting channel parameters using the `setOptions` method on the channel.
+          This is done by setting the `rewind` channel parameter using the `setOptions` method on the channel.
   Connection:
     .specification: RTC2
     Get Identifier:
       .specification: RTN8
       .synopsis: |
-        Get the `id` of the active connection, which is a public string provided by the Ably service and is unique for this connection.
+        Get the `id` of the connection, which is a public string provided by the Ably service and is unique for this connection.
+        Unavailable until connected.
     Ping:
       .specification: RTN13
       .synopsis: |
-        Sends a message to the Ably service and asynchronously returns the time to response, or an error if the operation failed.
+        Sends a heartbeat message to the Ably service and returns the time taken to receive a corresponding heartbeat in response, or an error if the operation failed.
         This can be useful for measuring true roundtrip client to Ably server latency for a simple message, or for checking that an underlying transport is responding currently.
     Recovery:
       .specification:
@@ -343,9 +350,12 @@ Realtime:
         Capability to recover a connection by explicitly providing a recovery key when instantiating a Realtime client instance,
         where that recovery key has been sourced from a previous instance.
 
-        Client instances provide:
-        - a unique private connection `key` provided by the Ably service that is used to reconnect and retain connection state following an unexpected disconnection
+        Client instances may provide:
+        - a unique private connection `key` provided by the Ably service that can be used to publish over REST on behalf of a Realtime connection
         - a `serial` attribute, set from the `connectionSerial` received from the Ably service when `CONNECTED` state is confirmed
+          (TODO establish why this is user-facing at all)
+
+        Client instances must provide:
         - a `recoveryKey`, commposed from the connection key, latest connection serial (`connectionSerial`) and the current message serial (`msgSerial`)
     State Events:
       .specification: [RTN4, RTN25]
@@ -371,7 +381,7 @@ Realtime:
       .synopsis: |
         `autoConnect`:
         Disable the automatic initiation of a connection when a client instance is instantiated.
-        Implies the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
+        Requires the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
     Disconnected Retry Timeout:
       .specification: [TO3l1, RTN14d]
       .synopsis: |
@@ -422,6 +432,7 @@ REST:
       .synopsis: |
         The option to configure a `cipher`, specifying encryption algorithm and attributes.
         Used for subscribe and publish on this channel.
+        Support for `AES` with `CBC`, `PKCS#7` with a default key length of 256 bits, as well as support for `AES128`.
     Existence Check:
       .specification: [RSN2, RTS2]
       .synopsis: Discover if a channel exists with a given name.
@@ -454,9 +465,8 @@ REST:
       Idempotence:
         .specification: [RSL1k, RTL6a1, TO3n]
         .synopsis: |
-          Using the `idempotentRestPublishing` client option:
-          Overrides the client library default, from version 1.2 of the features specification,
-          that makes REST publish operations idempotent.
+          Makes REST publish operations idempotent.
+          Enabled by default or can be disabled by setting the `idempotentRestPublishing` client option to `false`.
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
@@ -503,6 +513,7 @@ REST:
         Obtain the Ably service time, to millisecond precision.
         This may be required by clients that do not have access to a sufficiently well maintained time source, to provide timestamps for use in token requests.
   Statistics:
+    .documentation: https://ably.com/docs/general/statistics
     .synopsis: |
       Operations relating to Ably application statistics (a.k.a. 'stats').
     Query:

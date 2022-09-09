@@ -47,7 +47,13 @@ compliance:
     Authentication:
     Channel:
       Attach:
-      Encryption: # setOptions on existing channel instance is missing (i.e. it works but is inelegant, requiring soft-deprecated mechanism)
+
+      # setOptions on existing channel instance is missing (i.e. it works but is inelegant, requiring soft-deprecated mechanism)
+      # see:
+      # - https://docs.ably.com/client-lib-development-guide/features/#RSN3c
+      # - https://docs.ably.com/client-lib-development-guide/features/#RTS3c
+      Encryption:
+
       History:
       Presence:
         Enter:
