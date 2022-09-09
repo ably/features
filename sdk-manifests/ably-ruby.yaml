@@ -54,6 +54,7 @@ compliance:
       # - https://docs.ably.com/client-lib-development-guide/features/#RTS3c
       Encryption:
 
+      History:
       Presence:
         Enter:
           Client:

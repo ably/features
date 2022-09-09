@@ -52,6 +52,7 @@ compliance:
     Channel:
       Attach:
       Encryption:
+      History:
       Mode:
       Presence:
         Get:
