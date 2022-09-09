@@ -253,9 +253,8 @@ Realtime:
         - https://ably.com/docs/realtime/history
       .specification: [RTL10, CP2a, RTL15a]
       .synopsis: |
-        Used to return continuous message history up to the exact point a realtime channel was attached,
-        combining both instantaneous “live” history as well as the longer term
-        [persisted history](https://ably.com/docs/realtime/history#persisted-history).
+        Used to return continuous message history up to the exact point a realtime channel was attached.
+        This includes both messages persisted for the default duration of two minutes, and messages persisted for 24-72 by enabling the `persist all messages` channel rule.
         Includes the capability to only retrieve messages prior to the moment that the channel was attached or emitted an `UPDATE` indicating loss of continuity.
     Mode:
       .documentation:
