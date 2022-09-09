@@ -243,6 +243,11 @@ Realtime:
       .specification: [RTL4, RTL5]
       .synopsis: |
         Methods to attach and detach channels.
+    Encryption:
+      .specification: [RTL16, TB2b, RTS3c]
+      .synopsis: |
+        The option to configure a `cipher`, specifying encryption algorithm and attributes.
+        Used for subscribe and publish on this channel.
     Presence:
       Enter:
         .specification: [RTP8, RTP10]

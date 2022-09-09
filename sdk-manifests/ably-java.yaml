@@ -51,6 +51,7 @@ compliance:
     Authentication:
     Channel:
       Attach:
+      Encryption:
       Presence:
         Get:
         Subscribe:
