@@ -291,6 +291,20 @@ Realtime:
       .synopsis: |
         Sends a heartbeat message to the Ably service and returns the time taken to receive a corresponding heartbeat in response, or an error if the operation failed.
         This can be useful for measuring true roundtrip client to Ably server latency for a simple message, or for checking that an underlying transport is responding currently.
+    Recovery:
+      .specification:
+        [RTN9, RTN10, RTN16, RTC1c, TO3i, RTN11d, RTN15a, RTN15b, RTN15d]
+      .synopsis: |
+        Capability to recover a connection by explicitly providing a recovery key when instantiating a Realtime client instance,
+        where that recovery key has been sourced from a previous instance.
+
+        Client instances may provide:
+        - a unique private connection `key` provided by the Ably service that can be used to publish over REST on behalf of a Realtime connection
+        - a `serial` attribute, set from the `connectionSerial` received from the Ably service when `CONNECTED` state is confirmed
+          (TODO establish why this is user-facing at all)
+
+        Client instances must provide:
+        - a `recoveryKey`, commposed from the connection key, latest connection serial (`connectionSerial`) and the current message serial (`msgSerial`)
     State Events:
       .specification: [RTN4, RTN25]
       .synopsis: |
@@ -316,11 +330,6 @@ Realtime:
         `autoConnect`:
         Disable the automatic initiation of a connection when a client instance is instantiated.
         Requires the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
-    Connection Recovery String:
-      .specification: [RTC1c, TO3i]
-      .synopsis: |
-        `recover`:
-        Attempt to recover/inherit the state of a previous connection.
     Disconnected Retry Timeout:
       .specification: [TO3l1, RTN14d]
       .synopsis: |

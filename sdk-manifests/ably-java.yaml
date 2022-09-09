@@ -59,11 +59,11 @@ compliance:
     Connection:
       Get Identifier:
       Ping:
+      Recovery:
       State Events:
     Options:
       Channel Retry Timeout:
       Connection Lifecycle Control:
-      Connection Recovery String:
       Host:
       Message Echoes:
       Message Queuing:
