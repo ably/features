@@ -273,7 +273,6 @@ Realtime:
       .specification: RTL6
       .synopsis: |
         Send a message on this channel.
-        This is a message over the Realtime connection, not a REST operation.
     Subscribe:
       .specification: [RTL7, RTL8]
       Deltas:
@@ -287,11 +286,12 @@ Realtime:
     Get Identifier:
       .specification: RTN8
       .synopsis: |
-        Get the `id` of the active connection, which is a public string provided by the Ably service and is unique for this connection.
+        Get the `id` of the connection, which is a public string provided by the Ably service and is unique for this connection.
+        Unavailable until connected.
     Ping:
       .specification: RTN13
       .synopsis: |
-        Sends a message to the Ably service and asynchronously returns the time to response, or an error if the operation failed.
+        Sends a heartbeat message to the Ably service and returns the time taken to receive a corresponding heartbeat in response, or an error if the operation failed.
         This can be useful for measuring true roundtrip client to Ably server latency for a simple message, or for checking that an underlying transport is responding currently.
     Recovery:
       .specification:
@@ -300,9 +300,12 @@ Realtime:
         Capability to recover a connection by explicitly providing a recovery key when instantiating a Realtime client instance,
         where that recovery key has been sourced from a previous instance.
 
-        Client instances provide:
-        - a unique private connection `key` provided by the Ably service that is used to reconnect and retain connection state following an unexpected disconnection
+        Client instances may provide:
+        - a unique private connection `key` provided by the Ably service that can be used to publish over REST on behalf of a Realtime connection
         - a `serial` attribute, set from the `connectionSerial` received from the Ably service when `CONNECTED` state is confirmed
+          (TODO establish why this is user-facing at all)
+
+        Client instances must provide:
         - a `recoveryKey`, commposed from the connection key, latest connection serial (`connectionSerial`) and the current message serial (`msgSerial`)
     State Events:
       .specification: [RTN4, RTN25]
@@ -328,7 +331,7 @@ Realtime:
       .synopsis: |
         `autoConnect`:
         Disable the automatic initiation of a connection when a client instance is instantiated.
-        Implies the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
+        Requires the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
     Disconnected Retry Timeout:
       .specification: [TO3l1, RTN14d]
       .synopsis: |
@@ -412,9 +415,8 @@ REST:
       Idempotence:
         .specification: [RSL1k, RTL6a1, TO3n]
         .synopsis: |
-          Using the `idempotentRestPublishing` client option:
-          Overrides the client library default, from version 1.2 of the features specification,
-          that makes REST publish operations idempotent.
+          Makes REST publish operations idempotent.
+          Enabled by default or can be disabled by setting the `idempotentRestPublishing` client option to `false`.
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
@@ -461,6 +463,7 @@ REST:
         Obtain the Ably service time, to millisecond precision.
         This may be required by clients that do not have access to a sufficiently well maintained time source, to provide timestamps for use in token requests.
   Statistics:
+    .documentation: https://ably.com/docs/general/statistics
     .synopsis: |
       Operations relating to Ably application statistics (a.k.a. 'stats').
     Query:
