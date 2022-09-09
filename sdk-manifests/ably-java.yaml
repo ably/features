@@ -54,6 +54,7 @@ compliance:
       Presence:
         Get:
         Subscribe:
+      Publish:
       Subscribe:
         Deltas:
     Connection:

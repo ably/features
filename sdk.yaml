@@ -271,6 +271,8 @@ Realtime:
             not necessarily the id for this client.
     Publish:
       .specification: RTL6
+      .synopsis: |
+        Send a message on this channel.
     Subscribe:
       .specification: [RTL7, RTL8]
       Deltas:
