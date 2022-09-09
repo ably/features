@@ -377,6 +377,12 @@ REST:
       .specification: RSA8e
   Channel:
     .specification: [RSN1, RTC3]
+    Encryption:
+      .specification: [RSL7, TB2b, RSN3c]
+      .synopsis: |
+        The option to configure a `cipher`, specifying encryption algorithm and attributes.
+        Used for subscribe and publish on this channel.
+        Support for `AES` with `CBC`, `PKCS#7` with a default key length of 256 bits, as well as support for `AES128`.
     Existence Check:
       .specification: [RSN2, RTS2]
       .synopsis: Discover if a channel exists with a given name.
