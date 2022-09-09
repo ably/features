@@ -293,7 +293,7 @@ Realtime:
         .specification: [RTL16, TB2c, RTS3c]
         .synopsis: |
           The option to specify that attachment to this channel start from a given number of messages or point in time in the past.
-          This is done by setting channel parameters using the `setOptions` method on the channel.
+          This is done by setting the `rewind` channel parameter using the `setOptions` method on the channel.
   Connection:
     .specification: RTC2
     Get Identifier:
