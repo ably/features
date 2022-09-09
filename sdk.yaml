@@ -289,7 +289,7 @@ Realtime:
           Support for VCDiff-encoded delta streams.
           SDKs may choose to offer this only if a plugin is supplied via client options
           (optional functionality).
-          Deltas are enabled for a channel by setting parameters using the `setOptions` method on the channel.
+          Deltas are enabled for a channel by setting the `delta` channel parameter to `vcdiff` using the `setOptions` method on the channel.
       Rewind:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/rewind
