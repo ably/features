@@ -281,11 +281,14 @@ Realtime:
     Subscribe:
       .specification: [RTL7, RTL8]
       Deltas:
-        .specification: [RTL18, RTL19, RTL20, PC3, TM2i]
+        .documentation:
+          - https://ably.com/docs/realtime/channels/channel-parameters/deltas
+        .specification: [RTL16, RTL18, RTL19, RTL20, PC3, TM2i, TB2c, RTS3c]
         .synopsis: |
           Support for VCDiff-encoded delta streams.
           SDKs may choose to offer this only if a plugin is supplied via client options
           (optional functionality).
+          Deltas are enabled for a channel by setting the `delta` channel parameter to `vcdiff` using the `setOptions` method on the channel.
       Rewind:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/rewind
