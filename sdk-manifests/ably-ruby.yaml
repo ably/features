@@ -86,12 +86,13 @@ compliance:
       Presence:
         History:
         Member List:
+      Publish:
+        Idempotence:
       Release:
     Options:
       Fallback Retry Timeout:
       Host:
       HTTP Request Timeout:
-      Idempotent Publishing:
       Maximum HTTP Retry Count:
       Maximum HTTP Retry Duration:
       Request Identifiers:
