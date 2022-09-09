@@ -292,6 +292,13 @@ Realtime:
       .specification: RTL6
       .synopsis: |
         Send a message on this channel.
+    State Events:
+      .specification:
+        [RTL2, TH1, TH2, TH3, TH4, TH5, RTN11d, RTL4e, RTL3a, RTL4g, RTL14, RTL24, RTP5]
+      .synopsis: |
+        `ChannelEvent` events can be received asynchronously when channel state changes.
+        The current `ChannelState` can be synchronously queried (e.g. via a `state` property on the channel instance).
+        Also provides access to an error reason object when the channel is in a state of disruption (for example `FAILED`, `DETACHED` or `SUSPENDED`).
     Subscribe:
       .specification: [RTL7, RTL8]
       Deltas:
