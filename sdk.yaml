@@ -263,11 +263,15 @@ Realtime:
         - It's optional and specified by the client itself, versus capabilities which are mandatory and specified by the key or customer's auth server
         - It's more granualar - for example we have a `subscribe` capability, but that doesn't distinguish between message and presence subscriptions, whereas modes can
     Presence:
+      .documentation:
+        - https://ably.com/docs/realtime/presence
+      .specification: [RTL9, RTP1, RTP2, RTP4, RTP5, RTP13, RTP16, RTP17, RTP18, RTP19]
       Enter:
         .specification: [RTP8, RTP10]
         .synopsis: |
           Methods to enter and leave presence on channels for this client.
         Client:
+          .specification: [RTP14, RTP15]
           .synopsis: |
             Methods to enter and leave presence for a given `clientId`,
             not necessarily the id for this client.
@@ -285,6 +289,7 @@ Realtime:
       Update:
         .specification: RTP9
         Client:
+          .specification: RTP15
           .synopsis: |
             Method to update presence data and/or extras for a `clientId`,
             not necessarily the id for this client.
