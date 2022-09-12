@@ -75,7 +75,7 @@ Debugging:
   Logs:
     .specification: [TO3b, TO3c]
     .synopsis: |
-      What level of log messages to generate and where to send them, using the `logLevel` and `logHandler` client options.
+      The level of log messages to generate and where to write them to, using the `logLevel` and `logHandler` client options.
       Typically a handler/sink and a verbosity level, but some logging systems may express
       this differently for idiomatic reasons that make sense for the language, framework
       or runtime platform.
