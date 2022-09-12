@@ -90,8 +90,7 @@ Protocol:
   Maximum Message Size:
     .specification: [TO3l8, RSL1i, RTL6d1, CD2c]
     .synopsis: |
-      Capability to override the default value of the `maxMessageSize` client option,
-      the maximum size of messages that can be published in one go.
+      Set the maximum size of messages that can be published in a single operation using the `maxMessageSize` client option.
   MessagePack:
     .specification: [RSC8a, RSL4c, G1]
     .synopsis: |
