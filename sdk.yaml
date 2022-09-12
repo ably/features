@@ -85,7 +85,7 @@ Protocol:
   JSON:
     .specification: [RSC8b, TO3f, G1]
     .synopsis: |
-      Support for encoding and decoding messages in textual format with [JSON](https://www.json.org/json-en.html),
+      Encode and decode messages as [JSON](https://www.json.org/json-en.html),
       overriding the default [MessagePack](https://msgpack.org/) by using the `useBinaryProtocol` client option.
   Maximum Message Size:
     .specification: [TO3l8, RSL1i, RTL6d1, CD2c]
