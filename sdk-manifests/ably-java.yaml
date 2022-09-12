@@ -12,7 +12,7 @@ compliance:
     API Key:
     Token:
       Callback:
-      Static:
+      Literal:
       URL:
         Query Time:
   Debugging:

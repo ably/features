@@ -48,7 +48,7 @@ Authentication:
       .specification: [RSA4a, RSA4, TO3j5, AO2b]
       .synopsis: |
         Capability for the application to service `Auth#requestToken` calls by supplying a callback using the `authCallback` client option.
-    Static:
+    Literal:
       .specification: [RSA4a, RSA4, RSC1, TO3j2, TO3j3]
       .synopsis: |
         Providing a literal `token` or `tokenDetails` in client options.
