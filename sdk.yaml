@@ -25,7 +25,6 @@ Authentication:
   .specification: [AO1, AO2, RSC17, RSA7, RSA15, RTN2d, TO3a]
   .synopsis: |
     Mechanisms for authenticating with the Ably service.
-    Implies the existence of the `clientId` client option, the identifier of the client represented by the client instance.
   Basic:
     .documentation:
       - https://ably.com/docs/core-features/authentication#basic-authentication
