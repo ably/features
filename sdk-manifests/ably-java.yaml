@@ -9,7 +9,7 @@ compliance:
     Runtime:
       .variants: JRE
   Authentication:
-    Basic:
+    API Key:
     Token:
       Callback:
       Static:

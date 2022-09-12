@@ -6,7 +6,7 @@ compliance:
     Agents:
     Runtime:
   Authentication:
-    Basic:
+    API Key:
     Token:
       Callback:
       Static:
