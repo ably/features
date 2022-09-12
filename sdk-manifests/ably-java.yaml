@@ -3,34 +3,23 @@
 common-version: 1.2.0-alpha.1
 compliance:
   Agent Identifier:
+    Agents:
     Operating System:
       .variants: Android
     Runtime:
       .variants: JRE
-  Client Instance Creation:
-    With Client Options:
-    With String:
-  Options:
-    Agents:
-    Authentication:
+  Authentication:
+    API Key:
+    Token:
       Callback:
-      Key:
-      Query Time:
-      Token Details:
-      Token String:
+      Literal:
       URL:
-      Use Token Authentication:
-    Binary Protocol:
-    Client Identifier:
-    Default Token Parameters:
-    Environment:
-    Fallback Hosts:
-    HTTP Connection Open Timeout:
-    Log Handling:
-    Port:
-    Proxy:
-    TLS Port:
-    Transport Layer Security:
+        Query Time:
+  Debugging:
+    Logs:
+  Protocol:
+    JSON:
+    MessagePack:
   Push Notifications:
     Activation:
       .variants: Android
@@ -58,38 +47,46 @@ compliance:
         Get:
         Subscribe:
       Publish:
+      Retry Timeout:
       State Events:
       Subscribe:
         Deltas:
         Rewind:
     Connection:
       Get Identifier:
+      Lifecycle Control:
       Ping:
       Recovery:
       State Events:
-    Options:
-      Channel Retry Timeout:
-      Connection Lifecycle Control:
-      Host:
-      Message Echoes:
-      Message Queuing:
-      Transport Parameters:
+    Host:
+    Message Echoes:
+    Message Queuing:
+    Transport Parameters:
   REST:
     Authentication:
     Channel:
       Publish:
         Idempotence:
-    Options:
-      Fallback Retry Timeout:
-      Host:
-      HTTP Request Timeout:
-      Maximum HTTP Retry Count:
-      Request Identifiers:
-    Request:
+    Fallback Retry Timeout:
+    Host:
+    Opaque Request:
+    Request Identifiers:
+    Request Timeout:
+    Retry Count:
     Service:
       Get Time:
     Statistics:
       Query:
+  Service:
+    Environment:
+  Testing:
+    Disable TLS:
+    Fallback Hosts:
+    TCP Insecure Port:
+    TCP Secure Port:
+  Transport:
+    Connection Open Timeout:
+    Proxy:
 variants:
   Android:
     .synopsis: |
