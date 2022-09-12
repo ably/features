@@ -31,7 +31,8 @@ Authentication:
     .specification: [RSA11, RSC1, TO3j1, AO2a]
     .synopsis: |
       Capability to use an Ably API key for authentication.
-      Specified using the `key` client option and features a key name and key secret.
+      Specified using the `key` client option.
+      The key consists of a name and secret separated by a colon.
       Should only be used server-side in production applications.
       Client-side applications should always use token authentication in production.
   Token:
