@@ -9,7 +9,7 @@ Agent Identifier:
   Agents:
     .specification: RSC7d6
     .synopsis: |
-      Capability to supply additional product/version key-value pairs using an `agents` client option.
+      Supply additional product/version key-value pairs using an `agents` client option.
       For use only by other Ably-authored SDKs, on a need-to-have basis.
   Operating System:
     .synopsis: |
@@ -30,7 +30,7 @@ Authentication:
       - https://ably.com/docs/core-features/authentication#basic-authentication
     .specification: [RSA11, RSC1, TO3j1, AO2a]
     .synopsis: |
-      Capability to use an Ably API key for authentication.
+      Use an Ably API key for authentication.
       Specified using the `key` client option.
       The key consists of a name and secret separated by a colon.
       Should only be used server-side in production applications.
@@ -40,7 +40,7 @@ Authentication:
       - https://ably.com/docs/core-features/authentication#token-authentication
     .specification: [RSA4, RSA14, TO3j4, TO3j11, RSA7a4]
     .synopsis: |
-      Capability to have a trusted device, such as one of your own servers possessing an API key configured via the dashboard, create short-lived access tokens for this client.
+      Have a trusted device, such as one of your own servers possessing an API key configured via the dashboard, create short-lived access tokens for this client.
       The trusted device uses the API key to distribute time-limited tokens with limited sets of access rights or capabilities, or with specific identities to untrusted clients.
       The `useTokenAuth` client option can be used to specify that the client library should not use basic authentication,
       guaranteeing failure if none of `authCallback`, `authUrl`, `token` or `tokenDetails` are also supplied in client options.
@@ -48,7 +48,7 @@ Authentication:
     Callback:
       .specification: [RSA4a, RSA4, TO3j5, AO2b]
       .synopsis: |
-        Capability for the application to service `Auth#requestToken` calls by supplying a callback using the `authCallback` client option.
+        Supply a callback as the `authCallback` client option to obtain authentication tokens using user-supplied logic.
     Literal:
       .specification: [RSA4a, RSA4, RSC1, TO3j2, TO3j3]
       .synopsis: |
@@ -59,17 +59,16 @@ Authentication:
         [RSA8c, TO3j6, TO3j7, TO3j8, TO3j9, AO2c, AO2d, AO2e, AO2f, RSA4]
       .synopsis: |
         `authUrl`, `authMethod`, `authHeaders` and `authParams`:
-        Capability for the application to instruct the client library to service `Auth#requestToken` calls by querying a provided URL (`authURL` client option) to obtain a token request,
-        or the token itself.
+        Service `Auth#requestToken` calls by querying a provided URL (`authURL` client option) to obtain a token request, or the token itself.
         Supports specification of other HTTP request properties (method, headers and params) using the `authMethod`, `authHeaders` and `authParams` client options respectively.
       Query Time:
         .specification: [TO3j10, RSA9d, RSA10k, AO2g]
         .synopsis: |
-          Capability for the application to instruct the library, when issuing a token request, to query the Ably service for the current time instead of relying on a locally-available time of day.
+          When issuing a token request, query the Ably service for the current time instead of relying on a locally-available time of day.
           Enabled using `queryTime` client option.
 Debugging:
   .synopsis: |
-    Capability to alter client library SDK behaviour in ways that are not necessarily suitable for production environments,
+    Behaviours that are not necessarily suitable for production environments,
     however may need to be enabled - even when running against production environments and executing on end-customer/consumer devices - to debug issues.
   Logs:
     .specification: [TO3b, TO3c]
@@ -247,7 +246,7 @@ Realtime:
     Retry Timeout:
       .specification: [RTL13b, TO3l7]
       .synopsis: |
-        Capability to override this value using the `channelRetryTimeout` client option.
+        Override the default value using the `channelRetryTimeout` client option.
         Channel reattachement is attempted after this amount of time in the `SUSPENDED` connection state,
         following a server-initiated channel detach, if the connection state is `CONNECTED`.
     State Events:
@@ -280,7 +279,7 @@ Realtime:
     Disconnected Retry Timeout:
       .specification: [TO3l1, RTN14d]
       .synopsis: |
-        Capability to override this value using the `disconnectedRetryTimeout` client option.
+        Override the default value using the `disconnectedRetryTimeout` client option.
         Reconnection is attempted after this amount of time in the `DISCONNECTED` connection state.
     Get Identifier:
       .specification: RTN8
@@ -290,7 +289,7 @@ Realtime:
     Lifecycle Control:
       .specification: [RTC1b, RTN3, RTL4b1, TO3e, RTC15, RTC16, RTN11, RTN12]
       .synopsis: |
-        Capability to disable the automatic initiation of a connection when a client instance is instantiated using the `autoConnect` client option.
+        Disable the automatic initiation of a connection when a client instance is instantiated using the `autoConnect` client option.
         Requires the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
     Ping:
       .specification: RTN13
@@ -301,7 +300,7 @@ Realtime:
       .specification:
         [RTN9, RTN10, RTN16, RTC1c, TO3i, RTN11d, RTN15a, RTN15b, RTN15d]
       .synopsis: |
-        Capability to recover a connection by explicitly providing a recovery key when instantiating a Realtime client instance,
+        Recover a connection by explicitly providing a recovery key when instantiating a Realtime client instance,
         where that recovery key has been sourced from a previous instance.
 
         Client instances may provide:
@@ -319,7 +318,7 @@ Realtime:
     Suspended Retry Timeout:
       .specification: [TO3l2, RTN14e]
       .synopsis: |
-        Capability to override this value using the `suspendedRetryTimeout` client option.
+        Override the default value using the `suspendedRetryTimeout` client option.
         Reconnection is attempted after this amount of time in the `SUSPENDED` connection state.
   # TODO (DF1a) connectionStateTtl [ably-java]
   # TODO (DF1b) realtimeRequestTimeout [ably-java]
@@ -329,21 +328,21 @@ Realtime:
   Host:
     .specification: [RTC1d, TO3k3]
     .synopsis: |
-      Capability to override the Realtime endpoint using the `realtimeHost` client option.
+      Override the Realtime endpoint using the `realtimeHost` client option.
       Should only be overridden for development environments.
   Message Echoes:
     .specification: [RTC1a, RTL7f, TO3h]
     .synopsis: |
-      Capability to suppress messages originating from this connection from being echoed back on the same connection,
+      Suppress messages originating from this connection from being echoed back on the same connection,
       using the `echoMessages` client option.
   Message Queuing:
     .specification: [RTL6c2, RTP16, TO3g]
     .synopsis: |
-      Capability to suppress queuing of messages when connection state antipates imminent connection using the `queueMessages` client option.
+      Suppress queuing of messages when connection state antipates imminent connection using the `queueMessages` client option.
   Transport Parameters:
     .specification: RTC1f
     .synopsis: |
-      Capability to send opaque string key/value pairs to the service on connection using the `transportParams` client option.
+      Send opaque string key/value pairs to the service on connection using the `transportParams` client option.
 REST:
   .synopsis: |
     Functionality offered by all Ably client instances (REST and Realtime).
@@ -422,13 +421,13 @@ REST:
   Fallback Retry Timeout:
     .specification: [TO3l10, RSC15f]
     .synopsis: |
-      Capability to override the default value of the `fallbackRetryTimeout` client option.
+      Override the default value of the `fallbackRetryTimeout` client option.
       After a failed request to the default endpoint, followed by a successful request to a fallback endpoint),
       this is the period in milliseconds before HTTP requests are retried against the default endpoint.
   Host:
     .specification: [RSC11, RSC12, RSC15b1, RSC15e, RSC15f, TO3k2]
     .synopsis: |
-      Capability to override the default value of the `restHost` client option,
+      Override the default value of the `restHost` client option,
       the REST endpoint.
       Should only be overridden for development environments.
   Opaque Request:
@@ -444,17 +443,17 @@ REST:
   Request Timeout:
     .specification: TO3l4
     .synopsis: |
-      Capability to override the default value of the `httpRequestTimeout` client option,
+      Override the default value of the `httpRequestTimeout` client option,
       the timeout for any single HTTP request and response.
   Retry Count:
     .specification: [TO3l5, RSC15a]
     .synopsis: |
-      Capability to override the default value of the `httpMaxRetryCount` client option,
+      Override the default value of the `httpMaxRetryCount` client option,
       the maximum number of fallback hosts to use as a fallback when an HTTP request to the primary host is unreachable or indicates that it is unserviceable.
   Retry Duration:
     .specification: TO3l6
     .synopsis: |
-      Capability to override the default value of the `httpMaxRetryDuration` client option,
+      Override the default value of the `httpMaxRetryDuration` client option,
       the maximum elapsed time in which fallback host retries for HTTP requests will be attempted.
   Service:
     .synopsis: |
@@ -485,12 +484,12 @@ Service:
       Override environment for REST and Realtime connections, for example to `sandbox` or a customer specific provisioning.
 Testing:
   .synopsis: |
-    Capability to alter client library SDK behaviour in ways that are not suitable for production environments.
+    Behaviours that are not suitable for production environments.
     These options should only be overridden or otherwise utilised when testing against development environments.
   Disable TLS:
     .specification: [TO3d, RSC18]
     .synopsis: |
-      Capability to disable Transport Layer Security using the `tls` client option.
+      Disable Transport Layer Security using the `tls` client option.
       It is enabled by default and should only be overridden for development environments.
   Fallback Hosts:
     .specification: [RSC15b2, RSC15g, RTN17b2, TO3k6]
@@ -500,12 +499,12 @@ Testing:
   TCP Insecure Port:
     .specification: [TO3k4, RSC15b1, RTN17b1]
     .synopsis: |
-      Capability to override the default value of the `port` client option,
+      Override the default value of the `port` client option,
       the TCP port to be used for insecure connections, where TLS (Transport Layer Security) has been disabled.
   TCP Secure Port:
     .specification: [TO3k5, RSC15b1, RTN17b1]
     .synopsis: |
-      Capability to override the default value of the `tlsPort` client option,
+      Override the default value of the `tlsPort` client option,
       the TCP port to be used for secure connections using TLS (Transport Layer Security).
 Transport:
   .synopsis: |
@@ -514,12 +513,12 @@ Transport:
   Connection Open Timeout:
     .specification: TO3l3
     .synopsis: |
-      Capability to override the default value of the `httpOpenTimeout` client option,
+      Override the default value of the `httpOpenTimeout` client option,
       the timeout for opening the connection, available in the client library if supported by the transport.
   Maximum Frame Size:
     .specification: [TO3l9, CD2d]
     .synopsis: |
-      Capability to override the default value of the `maxFrameSize` client option,
+      Override the default value of the `maxFrameSize` client option,
       the maximum size of a single REST POST body or Realtime Websocket frame.
   Proxy:
     .synopsis: |
