@@ -128,6 +128,20 @@ The names of feature nodes (those not prefixed with a dot '`.`' to denote them a
 
 This is so that we keep a consistent 'tone of voice', making feature names that are easily comprehensible by human readers and sit alongside one another congruously.
 
+## Feature Node Synopsis
+
+There's a difficult balance to find here when writing these descriptions.
+
+We don't want to be too prescriptive around API details such as:
+
+- names of interfaces, classes or properties
+- the nature of delivery - that is, whether synchronous or asynchronous - as that kind of language may be too prescriptive for some SDK settings
+- mechanisms for failure reporting - errors, exceptions, codes, etc..
+
+However, there is also a lot of prior art in our SDKs, so mention of particular phrases or API names can help with discovery for readers of this work.
+
+As we evolve this work we can hopefully add to this guidance around what should be included and what should be avoided.
+
 ## Disincluded Features
 
 ### `ClientOptions#logExceptionReportingUrl`
