@@ -92,7 +92,7 @@ Protocol:
   MessagePack:
     .specification: [RSC8a, RSL4c, G1]
     .synopsis: |
-      Support for encoding and decoding messages in binary format with [MessagePack](https://msgpack.org/).
+      Encoding and decoding messages in binary format with [MessagePack](https://msgpack.org/).
       MessagePack, often abbreviated to MsgPack, is the default for runtime environments that have a suitable level of support for binary data.
 Push Notifications:
   Activation:
@@ -263,7 +263,7 @@ Realtime:
           - https://ably.com/docs/realtime/channels/channel-parameters/deltas
         .specification: [RTL16, RTL18, RTL19, RTL20, PC1, PC2, PC3, TO3o, TM2i, TB2c, RTS3c]
         .synopsis: |
-          Support for VCDiff-encoded delta streams.
+          VCDiff-encoded delta streams.
           SDKs may choose to offer this only if a plugin is supplied via client options
           (optional functionality).
           Deltas are enabled for a channel by setting the `delta` channel parameter to `vcdiff` using the `setOptions` method on the channel.
@@ -363,7 +363,7 @@ REST:
       .synopsis: |
         The option to configure a `cipher`, specifying encryption algorithm and attributes.
         Used for subscribe and publish on this channel.
-        Support for `AES` with `CBC`, `PKCS#7` with a default key length of 256 bits, as well as support for `AES128`.
+        `AES` with `CBC`, `PKCS#7` with a default key length of 256 bits, as well as support for `AES128`.
     Existence Check:
       .specification: [RSN2, RTS2]
       .synopsis: Discover if a channel exists with a given name.
@@ -523,6 +523,6 @@ Transport:
   Proxy:
     .synopsis: |
       `proxy`:
-      Support for specify an HTTP proxy server to use for making REST and Realtime connections through.
+      Specify an HTTP proxy server to use for making REST and Realtime connections through.
       Typically includes options for `host`, `port`, `username`, `password` and HTTP authentication type.
       May also include option to specify host names that are not to be proxied.
