@@ -97,7 +97,7 @@ Protocol:
       MessagePack, often abbreviated to MsgPack, is the default for runtime environments that have a suitable level of support for binary data.
 Push Notifications:
   Activation:
-    .specification: [RSH2, RSH3, RSH4, RSH5, RSH6, RSH7]
+    .specification: [RSH2, RSH3, RSH4, RSH5, RSH6]
     .synopsis: |
       Only available on platforms that support receiving push notifications.
   Administration:
@@ -399,6 +399,23 @@ REST:
         .synopsis: |
           Makes REST publish operations idempotent.
           Enabled by default or can be disabled by setting the `idempotentRestPublishing` client option to `false`.
+    Push Notifications:
+      .specification: RSH7
+      .synopsis: |
+        Available on platforms that support receiving push notifications.
+        The `PushChannel` interface, which is made available via the `push` property on REST and Realtime channel instances.
+      List Subscriptions:
+        .documentation: https://docs.ably.com/api/rest-api/#list-channel-subscriptions
+        .specification: RSH7e
+        .synopsis: |
+          Retrieve `PushChannelSubscription` object(s) describing push notification subscriptions to this channel,
+          matching either the current `clientId` or `deviceId`.
+      Subscribe:
+        .documentation: https://docs.ably.com/api/rest-api/#post-channel-subscription
+        .specification: [RSH7a, RSH7b, RSH7c, RSH7d]
+        .synopsis: |
+          Subscribe either a single device or all devices associated with a `clientId` to receive push notifications from messages sent to a channel.
+          Also supports explicit unsubscribe.
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
