@@ -260,6 +260,8 @@ Realtime:
         Also provides access to an error reason object when the channel is in a state of disruption (for example `FAILED`, `DETACHED` or `SUSPENDED`).
     Subscribe:
       .specification: [RTL7, RTL8]
+      .synopsis: |
+        Subscribe and unsubscribe for messages on channels for this client.
       Deltas:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/deltas
