@@ -180,7 +180,9 @@ Realtime:
     Attach:
       .specification: [RTL4, RTL5]
       .synopsis: |
-        Methods to attach and detach channels.
+        Explicit, discrete methods to attach and detach channels.
+        Not all applications need this, due to our implicit-attach-on-subscribe behaviour
+        ([`RTL7c`](https://docs.ably.com/client-lib-development-guide/features/#RTL7c)).
     Encryption:
       .specification: [RTL16, TB2b, RTS3c]
       .synopsis: |
