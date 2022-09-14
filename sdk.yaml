@@ -254,8 +254,8 @@ Realtime:
       .specification:
         [RTL2, TH1, TH2, TH3, TH4, TH5, RTN11d, RTL4e, RTL3a, RTL4g, RTL14, RTL24, RTP5]
       .synopsis: |
-        `ChannelEvent` events can be received asynchronously when channel state changes.
-        The current `ChannelState` can be synchronously queried (e.g. via a `state` property on the channel instance).
+        `ChannelEvent` events can be received when channel state changes.
+        The current `ChannelState` can be queried (e.g. via a `state` property on the channel instance).
         Also provides access to an error reason object when the channel is in a state of disruption (for example `FAILED`, `DETACHED` or `SUSPENDED`).
     Subscribe:
       .specification: [RTL7, RTL8]
@@ -314,7 +314,7 @@ Realtime:
     State Events:
       .specification: [RTN4, RTN25]
       .synopsis: |
-        Mechanisms to get connection state synchronously, as well as to receive events asynchronously when connection state changes.
+        Mechanisms to get connection state, as well as to receive events when connection state changes.
         Also provides access to an error reason object in case of failure.
     Suspended Retry Timeout:
       .specification: [TO3l2, RTN14e]
