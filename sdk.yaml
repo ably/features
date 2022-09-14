@@ -180,7 +180,9 @@ Realtime:
     Attach:
       .specification: [RTL4, RTL5]
       .synopsis: |
-        Methods to attach and detach channels.
+        Explicit, discrete methods to attach and detach channels.
+        Not all applications need this, due to our implicit-attach-on-subscribe behaviour
+        ([`RTL7c`](https://docs.ably.com/client-lib-development-guide/features/#RTL7c)).
     Encryption:
       .specification: [RTL16, TB2b, RTS3c]
       .synopsis: |
@@ -258,6 +260,8 @@ Realtime:
         Also provides access to an error reason object when the channel is in a state of disruption (for example `FAILED`, `DETACHED` or `SUSPENDED`).
     Subscribe:
       .specification: [RTL7, RTL8]
+      .synopsis: |
+        Subscribe and unsubscribe for messages on channels for this client.
       Deltas:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/deltas
