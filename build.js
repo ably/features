@@ -199,7 +199,7 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
                   cellContentWriter.write('<div class="grow-0">');
                 }
                 cellContentWriter.write(documentationUrls
-                  .map((element) => `<a class="btn btn-blue" href="${element}" target="_blank" rel="noopener">docs</a>`)
+                  .map((element) => `<a class="btn btn-blue" href="${element}" target="_blank" rel="noopener">${titleForLink(element)}</a>`)
                   .join(' '));
                 if (synopsis) {
                   cellContentWriter.write('</div></div>');
@@ -368,4 +368,20 @@ function validateMapItems(items, parentKeys) {
  */
 function compareKeys(a, b) {
   return a.localeCompare(b, 'en', { sensitivity: 'base' });
+}
+
+/**
+ * Returns a short title to be used as the button label for linking to the given URL.
+ *
+ * @param {url} url The URL to which the button will link.
+ * @returns {string} A short title to be used as a button label.
+ */
+function titleForLink(url) {
+  const titlesForPrefixes = [
+    ['ably.com/docs', 'docs'],
+    ['faqs.ably.com', 'faq'],
+  ];
+
+  const foundPair = titlesForPrefixes.find((element) => (new RegExp(`https://${element[0]}/`)).test(url));
+  return foundPair ? foundPair[1] : 'link';
 }
