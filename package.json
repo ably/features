@@ -18,7 +18,7 @@
   "homepage": "https://github.com/ably/features",
   "dependencies": {
     "escape-html": "^1.0.3",
-    "jsonschema": "^1.4.0",
+    "jsonschema": "1",
     "marked": "4",
     "yaml": "1"
   },
