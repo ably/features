@@ -192,12 +192,26 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
             rowWriter.cell((cellContentWriter) => {
               let empty = true;
               if (documentationUrls) {
+                const needComplexLayout = !!synopsis;
+
+                if (needComplexLayout) {
+                  // With Synopsis and Documentation URLs we need a more complex layout
+                  cellContentWriter.write('<div class="flex flex-row">'); // this div is closed below, after writing documentation URLs
+                  cellContentWriter.write(`<div class="grow">${marked.parse(synopsis)}</div>`);
+                  cellContentWriter.write('<div class="grow-0">'); // this div is closed below, after writing documentation URLs
+                }
+
                 cellContentWriter.write(documentationUrls
                   .map((element) => `<a class="btn btn-blue" href="${element}" target="_blank" rel="noopener">docs</a>`)
                   .join(' '));
+
+                if (needComplexLayout) {
+                  cellContentWriter.write('</div></div>');
+                }
+
                 empty = false;
-              }
-              if (synopsis) {
+              } else if (synopsis) {
+                // No Documentation URLs, so simply render the Synopsis.
                 cellContentWriter.write(marked.parse(synopsis));
                 empty = false;
               }
