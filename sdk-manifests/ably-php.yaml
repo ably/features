@@ -1,0 +1,67 @@
+%YAML 1.2
+---
+common-version: 1.2.0-alpha.1
+compliance:
+  Agent Identifier:
+  Client Instance Creation:
+    With Client Options:
+    With String:
+  Options:
+    Agents:
+    Authentication:
+      Callback:
+      Key:
+      Query Time:
+      Token Details:
+      Token Request:
+      Token String:
+      URL:
+      Use Token Authentication:
+    Binary Protocol:
+    Client Identifier:
+    Default Token Parameters:
+    Environment:
+    Fallback Hosts:
+    HTTP Connection Open Timeout:
+    Log Handling:
+    Port:
+    Proxy:
+    TLS Port:
+    Transport Layer Security:
+  Push Notifications:
+    Administration:
+      Channel Subscription:
+        List:
+        List Channels:
+        Remove:
+        Save:
+      Device Registration:
+        Get:
+        List:
+        Remove:
+        Save:
+      Publish:
+  REST:
+    Authentication:
+      Authorize:
+      Create Token Request:
+      Get Client Identifier:
+      Request Token:
+    Channel:
+      Existence Check:
+      Get:
+      History:
+      Iterate:
+      Name:
+      Presence:
+        History:
+        Member List:
+      Release:
+    Options:
+      Fallback Retry Timeout:
+      Host:
+      HTTP Request Timeout:
+      Idempotent Publishing:
+      Maximum HTTP Retry Count:
+      Maximum HTTP Retry Duration:
+      Request Identifiers:
