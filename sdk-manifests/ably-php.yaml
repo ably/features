@@ -3,31 +3,19 @@
 common-version: 1.2.0-alpha.1
 compliance:
   Agent Identifier:
-  Client Instance Creation:
-    With Client Options:
-    With String:
-  Options:
     Agents:
-    Authentication:
+  Authentication:
+    API Key:
+    Token:
       Callback:
-      Key:
-      Query Time:
-      Token Details:
-      Token Request:
-      Token String:
+      Literal:
       URL:
-      Use Token Authentication:
-    Binary Protocol:
-    Client Identifier:
-    Default Token Parameters:
-    Environment:
-    Fallback Hosts:
-    HTTP Connection Open Timeout:
-    Log Handling:
-    Port:
-    Proxy:
-    TLS Port:
-    Transport Layer Security:
+        Query Time:
+  Debugging:
+    Logs:
+  Protocol:
+    JSON:
+    MessagePack:
   Push Notifications:
     Administration:
       Channel Subscription:
@@ -48,6 +36,7 @@ compliance:
       Get Client Identifier:
       Request Token:
     Channel:
+      Encryption:
       Existence Check:
       Get:
       History:
@@ -56,12 +45,27 @@ compliance:
       Presence:
         History:
         Member List:
+      Publish:
+      Push Notifications:
+        List Subscriptions:
+        Subscribe:
       Release:
-    Options:
-      Fallback Retry Timeout:
-      Host:
-      HTTP Request Timeout:
-      Idempotent Publishing:
-      Maximum HTTP Retry Count:
-      Maximum HTTP Retry Duration:
-      Request Identifiers:
+    Fallback Retry Timeout:
+    Host:
+    Request Identifiers:
+    Request Timeout:
+    Retry Count:
+    Retry Duration:
+    Service:
+      Get Time:
+    Statistics:
+      Query:
+  Service:
+    Environment:
+  Testing:
+    Disable TLS:
+    Fallback Hosts:
+    TCP Insecure Port:
+    TCP Secure Port:
+  Transport:
+    Connection Open Timeout:
