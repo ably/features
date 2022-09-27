@@ -265,6 +265,7 @@ Realtime:
       Deltas:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/deltas
+          - https://ably.com/blog/message-delta-compression
         .specification: [RTL16, RTL18, RTL19, RTL20, PC1, PC2, PC3, TO3o, TM2i, TB2c, RTS3c]
         .synopsis: |
           VCDiff-encoded delta streams.
@@ -274,6 +275,7 @@ Realtime:
       Rewind:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/rewind
+          - https://ably.com/blog/channel-rewind
         .specification: [RTL16, TB2c, RTS3c]
         .synopsis: |
           The option to specify that attachment to this channel start from a given number of messages or point in time in the past.
@@ -398,6 +400,8 @@ REST:
       .synopsis: |
         Send a message on this channel.
       Idempotence:
+        .documentation:
+          - https://ably.com/blog/introducing-idempotent-publishing
         .specification: [RSL1k, RTL6a1, TO3n]
         .synopsis: |
           Makes REST publish operations idempotent.

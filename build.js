@@ -383,6 +383,7 @@ function compareKeys(a, b) {
  */
 function titleForLink(url) {
   const titlesForPrefixes = [
+    ['ably.com/blog', 'blog'],
     ['ably.com/docs', 'docs'],
     ['faqs.ably.com', 'faq'],
   ];
