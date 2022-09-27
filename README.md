@@ -82,7 +82,8 @@ Currently:
   - Preview: [docs.ably.com](https://docs.ably.com/client-lib-development-guide/features/)
   - Published: [ably.com/docs](https://ably.com/docs/client-lib-development-guide/features)
 
-Going forwards, it is anticipated that this source file will move from `ably/docs` to this repository (`ably/ably-features`) so that it can more logically be managed alongside other efforts to catalogue and track SDK features. That should include validation:
+Going forwards, this source file will move from `ably/docs` to `ably/specification` (this work is happening under https://github.com/ably/specification/issues/1).
+It can then more logically be managed alongside other efforts to catalogue and track SDK features. That will include validation:
 
 - **Internal**: ensuring that it is consistent in terms of formatting and relative references to itself
 - **External**: ensuring that 'spec point' references in [the canonical feature list](sdk.yaml) exist in the 'spec' (this source file)
