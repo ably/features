@@ -99,6 +99,10 @@ This will start with a **well-defined release procedure**:
 - Add versioning, _strictly_ conforming to [the requirments Semantic Versioning](https://semver.org/), starting at version `1.2.0` (our epoch), indicating the version of the canonical feature list.
 - Publish the canonical feature list to one or more package management / distribution points, for downstream consumption by SDK repositories as well as other systems at Ably (i.e. developer education / documentation), as part of this new release procedure.
 
+See also:
+
+- [ADR66: New home for the features specification (internal)](https://ably.atlassian.net/wiki/spaces/ENG/pages/2278817920/ADR66+New+home+for+the+features+specification)
+
 ## Future Direction for Specification Point Adherence Tracking
 
 We have
