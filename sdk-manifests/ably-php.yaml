@@ -52,6 +52,7 @@ compliance:
       Release:
     Fallback Retry Timeout:
     Host:
+    Opaque Request:
     Request Identifiers:
     Request Timeout:
     Retry Count:
@@ -69,3 +70,4 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
+    Proxy:
