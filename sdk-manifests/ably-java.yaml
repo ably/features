@@ -82,9 +82,9 @@ compliance:
       Query:
   Service:
     Environment:
+    Fallback Hosts:
   Testing:
     Disable TLS:
-    Fallback Hosts:
     TCP Insecure Port:
     TCP Secure Port:
   Transport:
