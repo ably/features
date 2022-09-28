@@ -120,6 +120,21 @@ Additionally, it is very likely that we will continue to want to track feature s
 
 What is clear, however, is that a Google Sheets document is probably not the appropriate venue to continue tracking this information. Instead, the currently anticipated solution is that we export the information per-SDK from that spreadsheet and represent it in a simple format as a 'feature specification point adherence checklist' (/ manifest) in each SDK source code repository (CSV, YAML or some other logical textual data format). This would be instantiated via an initial snapshot process, after which it could be evolved atomically as an additional part of the source code of that SDK, with the spreadsheet becoming obsolete once all SDKs have been exported.
 
+## What makes a Feature?
+
+[The canonical feature list](sdk.yaml) does not represent an API, nor is it intended to form the basis for an IDL.
+It is a user-facing list of human readable feature names, which are presented as a tree of nodes because it's logical to do so, and just happen to also be machine readable.
+
+To warrant placement as a node within the tree, at any level, a Feature must represent or group together direct, user-facing functionality.
+
+Nodes in the tree are not abstract. We do not have any concept of 'implements' or 'extends' attribution on Feature nodes, meaning that the only context a Feature node can imbue is that provided by its placement in the tree (i.e. its parent Feature nodes).
+
+A good litmus test is to consider what would be the implication, from an application developer's perspective, if the Feature node under consideration was removed from the tree. If there is no concrete, absolute, direct functionality that disappears as a result - isolated to the Feature node's context, only based on position in the tree - then it should not have been present in the tree, nor should it have been referred to as a Feature.
+
+An example of something that intentionally does not appear in the tree as a Feature node is the concept of a `PaginatedResult`, otherwise known as the data type that offers APIs that provide support for results to be returned to the application in relatively small chunks referred to as pages (pagination).
+We have Feature nodes that implicitly imply Pagination support, which will be specified by one the features spec points they reference, however we don't have an explicit Feature node that specifies Pagination as a discrete functionality in isolation.
+An SDK will add support for abstract Pagination (perhaps using generics, where available) as an automatic requirement and consequence of implementing a feature that implies the need for Pagination support, from the features spec..
+
 ## Feature Node Names
 
 The names of feature nodes (those not prefixed with a dot '`.`' to denote them as properties) in [the canonical feature list](sdk.yaml) should conform to the following requirements:
