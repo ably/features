@@ -125,7 +125,6 @@ What is clear, however, is that a Google Sheets document is probably not the app
 The names of feature nodes (those not prefixed with a dot '`.`' to denote them as properties) in [the canonical feature list](sdk.yaml) should conform to the following requirements:
 
 - not use abbreviations
-- not start with a verb
 - use plural form only if it's strictly necessary - i.e.:
   - use plural form when the concept being captured is _always_ dealing with many things - e.g. `Options`, `Options: Agents` and `Push Notifications`
   - use plural form when the plurality is utterly baked into the naming of the primary type involved - e.g. `Options: Token Details`
