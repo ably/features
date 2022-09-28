@@ -82,7 +82,8 @@ Currently:
   - Preview: [docs.ably.com](https://docs.ably.com/client-lib-development-guide/features/)
   - Published: [ably.com/docs](https://ably.com/docs/client-lib-development-guide/features)
 
-Going forwards, it is anticipated that this source file will move from `ably/docs` to this repository (`ably/ably-features`) so that it can more logically be managed alongside other efforts to catalogue and track SDK features. That should include validation:
+Going forwards, this source file will move from `ably/docs` to `ably/specification` (this work is happening under https://github.com/ably/specification/issues/1).
+It can then more logically be managed alongside other efforts to catalogue and track SDK features. That will include validation:
 
 - **Internal**: ensuring that it is consistent in terms of formatting and relative references to itself
 - **External**: ensuring that 'spec point' references in [the canonical feature list](sdk.yaml) exist in the 'spec' (this source file)
@@ -97,6 +98,10 @@ This will start with a **well-defined release procedure**:
 
 - Add versioning, _strictly_ conforming to [the requirments Semantic Versioning](https://semver.org/), starting at version `1.2.0` (our epoch), indicating the version of the canonical feature list.
 - Publish the canonical feature list to one or more package management / distribution points, for downstream consumption by SDK repositories as well as other systems at Ably (i.e. developer education / documentation), as part of this new release procedure.
+
+See also:
+
+- [ADR66: New home for the features specification (internal)](https://ably.atlassian.net/wiki/spaces/ENG/pages/2278817920/ADR66+New+home+for+the+features+specification)
 
 ## Future Direction for Specification Point Adherence Tracking
 
