@@ -51,7 +51,6 @@ compliance:
         Subscribe:
       Release:
     Fallback Retry Timeout:
-    Host:
     Opaque Request:
     Request Identifiers:
     Request Timeout:
@@ -64,6 +63,7 @@ compliance:
   Service:
     Environment:
     Fallback Hosts:
+    Host:
   Testing:
     Disable TLS:
     TCP Insecure Port:
