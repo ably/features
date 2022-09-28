@@ -22,6 +22,7 @@ const partialSvg = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="4
 const sdkManifestSuffixes = [
   'java',
   'ruby',
+  'php',
 ];
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.

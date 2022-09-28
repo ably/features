@@ -1,0 +1,73 @@
+%YAML 1.2
+---
+common-version: 1.2.0-alpha.1
+compliance:
+  Agent Identifier:
+    Agents:
+  Authentication:
+    API Key:
+    Token:
+      Callback:
+      Literal:
+      URL:
+        Query Time:
+  Debugging:
+    Logs:
+  Protocol:
+    JSON:
+    MessagePack:
+  Push Notifications:
+    Administration:
+      Channel Subscription:
+        List:
+        List Channels:
+        Remove:
+        Save:
+      Device Registration:
+        Get:
+        List:
+        Remove:
+        Save:
+      Publish:
+  REST:
+    Authentication:
+      Authorize:
+      Create Token Request:
+      Get Client Identifier:
+      Request Token:
+    Channel:
+      Encryption:
+      Existence Check:
+      Get:
+      History:
+      Iterate:
+      Name:
+      Presence:
+        History:
+        Member List:
+      Publish:
+      Push Notifications:
+        List Subscriptions:
+        Subscribe:
+      Release:
+    Fallback Retry Timeout:
+    Host:
+    Opaque Request:
+    Request Identifiers:
+    Request Timeout:
+    Retry Count:
+    Retry Duration:
+    Service:
+      Get Time:
+    Statistics:
+      Query:
+  Service:
+    Environment:
+  Testing:
+    Disable TLS:
+    Fallback Hosts:
+    TCP Insecure Port:
+    TCP Secure Port:
+  Transport:
+    Connection Open Timeout:
+    Proxy:
