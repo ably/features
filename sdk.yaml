@@ -83,7 +83,7 @@ Protocol:
   JSON:
     .specification: [RSC8b, TO3f, G1]
     .synopsis: |
-      Encode and decode messages as [JSON](https://www.json.org/json-en.html),
+      Encode or decode messages as [JSON](https://www.json.org/json-en.html),
       overriding the default [MessagePack](https://msgpack.org/) by using the `useBinaryProtocol` client option.
   Maximum Message Size:
     .specification: [TO3l8, RSL1i, RTL6d1, CD2c]
@@ -92,7 +92,7 @@ Protocol:
   MessagePack:
     .specification: [RSC8a, RSL4c, G1]
     .synopsis: |
-      Encode and decode messages in binary format with [MessagePack](https://msgpack.org/).
+      Encode or decode messages in binary format with [MessagePack](https://msgpack.org/).
       MessagePack, often abbreviated to MsgPack, is the default for runtime environments that have a suitable level of support for binary data.
 Push Notifications:
   Activation:
