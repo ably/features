@@ -64,7 +64,6 @@ compliance:
       Recovery:
       State Events:
       Suspended Retry Timeout:
-    Host:
     Message Echoes:
     Message Queuing:
     Transport Parameters:
@@ -87,7 +86,6 @@ compliance:
         Idempotence:
       Release:
     Fallback Retry Timeout:
-    Host:
     Opaque Request:
     Request Identifiers:
     Request Timeout:
@@ -99,9 +97,10 @@ compliance:
       Query:
   Service:
     Environment:
+    Fallback Hosts:
+    Host:
   Testing:
     Disable TLS:
-    Fallback Hosts:
     TCP Insecure Port:
     TCP Secure Port:
   Transport:
