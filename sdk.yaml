@@ -523,6 +523,9 @@ Transport:
     .synopsis: |
       Override the default value of the `httpOpenTimeout` client option,
       the timeout for opening the connection, available in the client library if supported by the transport.
+  HTTP/2:
+    .synopsis: |
+      Handles connectivity to an HTTP/2 endpoint, with the ability to fallback to using HTTP/1.1 if the endpoint doesn't support HTTP/2.
   Maximum Frame Size:
     .specification: [TO3l9, CD2d]
     .synopsis: |

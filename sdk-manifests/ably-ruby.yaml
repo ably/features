@@ -106,4 +106,5 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
+    HTTP/2: # https://github.com/ably/ably-ruby/pull/197
     Maximum Frame Size:
