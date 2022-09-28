@@ -147,6 +147,11 @@ However, there is also a lot of prior art in our SDKs, so mention of particular 
 Prefixes such as "Capability to" and "Support for" should generally be avoided, in particular at the start of the first sentence of any given synopsis.
 This is because the entire document is about capabilities to do "X", so additional wording such as "Capability for the application to do X" is superfluous and not helpful to the reader.
 
+Consistently use imperative, present tense where that makes sense (also known as 'imperative mood' in the context of git commit messages) - e.g.:
+
+- "Provide a literal token" rather than "Providing a literal token"
+- "Return continuous message history" rather than "Used to return continuous message history"
+
 As we evolve this work we can hopefully add to this guidance around what should be included and what should be avoided.
 
 ## Disincluded Features
