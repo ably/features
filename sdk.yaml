@@ -108,6 +108,7 @@ Push Notifications:
         .specification: RSH1c1
         .synopsis: |
           List channel subscriptions.
+          Paginated.
           Get a list of push notification subscriptions to channels,
           using REST API `/push/channelSubscriptions` (`GET`).
       List Channels:
@@ -115,6 +116,7 @@ Push Notifications:
         .synopsis: |
           List all channels with at least one subscribed device,
           using REST API `/push/channels` (`GET`).
+          Paginated.
       Remove:
         .specification: [RSH1c4, RSH1c5]
         .synopsis: |
@@ -138,6 +140,7 @@ Push Notifications:
         .specification: RSH1b2
         .synopsis: |
           List registered devices.
+          Paginated.
           Obtain the details for devices registered for receiving push registrations,
           using REST API `/push/deviceRegistrations` (`GET`).
       Remove:
@@ -194,6 +197,7 @@ Realtime:
       .specification: [RTL10, CP2a, RTL15a]
       .synopsis: |
         Retrieve continuous message history up to the exact point a realtime channel was attached.
+        Paginated.
         This includes both messages persisted for the default duration of two minutes, and messages persisted for 24-72 by enabling the `persist all messages` channel rule.
         Includes the capability to only retrieve messages prior to the moment that the channel was attached or emitted an `UPDATE` indicating loss of continuity.
     Mode:
@@ -230,6 +234,8 @@ Realtime:
           Optional parameters include `waitForSync` (defaults to `true`), `clientId` and `connectionId`.
       History:
         .specification: RTP12
+        .synopsis: |
+          Paginated.
       Subscribe:
         .specification: [RTP6, RTP7]
         .synopsis: |
@@ -376,6 +382,8 @@ REST:
         - https://ably.com/docs/rest/history
         - https://ably.com/docs/core-features/history
       .specification: RSL2
+      .synopsis: |
+        Paginated.
     Iterate:
       .specification: [RSN2, RTS2]
       .synopsis: Enumerate local channel instances.
@@ -387,9 +395,13 @@ REST:
       History:
         .documentation: https://ably.com/docs/rest/presence#presence-history
         .specification: RSP4
+        .synopsis: |
+          Paginated.
       Member List:
         .documentation: https://ably.com/docs/rest/presence#member-list
         .specification: RSP3
+        .synopsis: |
+          Paginated.
     Publish:
       .specification: RSL1
       .synopsis: |
@@ -469,6 +481,7 @@ REST:
       .synopsis: |
         Obtain statistics at 1 minute intervals, or aggregated up to the hour, day, or month.
         Uses the `/stats` REST endpoint.
+        Paginated.
         Results are provided aggregated across all channels in use in the application in the specified period and may be used to track usage against account quotas.
 Service:
   .synopsis: |
