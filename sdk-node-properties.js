@@ -34,6 +34,11 @@ class Properties {
       if (isPropertyKey(key)) {
         const name = propertyKeyName(key);
         switch (name) {
+          case 'caveats':
+            // used in the canonical features list
+            this.caveats = transformString(value, IDENTITY_TRANSFORM);
+            break;
+
           case 'documentation':
             // used in the canonical features list
             this.documentationUrls = transformStrings(value, (stringValue) => new URL(stringValue));
