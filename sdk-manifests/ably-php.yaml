@@ -52,7 +52,6 @@ compliance:
       Release:
     Fallback Retry Timeout:
     Opaque Request:
-    Request Identifiers:
     Request Timeout:
     Retry Count:
     Retry Duration:
