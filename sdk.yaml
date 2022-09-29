@@ -490,6 +490,11 @@ REST:
         Uses the `/stats` REST endpoint.
         Paginated.
         Results are provided aggregated across all channels in use in the application in the specified period and may be used to track usage against account quotas.
+  Support Hyperlink on Request Failure:
+    .requires: [Debugging, Error Information]
+    .specification: TI4
+    .synopsis: |
+      Receive `ErrorInfo` instances that include an `href` member, populated if provided by the service response, containing an Internet hyperlink for more information on the failure.
 Service:
   .synopsis: |
     Relating to how REST and Realtime client instances communicate with the Ably service,

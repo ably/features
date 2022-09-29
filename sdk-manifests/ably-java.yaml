@@ -82,6 +82,7 @@ compliance:
       Get Time:
     Statistics:
       Query:
+    Support Hyperlink on Request Failure:
   Service:
     Environment:
     Fallback Hosts:
