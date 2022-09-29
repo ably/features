@@ -13,6 +13,7 @@ compliance:
       URL:
         Query Time:
   Debugging:
+    Error Information:
     Logs:
   Protocol:
     JSON:

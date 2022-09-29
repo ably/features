@@ -70,6 +70,11 @@ Debugging:
   .synopsis: |
     Behaviours that are not necessarily suitable for production environments,
     however may need to be enabled - even when running against production environments and executing on end-customer/consumer devices - to debug issues.
+  Error Information:
+    .specification: [TI1, TI2]
+    .synopsis: |
+      Receive details of Ably service errors in Ably's conformed `ErrorInfo` structure.
+      Includes `code`, `message` and `statusCode`.
   Logs:
     .specification: [TO3b, TO3c]
     .synopsis: |
