@@ -70,14 +70,12 @@ compliance:
       Push Notifications:
         List Subscriptions:
         Subscribe:
-    Fallback Retry Timeout:
     Opaque Request:
     Request Identifiers:
       .caveats: |
         Returned `ErrorInfo` instances for failed requests do not include the request identifier.
         We will fix this under https://github.com/ably/ably-java/issues/843.
     Request Timeout:
-    Retry Count:
     Service:
       Get Time:
     Statistics:
@@ -85,7 +83,11 @@ compliance:
     Support Hyperlink on Request Failure:
   Service:
     Environment:
-    Fallback Hosts:
+    Fallbacks:
+      Hosts:
+      Internet Up Check:
+      Retry Count:
+      Retry Timeout:
     Host:
   Testing:
     Disable TLS:

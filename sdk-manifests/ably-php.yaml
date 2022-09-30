@@ -52,18 +52,20 @@ compliance:
         List Subscriptions:
         Subscribe:
       Release:
-    Fallback Retry Timeout:
     Opaque Request:
     Request Timeout:
-    Retry Count:
-    Retry Duration:
     Service:
       Get Time:
     Statistics:
       Query:
   Service:
     Environment:
-    Fallback Hosts:
+    Fallbacks:
+      Hosts:
+      Internet Up Check:
+      Retry Count:
+      Retry Duration:
+      Retry Timeout:
     Host:
   Testing:
     Disable TLS:
