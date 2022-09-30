@@ -449,7 +449,7 @@ REST:
     .synopsis: |
       Add a query string parameter, based on a source of randomness, to all REST requests.
       Enabled using the `addRequestIds` client option.
-      For failed requests, the request identifier is included in the `ErrorInfo` returned.
+      For failed requests, the request identifier is included in the returned `ErrorInfo`.
   Request Timeout:
     .specification: TO3l4
     .synopsis: |
