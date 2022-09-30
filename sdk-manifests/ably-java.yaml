@@ -16,6 +16,7 @@ compliance:
       URL:
         Query Time:
   Debugging:
+    Error Information:
     Logs:
   Protocol:
     JSON:
@@ -81,6 +82,7 @@ compliance:
       Get Time:
     Statistics:
       Query:
+    Support Hyperlink on Request Failure:
   Service:
     Environment:
     Fallback Hosts:

@@ -148,6 +148,7 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
           const {
             specificationPoints,
             documentationUrls,
+            requires,
             synopsis,
           } = new Properties(value);
 
@@ -192,13 +193,19 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
             rowWriter.class(`px-1 ${commonCellStyle}`);
             rowWriter.cell((cellContentWriter) => {
               let empty = true;
+
+              const markdownRequires = requires ? `Requires: **${requires.join(': ')}**` : null;
+              const markdown = synopsis
+                ? `${synopsis}${markdownRequires ? `\n${markdownRequires}` : ''}`
+                : markdownRequires;
+
               if (documentationUrls) {
-                const needComplexLayout = !!synopsis;
+                const needComplexLayout = !!markdown;
 
                 if (needComplexLayout) {
                   // With Synopsis and Documentation URLs we need a more complex layout
                   cellContentWriter.write('<div class="flex flex-row">'); // this div is closed below, after writing documentation URLs
-                  cellContentWriter.write(`<div class="grow">${marked.parse(synopsis)}</div>`);
+                  cellContentWriter.write(`<div class="grow">${marked.parse(markdown)}</div>`);
                   cellContentWriter.write('<div class="grow-0">'); // this div is closed below, after writing documentation URLs
                 }
 
@@ -211,9 +218,9 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
                 }
 
                 empty = false;
-              } else if (synopsis) {
+              } else if (markdown) {
                 // No Documentation URLs, so simply render the Synopsis.
-                cellContentWriter.write(marked.parse(synopsis));
+                cellContentWriter.write(marked.parse(markdown));
                 empty = false;
               }
               if (empty) {

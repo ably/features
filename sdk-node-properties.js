@@ -44,6 +44,11 @@ class Properties {
             this.documentationUrls = transformStrings(value, (stringValue) => new URL(stringValue));
             break;
 
+          case 'requires':
+            // used in the canonical features list
+            this.requires = transformStrings(value, IDENTITY_TRANSFORM);
+            break;
+
           case 'specification':
             // used in the canonical features list
             this.specificationPoints = transformStrings(value, (stringValue) => new SpecificationPoint(stringValue));
