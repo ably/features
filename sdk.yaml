@@ -106,6 +106,7 @@ Push Notifications:
       Only available on platforms that support receiving push notifications.
   Administration:
     .documentation: https://ably.com/docs/rest/push#push-admin
+    .requires: REST
     .specification: RSH1
     Channel Subscription:
       .specification: RSH1c
@@ -509,18 +510,21 @@ Service:
         When the Realtime client is connected to a fallback host endpoint, then for the duration that the transport is connected to that host,
         all HTTP REST requests are first attempted to the same datacenter that the Realtime connection is established with.
     Retry Count:
+      .requires: REST
       .specification: [TO3l5, RSC15a]
       .synopsis: |
         Override the default value of the `httpMaxRetryCount` client option,
         the maximum number of fallback hosts to use as a fallback when an HTTP request to the primary host is unreachable or indicates that it is unserviceable,
         applicable to REST operations.
     Retry Duration:
+      .requires: REST
       .specification: TO3l6
       .synopsis: |
         Override the default value of the `httpMaxRetryDuration` client option,
         the maximum elapsed time in which fallback host retries for HTTP requests will be attempted,
         applicable to REST operations.
     Retry Timeout:
+      .requires: REST
       .specification: [TO3l10, RSC15f]
       .synopsis: |
         Override the default value of the `fallbackRetryTimeout` client option, applicable to REST operations.
