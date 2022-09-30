@@ -2,6 +2,7 @@ const escape = require('escape-html');
 
 const {
   IDENTITY_TRANSFORM,
+  transformPaths,
   transformString,
   transformStrings,
 } = require('./transform');
@@ -50,7 +51,7 @@ class Properties {
 
           case 'requires':
             // used in the canonical features list
-            this.requires = transformStrings(value, IDENTITY_TRANSFORM);
+            this.requires = transformPaths(value, IDENTITY_TRANSFORM);
             break;
 
           case 'specification':

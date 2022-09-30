@@ -1,5 +1,6 @@
 const {
   IDENTITY_TRANSFORM,
+  transformPaths,
   transformString,
   transformStrings,
 } = require('./transform');
@@ -79,5 +80,69 @@ describe('transformStrings', () => {
     expect(() => { transformStrings(['hello', 456], IDENTITY_TRANSFORM); }).toThrow();
     expect(() => { transformStrings({}, IDENTITY_TRANSFORM); }).toThrow();
     expect(() => { transformStrings({ hello: 'world' }, IDENTITY_TRANSFORM); }).toThrow();
+  });
+});
+
+describe('transformPaths', () => {
+  describe('for string arguments', () => {
+    it('successfully identity transforms', () => {
+      expect(transformPaths('', IDENTITY_TRANSFORM)).toStrictEqual([['']]);
+      expect(transformPaths('hello', IDENTITY_TRANSFORM)).toStrictEqual([['hello']]);
+    });
+
+    it('successfully custom transforms', () => {
+      expect(transformPaths('123', intTransformer)).toStrictEqual([[123]]);
+      expect(transformPaths('0', intTransformer)).toStrictEqual([[0]]);
+      expect(transformPaths('-1', intTransformer)).toStrictEqual([[-1]]);
+      expect(transformPaths('hello', intTransformer)).toStrictEqual([[NaN]]);
+    });
+  });
+
+  describe('for string array arguments', () => {
+    it('successfully identity transforms', () => {
+      expect(transformPaths([''], IDENTITY_TRANSFORM)).toStrictEqual([['']]);
+      expect(transformPaths(['hello'], IDENTITY_TRANSFORM)).toStrictEqual([['hello']]);
+      expect(transformPaths(['a', 'b', 'c'], IDENTITY_TRANSFORM)).toStrictEqual([['a', 'b', 'c']]);
+    });
+
+    it('successfully custom transforms', () => {
+      expect(transformPaths(['123'], intTransformer)).toStrictEqual([[123]]);
+      expect(transformPaths(['0'], intTransformer)).toStrictEqual([[0]]);
+      expect(transformPaths(['-1'], intTransformer)).toStrictEqual([[-1]]);
+      expect(transformPaths(['1', '2', '3'], intTransformer)).toStrictEqual([[1, 2, 3]]);
+      expect(transformPaths(['hello'], intTransformer)).toStrictEqual([[NaN]]);
+    });
+  });
+
+  describe('for arrays of string arrays arguments', () => {
+    it('successfully identity transforms', () => {
+      expect(transformPaths([['']], IDENTITY_TRANSFORM)).toStrictEqual([['']]);
+      expect(transformPaths([['hello']], IDENTITY_TRANSFORM)).toStrictEqual([['hello']]);
+      expect(transformPaths([['a'], ['b'], ['c']], IDENTITY_TRANSFORM)).toStrictEqual([['a'], ['b'], ['c']]);
+      expect(transformPaths([['a', 'b', 'c']], IDENTITY_TRANSFORM)).toStrictEqual([['a', 'b', 'c']]);
+    });
+
+    it('successfully custom transforms', () => {
+      expect(transformPaths([['123']], intTransformer)).toStrictEqual([[123]]);
+      expect(transformPaths([['0']], intTransformer)).toStrictEqual([[0]]);
+      expect(transformPaths([['-1']], intTransformer)).toStrictEqual([[-1]]);
+      expect(transformPaths([['1'], ['2'], ['3']], intTransformer)).toStrictEqual([[1], [2], [3]]);
+      expect(transformPaths([['1', '2', '3']], intTransformer)).toStrictEqual([[1, 2, 3]]);
+      expect(transformPaths([['hello']], intTransformer)).toStrictEqual([[NaN]]);
+      expect(transformPaths([['', '3'], '4'], intTransformer)).toStrictEqual([[NaN, 3], [4]]);
+    });
+  });
+
+  it('fails for non-string or non-string-array or non-string-array-array values', () => {
+    expect(() => { transformPaths(0, IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths(null, IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths(undefined, IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths([123], IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths([[123]], IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths(['hello', 456], IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths([['hello'], [456]], IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths([['hello', 456]], IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths({}, IDENTITY_TRANSFORM); }).toThrow();
+    expect(() => { transformPaths({ hello: 'world' }, IDENTITY_TRANSFORM); }).toThrow();
   });
 });
