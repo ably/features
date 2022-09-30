@@ -169,6 +169,24 @@ Consistently use imperative, present tense where that makes sense (also known as
 
 As we evolve this work we can hopefully add to this guidance around what should be included and what should be avoided.
 
+## Feature Node Dependencies
+
+A feature node is able to express that it `requires` one or more features in order to be able to be implemented in an SDK.
+The following logical constraints should apply - a feature:
+
+- must only indicate it requires another feature if it cannot exist or otherwise _fully_ function without that other feature having also been implemented
+- cannot require one of its parent features, as that's implicit
+- should only require both the `REST` and `Realtime` features if both of them **must** be present in the SDK for the feature to work at all,
+  in other words:
+  - :green_circle: _needs both_: if it requires **both** `REST` **and** `Realtime` to be viable, then it should include them both in its `requires` property
+  - :red_circle: _needs one, the other, or both_: if it requires **either** `REST` **or** `Realtime` to be viable, then it must not include either of them in its `requires` property
+  - :green_circle: _needs just REST_: if it requires `REST` but does not require or otherwise relate to `Realtime`, then it should include `REST` in its `requires` property
+  - :green_circle: _needs just Realtime_: if it requires `Realtime` but does not require or otherwise relate to `REST`, then it should include `Realtime` in its `requires` property
+
+When a feature node 'A' indicates that it requires another feature 'B', then it's implied that any children of 'A' also require 'B'.
+
+We will add checks in [#64](https://github.com/ably/features/issues/64).
+
 ## Disincluded Features
 
 ### `ClientOptions#logExceptionReportingUrl`
