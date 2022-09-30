@@ -46,13 +46,13 @@ compliance:
         History:
         Member List:
       Publish:
+        Idempotence:
       Push Notifications:
         List Subscriptions:
         Subscribe:
       Release:
     Fallback Retry Timeout:
     Opaque Request:
-    Request Identifiers:
     Request Timeout:
     Retry Count:
     Retry Duration:
