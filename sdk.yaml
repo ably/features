@@ -179,7 +179,7 @@ Push Notifications:
       Obtain a `LocalDevice` instance that represents the current state of the device in respect of it being a target for push notifications.
 Realtime:
   .synopsis: |
-    Additional functionality offered by Ably client instances that offer Realtime connectivity.
+    Functionality offered by Ably client instances that offer Realtime connectivity.
   Authentication:
     Get Confirmed Client Identifier:
       .specification: [RTC4, RTC17, RSA7a, RSA7b, RSA12, RSA8f, CD2a]
@@ -358,7 +358,7 @@ Realtime:
       Send opaque string key/value pairs to the service on connection using the `transportParams` client option.
 REST:
   .synopsis: |
-    Functionality offered by all Ably client instances (REST and Realtime).
+    Functionality offered by Ably client instances that offer support for REST operations.
   Authentication:
     .specification: RSC5
     Authorize:
