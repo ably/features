@@ -507,7 +507,7 @@ Service:
       .specification: RTN17e
       .synopsis: |
         When the Realtime client is connected to a fallback host endpoint, then for the duration that the transport is connected to that host,
-        all HTTP REST requests are first attempted to the same datacenter that the Realtime connection is established with.
+        all HTTP REST requests are first attempted to that same host.
     Retry Count:
       .specification: [TO3l5, RSC15a]
       .synopsis: |
