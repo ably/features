@@ -133,6 +133,30 @@ describe('transformPaths', () => {
     });
   });
 
+  describe('for arrays of mixed string arrays and strings arguments', () => {
+    it('successfully identity transforms', () => {
+      expect(transformPaths([' ', ['']], IDENTITY_TRANSFORM)).toStrictEqual([[' '], ['']]);
+
+      expect(transformPaths([['hello'], 'world', ['alphA', 'Beta']], IDENTITY_TRANSFORM))
+        .toStrictEqual([['hello'], ['world'], ['alphA', 'Beta']]);
+
+      expect(transformPaths([['a'], 'b', ['c']], IDENTITY_TRANSFORM)).toStrictEqual([['a'], ['b'], ['c']]);
+      expect(transformPaths(['a', ['b', 'c', 'd'], 'e'], IDENTITY_TRANSFORM))
+        .toStrictEqual([['a'], ['b', 'c', 'd'], ['e']]);
+    });
+
+    it('successfully custom transforms', () => {
+      expect(transformPaths([['123'], '456'], intTransformer)).toStrictEqual([[123], [456]]);
+      expect(transformPaths([['0'], '0'], intTransformer)).toStrictEqual([[0], [0]]);
+      expect(transformPaths(['-1', ['-1']], intTransformer)).toStrictEqual([[-1], [-1]]);
+      expect(transformPaths([['1'], '2', ['3']], intTransformer)).toStrictEqual([[1], [2], [3]]);
+      expect(transformPaths([['1', '2', '3'], '4', '5'], intTransformer)).toStrictEqual([[1, 2, 3], [4], [5]]);
+      expect(transformPaths([['hello'], 'world'], intTransformer)).toStrictEqual([[NaN], [NaN]]);
+      expect(transformPaths([['', '3'], '4', 'boo', ['pah']], intTransformer))
+        .toStrictEqual([[NaN, 3], [4], [NaN], [NaN]]);
+    });
+  });
+
   it('fails for non-string or non-string-array or non-string-array-array values', () => {
     expect(() => { transformPaths(0, IDENTITY_TRANSFORM); }).toThrow();
     expect(() => { transformPaths(null, IDENTITY_TRANSFORM); }).toThrow();
