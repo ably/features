@@ -7,3 +7,7 @@ config:
 
   # In our GitHub First context, it's very normal to include GitHub issue URLs 'bare' so GitHub formats them nicely for us
   no-bare-urls: false
+
+  # Adds no value whatsoever to the quality of markdown we produce.
+  # In fact, mixing code block styles allows us to use the type that's best suited for the snippet being illustrated.
+  code-block-style: false

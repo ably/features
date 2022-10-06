@@ -169,6 +169,45 @@ Consistently use imperative, present tense where that makes sense (also known as
 
 As we evolve this work we can hopefully add to this guidance around what should be included and what should be avoided.
 
+## Feature Node Dependencies
+
+A feature node is able to express that it `requires` one or more features in order to be able to be implemented in an SDK.
+The following logical constraints should apply - a feature:
+
+- must only indicate it requires another feature if it cannot exist or otherwise _fully_ function without that other feature having also been implemented
+- cannot require one of its parent features, as that's implicit
+- should only require both the `REST` and `Realtime` features if both of them **must** be present in the SDK for the feature to work at all,
+  in other words:
+  - :green_circle: _needs both_: if it requires **both** `REST` **and** `Realtime` to be viable, then it should include them both in its `requires` property
+  - :red_circle: _needs one, the other, or both_: if it requires **either** `REST` **or** `Realtime` to be viable, then it must not include either of them in its `requires` property
+  - :green_circle: _needs just REST_: if it requires `REST` but does not require or otherwise relate to `Realtime`, then it should include `REST` in its `requires` property
+  - :green_circle: _needs just Realtime_: if it requires `Realtime` but does not require or otherwise relate to `REST`, then it should include `Realtime` in its `requires` property
+
+When a feature node 'A' indicates that it requires another feature 'B', then it's implied that any children of 'A' also require 'B'.
+
+The `requires` property allows a feature to express which other feature(s) it requires using one or more references to feature nodes in the tree, where a reference is a string path with node names delimited by a colon followed by a space (`': '`).
+
+We have chosen to use a colon within the delimiter because it's logical in human readable form - e.g.:
+
+    Service: Fallbacks: REST Follows Realtime
+
+This is intentionally the same formatting that we use in the rendered view to represent a fully-qualified feature node path.
+
+The implication of this choice of delimiter is that, in YAML, these node references - if referring to a non-root node - need to be quoted. e.g.:
+
+```yaml
+.requires:
+  - REST
+  - 'Debugging: Error Information'
+```
+
+Where:
+
+- the `REST` feature node reference did not need to be quoted, as it's a root node, therefore a path with only one segment
+- the `Debugging: Error Information` feature node reference must be quoted, as it's a child of a root node, therefore a path with more than one segment
+
+We will add checks in [#64](https://github.com/ably/features/issues/64).
+
 ## Disincluded Features
 
 ### `ClientOptions#logExceptionReportingUrl`
