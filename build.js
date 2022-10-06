@@ -322,6 +322,7 @@ function validateStructure(astNode, parentKeys = []) {
 
     case 'PLAIN':
     case 'BLOCK_LITERAL':
+    case 'QUOTE_SINGLE':
       break;
 
     default:

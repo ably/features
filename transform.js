@@ -11,37 +11,33 @@ const isString = (value) => value instanceof String || typeof value === 'string'
  */
 
 /**
- * Creates a new array populated with arrays containing the results of calling a provided function with one
- * or more string values, or arrays of string values.
+ * Creates a new array populated with one or more strings, each representing a segment of a path.
  *
- * Supported Translations:
- * - string => [[string]]
- * - [string1, string2] => [[string1, string2]]
- * - [[string1], [string2, string3]] => [[string1], [string2, string3]]
- * - [string1, [string2, string3]] => [[string1], [string2, string3]]
- * - [string1, [string2], [string3, string4]] => [[string1], [string2], [string3, string4]]
- *
- * @param {string|string[]|string[][]} value A single string, or an array of strings, or an array of arrays of strings.
- * @param {StringTransformer} transformer A function to be called with each string.
- * @returns {*[][]} The results of transforming the string(s).
- * @throws If no values were provided or some values were not strings or arrays, as appropriate.
+ * @param {string} value A single string, representing a path, with segments delimited by ': '.
+ * @returns {string[]} The path segments. Will never have zero length.
+ * @throws If the provided value was not a string or could not be parsed as path segments.
  */
-function transformPaths(value, transformer) {
-  if (value === null || value === undefined) {
-    throw new Error('The value may not be null or undefined.');
-  }
-  const array = Array.isArray(value) ? value : [value];
-  if (array.length < 1) {
-    throw new Error('No values to transform.');
+function transformPath(value) {
+  if (!isString(value)) {
+    throw new Error(`Encountered value of type '${typeof value}' (${value}) when expecting a string path.`);
   }
 
-  if (array.every(isString)) {
-    // It's most logical, as a feature node path, for [a, b] => [[a, b]] // a.k.a. 'a: b' (path).
-    // Hence this special case for when there's only one array present.
-    return [transformStrings(array, transformer)];
-  }
+  const segments = value.split(': ');
+  segments.forEach((segment, segmentIndex) => {
+    const errorContext = () => `in segment #${segmentIndex} '${segment}' when parsing path value '${value}'.`;
+    const trimmed = segment.trim();
+    if (trimmed.length < 1) {
+      throw new Error('Empty or whitespace-only'.concat(errorContext()));
+    }
+    if (trimmed !== segment) {
+      throw new Error('Spurious leading or trailing whitespace'.concat(errorContext()));
+    }
+    if (segment.includes(':')) {
+      throw new Error("Illegal character ':'".concat(errorContext()));
+    }
+  });
 
-  return array.map((element) => transformStrings(element, transformer));
+  return segments;
 }
 
 /**
@@ -85,7 +81,7 @@ function transformString(value, transformer) {
 
 module.exports = {
   IDENTITY_TRANSFORM,
-  transformPaths,
+  transformPath,
   transformStrings,
   transformString,
 };

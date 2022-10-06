@@ -445,7 +445,7 @@ REST:
       Provides a function to issue HTTP REST requests to the Ably endpoints with all the built in functionality of the library such as authentication, pagination, fallback hosts, MessagePack and JSON support etc..
       Convenience for customers who wish to use REST API functionality that is either not documented or is not included in the API for our client libraries.
   Request Identifiers:
-    .requires: [Debugging, Error Information]
+    .requires: 'Debugging: Error Information'
     .specification: [RSC7c, TO3p]
     .synopsis: |
       Add a query string parameter, based on a source of randomness, to all REST requests.
@@ -476,7 +476,7 @@ REST:
         Paginated.
         Results are provided aggregated across all channels in use in the application in the specified period and may be used to track usage against account quotas.
   Support Hyperlink on Request Failure:
-    .requires: [Debugging, Error Information]
+    .requires: 'Debugging: Error Information'
     .specification: TI4
     .synopsis: |
       Receive `ErrorInfo` instances that include an `href` member, populated if provided by the service response, containing an Internet hyperlink for more information on the failure.
@@ -485,7 +485,7 @@ Service:
     Relating to how REST and Realtime client instances communicate with the Ably service,
     in particular relating to resilience, fallbacks, etc..
   Environment:
-    .requires: [Service, Fallbacks]
+    .requires: 'Service: Fallbacks'
     .specification: [RSC11b, RSC15g, RSC15i, RTC1e, RTN17a, TO3k1]
     .synopsis: |
       Set the `environment` for REST and Realtime connections, for example to `sandbox` or a customer specific provisioning.
@@ -502,9 +502,7 @@ Service:
         Use an HTTP `GET` to `https://internet-up.ably-realtime.com/is-the-internet-up.txt` before trying the next fallback host,
         upon failure of a Realtime connection.
     REST Follows Realtime:
-      .requires:
-        - [REST]
-        - [Realtime]
+      .requires: REST, Realtime
       .specification: RTN17e
       .synopsis: |
         When the Realtime client is connected to a fallback host endpoint, then for the duration that the transport is connected to that host,

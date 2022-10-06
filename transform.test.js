@@ -1,6 +1,6 @@
 const {
   IDENTITY_TRANSFORM,
-  transformPaths,
+  transformPath,
   transformString,
   transformStrings,
 } = require('./transform');
@@ -83,90 +83,68 @@ describe('transformStrings', () => {
   });
 });
 
-describe('transformPaths', () => {
-  describe('for string arguments', () => {
-    it('successfully identity transforms', () => {
-      expect(transformPaths('', IDENTITY_TRANSFORM)).toStrictEqual([['']]);
-      expect(transformPaths('hello', IDENTITY_TRANSFORM)).toStrictEqual([['hello']]);
-    });
-
-    it('successfully custom transforms', () => {
-      expect(transformPaths('123', intTransformer)).toStrictEqual([[123]]);
-      expect(transformPaths('0', intTransformer)).toStrictEqual([[0]]);
-      expect(transformPaths('-1', intTransformer)).toStrictEqual([[-1]]);
-      expect(transformPaths('hello', intTransformer)).toStrictEqual([[NaN]]);
-    });
+describe('transformPath', () => {
+  it('successfully transforms', () => {
+    expect(transformPath('A')).toStrictEqual(['A']);
+    expect(transformPath('A: B')).toStrictEqual(['A', 'B']);
+    expect(transformPath('A: B: C')).toStrictEqual(['A', 'B', 'C']);
   });
 
-  describe('for string array arguments', () => {
-    it('successfully identity transforms', () => {
-      expect(transformPaths([''], IDENTITY_TRANSFORM)).toStrictEqual([['']]);
-      expect(transformPaths(['hello'], IDENTITY_TRANSFORM)).toStrictEqual([['hello']]);
-      expect(transformPaths(['a', 'b', 'c'], IDENTITY_TRANSFORM)).toStrictEqual([['a', 'b', 'c']]);
-    });
-
-    it('successfully custom transforms', () => {
-      expect(transformPaths(['123'], intTransformer)).toStrictEqual([[123]]);
-      expect(transformPaths(['0'], intTransformer)).toStrictEqual([[0]]);
-      expect(transformPaths(['-1'], intTransformer)).toStrictEqual([[-1]]);
-      expect(transformPaths(['1', '2', '3'], intTransformer)).toStrictEqual([[1, 2, 3]]);
-      expect(transformPaths(['hello'], intTransformer)).toStrictEqual([[NaN]]);
-    });
+  it('fails for values that are not a string', () => {
+    const errorMessageMatcher = /^Encountered value of type/;
+    expect(() => { transformPath(0); }).toThrow(errorMessageMatcher);
+    expect(() => { transformPath(-1); }).toThrow(errorMessageMatcher);
+    expect(() => { transformPath(null); }).toThrow(errorMessageMatcher);
+    expect(() => { transformPath(undefined); }).toThrow(errorMessageMatcher);
+    expect(() => { transformPath(NaN); }).toThrow(errorMessageMatcher);
+    expect(() => { transformPath([]); }).toThrow(errorMessageMatcher);
+    expect(() => { transformPath(['A']); }).toThrow(errorMessageMatcher);
+    expect(() => { transformPath({}); }).toThrow(errorMessageMatcher);
+    expect(() => { transformPath({ A: 'B' }); }).toThrow(errorMessageMatcher);
   });
 
-  describe('for arrays of string arrays arguments', () => {
-    it('successfully identity transforms', () => {
-      expect(transformPaths([['']], IDENTITY_TRANSFORM)).toStrictEqual([['']]);
-      expect(transformPaths([['hello']], IDENTITY_TRANSFORM)).toStrictEqual([['hello']]);
-      expect(transformPaths([['a'], ['b'], ['c']], IDENTITY_TRANSFORM)).toStrictEqual([['a'], ['b'], ['c']]);
-      expect(transformPaths([['a', 'b', 'c']], IDENTITY_TRANSFORM)).toStrictEqual([['a', 'b', 'c']]);
+  describe('for invalid string values', () => {
+    it('fails for empty', () => {
+      const errorMessageMatcher = /^Empty or whitespace-only/;
+      expect(() => { transformPath(''); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath(' '); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('  '); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('\t'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('\n'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath(' \n'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('\n '); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath(': '); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath(':  '); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('  :  '); }).toThrow(errorMessageMatcher);
     });
 
-    it('successfully custom transforms', () => {
-      expect(transformPaths([['123']], intTransformer)).toStrictEqual([[123]]);
-      expect(transformPaths([['0']], intTransformer)).toStrictEqual([[0]]);
-      expect(transformPaths([['-1']], intTransformer)).toStrictEqual([[-1]]);
-      expect(transformPaths([['1'], ['2'], ['3']], intTransformer)).toStrictEqual([[1], [2], [3]]);
-      expect(transformPaths([['1', '2', '3']], intTransformer)).toStrictEqual([[1, 2, 3]]);
-      expect(transformPaths([['hello']], intTransformer)).toStrictEqual([[NaN]]);
-      expect(transformPaths([['', '3'], '4'], intTransformer)).toStrictEqual([[NaN, 3], [4]]);
-    });
-  });
-
-  describe('for arrays of mixed string arrays and strings arguments', () => {
-    it('successfully identity transforms', () => {
-      expect(transformPaths([' ', ['']], IDENTITY_TRANSFORM)).toStrictEqual([[' '], ['']]);
-
-      expect(transformPaths([['hello'], 'world', ['alphA', 'Beta']], IDENTITY_TRANSFORM))
-        .toStrictEqual([['hello'], ['world'], ['alphA', 'Beta']]);
-
-      expect(transformPaths([['a'], 'b', ['c']], IDENTITY_TRANSFORM)).toStrictEqual([['a'], ['b'], ['c']]);
-      expect(transformPaths(['a', ['b', 'c', 'd'], 'e'], IDENTITY_TRANSFORM))
-        .toStrictEqual([['a'], ['b', 'c', 'd'], ['e']]);
+    it('fails for spurious whitespace', () => {
+      const errorMessageMatcher = /^Spurious leading or trailing whitespace/;
+      expect(() => { transformPath(' :'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('  :'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('\t:'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('\n:'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('\t :'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('\n :'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A: B: C '); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A: B:  C'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A: B : C'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A:  B: C'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A : B: C'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath(' A: B: C'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath(' A: B: C '); }).toThrow(errorMessageMatcher);
     });
 
-    it('successfully custom transforms', () => {
-      expect(transformPaths([['123'], '456'], intTransformer)).toStrictEqual([[123], [456]]);
-      expect(transformPaths([['0'], '0'], intTransformer)).toStrictEqual([[0], [0]]);
-      expect(transformPaths(['-1', ['-1']], intTransformer)).toStrictEqual([[-1], [-1]]);
-      expect(transformPaths([['1'], '2', ['3']], intTransformer)).toStrictEqual([[1], [2], [3]]);
-      expect(transformPaths([['1', '2', '3'], '4', '5'], intTransformer)).toStrictEqual([[1, 2, 3], [4], [5]]);
-      expect(transformPaths([['hello'], 'world'], intTransformer)).toStrictEqual([[NaN], [NaN]]);
-      expect(transformPaths([['', '3'], '4', 'boo', ['pah']], intTransformer))
-        .toStrictEqual([[NaN, 3], [4], [NaN], [NaN]]);
+    it('fails for use of partial delimiter within segment', () => {
+      const errorMessageMatcher = /^Illegal character ':'/;
+      expect(() => { transformPath(':'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('::'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath(':: '); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath(':: :'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A:: B:'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A: B: C:'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A: B: C::'); }).toThrow(errorMessageMatcher);
+      expect(() => { transformPath('A: B:: C:'); }).toThrow(errorMessageMatcher);
     });
-  });
-
-  it('fails for non-string or non-string-array or non-string-array-array values', () => {
-    expect(() => { transformPaths(0, IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths(null, IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths(undefined, IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths([123], IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths([[123]], IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths(['hello', 456], IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths([['hello'], [456]], IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths([['hello', 456]], IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths({}, IDENTITY_TRANSFORM); }).toThrow();
-    expect(() => { transformPaths({ hello: 'world' }, IDENTITY_TRANSFORM); }).toThrow();
   });
 });
