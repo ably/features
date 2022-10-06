@@ -500,6 +500,14 @@ Service:
       .synopsis: |
         Use an HTTP `GET` to `https://internet-up.ably-realtime.com/is-the-internet-up.txt` before trying the next fallback host,
         upon failure of a Realtime connection.
+    REST Follows Realtime:
+      .requires:
+        - [REST]
+        - [Realtime]
+      .specification: RTN17e
+      .synopsis: |
+        When the Realtime client is connected to a fallback host endpoint, then for the duration that the transport is connected to that host,
+        all HTTP REST requests are first attempted to that same host.
     Retry Count:
       .specification: [TO3l5, RSC15a]
       .synopsis: |

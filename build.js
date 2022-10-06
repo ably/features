@@ -194,7 +194,9 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
             rowWriter.cell((cellContentWriter) => {
               let empty = true;
 
-              const markdownRequires = requires ? `Requires: **${requires.join(': ')}**` : null;
+              const markdownRequires = requires
+                ? `Requires: ${requires.map((featureNodePath) => `**${featureNodePath.join(': ')}**`).join(' | ')}`
+                : null;
               const markdown = synopsis
                 ? `${synopsis}${markdownRequires ? `\n${markdownRequires}` : ''}`
                 : markdownRequires;
