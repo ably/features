@@ -185,6 +185,18 @@ The following logical constraints should apply - a feature:
 
 When a feature node 'A' indicates that it requires another feature 'B', then it's implied that any children of 'A' also require 'B'.
 
+The `requires` property allows a feature to express which other feature(s) it requires using one or more pointers to feature nodes in the tree, where a `pointer` is an array of strings -- where `pointer[0]` is the name of the root node, `pointer[1]` (if present) is a child of `pointer[0]`, etc..
+
+To allow our YAML to be fluid and brief we allow those pointers to be supplied as a `requires` value in a number of forms:
+
+| Value Type | Example Value | Description | Unit Tests |
+| ---------- | ------------- | ----------- | ---------- |
+| **string**, to point to a single root node | `'Root Node'` | Shortcut form. A single string, pointing to a root node, in this example the root node with the name `'Root Node'`. |[transformPaths for string arguments](https://github.com/ably/features/blob/ae468c641cba9a41658bcd5334693d866b6e6121/transform.test.js#L87) |
+| **unwrapped array**, to point to any single node | `['Root Node', '2nd Level Node', '3rd Level Node']` | A single array, pointing to a feature node (a root node if one element, or a child if more than one element), in this example a child `'Root Node: 2nd Level Node: 3rd Level Node'`. | [transformPaths for string array arguments](https://github.com/ably/features/blob/ae468c641cba9a41658bcd5334693d866b6e6121/transform.test.js#L101) |
+| **wrapped arrays**, to point to multiple nodes | `[['Root Node A', '2nd Level Node B Child of A'], ['Root Node C', '2nd Level Node D Child of C', '3rd Level Node E Child of D'], ['Root Node F'], 'Root Node G']` | Multiple arrays, each pointing to a feature node (a root node if one element in a given array, or a child if more than one element in a given array). Also supports wrapping a mix of arrays (pointers to any node) and strings (shortcut form pointers to root nodes). In this example, four pointers: `'Root Node A: 2nd Level Node B Child of A'` and `'Root Node C: 2nd Level Node D Child of C: 3rd Level Node E Child of D'` and `'Root Node F'` and `'Root Node G'`. | [transformPaths for arrays of string arrays arguments](https://github.com/ably/features/blob/ae468c641cba9a41658bcd5334693d866b6e6121/transform.test.js#L117); transformPaths for arrays of mixed string arrays and strings arguments |
+
+The intention, especially with the interpretation of _unwrapped array_, is to do "do the right thing" and allow this property to be populated in the least surprising manner.
+
 We will add checks in [#64](https://github.com/ably/features/issues/64).
 
 ## Disincluded Features

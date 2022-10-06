@@ -18,6 +18,8 @@ const isString = (value) => value instanceof String || typeof value === 'string'
  * - string => [[string]]
  * - [string1, string2] => [[string1, string2]]
  * - [[string1], [string2, string3]] => [[string1], [string2, string3]]
+ * - [string1, [string2, string3]] => [[string1], [string2, string3]]
+ * - [string1, [string2], [string3, string4]] => [[string1], [string2], [string3, string4]]
  *
  * @param {string|string[]|string[][]} value A single string, or an array of strings, or an array of arrays of strings.
  * @param {StringTransformer} transformer A function to be called with each string.
