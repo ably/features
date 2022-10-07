@@ -99,84 +99,6 @@ Protocol:
     .synopsis: |
       Encode or decode messages in binary format with [MessagePack](https://msgpack.org/).
       MessagePack, often abbreviated to MsgPack, is the default for runtime environments that have a suitable level of support for binary data.
-Push Notifications:
-  Activation:
-    .specification: [RSH2, RSH3, RSH4, RSH5, RSH6]
-    .synopsis: |
-      Only available on platforms that support receiving push notifications.
-  Administration:
-    .documentation: https://ably.com/docs/rest/push#push-admin
-    .requires: REST
-    .specification: RSH1
-    Channel Subscription:
-      .specification: RSH1c
-      List:
-        .specification: RSH1c1
-        .synopsis: |
-          List channel subscriptions.
-          Paginated.
-          Get a list of push notification subscriptions to channels,
-          using REST API `/push/channelSubscriptions` (`GET`).
-      List Channels:
-        .specification: RSH1c2
-        .synopsis: |
-          List all channels with at least one subscribed device,
-          using REST API `/push/channels` (`GET`).
-          Paginated.
-      Remove:
-        .specification: [RSH1c4, RSH1c5]
-        .synopsis: |
-          Unsubscribe from push notifications for channels.
-          Submit a request to stop receiving push notifications when push messages are published on the specified channels,
-          using REST API `/push/channelSubscriptions` (`DELETE`).
-      Save:
-        .specification: RSH1c3
-        .synopsis: |
-          Subscribe either a single device or all devices associated with a client ID to receive push notifications from messages sent to a channel,
-          using REST API `/push/channelSubscriptions` (`POST`).
-    Device Registration:
-      .specification: RSH1b
-      Get:
-        .specification: RSH1b1
-        .synopsis: |
-          Get details from a registered device.
-          Obtain the details for a device registered for receiving push registrations,
-          using REST API `/push/deviceRegistrations/<deviceId>` (`GET`).
-      List:
-        .specification: RSH1b2
-        .synopsis: |
-          List registered devices.
-          Paginated.
-          Obtain the details for devices registered for receiving push registrations,
-          using REST API `/push/deviceRegistrations` (`GET`).
-      Remove:
-        .specification: [RSH1b4, RSH1b5]
-        .synopsis: |
-          Unregister one or more devices for push notifications,
-          using REST API `/push/deviceRegistrations` (`DELETE`).
-          For a single device the REST API endpoint is suffixed `/<deviceId>` (`remove`).
-          Alternatively query parameters are used to find a device or devices
-          by `clientId` (`removeWhere`).
-      Save:
-        .specification: RSH1b3
-        .synopsis: |
-          Update a device registration, as an upsert,
-          using REST API `/push/deviceRegistrations/<deviceId>` (`PUT`).
-    Publish:
-      .documentation:
-        - https://ably.com/docs/rest/push#publish
-        - https://ably.com/docs/rest-api#push-publish
-        - https://ably.com/docs/general/push/publish#direct-publishing
-      .specification: RSH1a
-      .synopsis: |
-        Deliver a push notification to devices, addressing recipient(s):
-        - registered to Ably by device ID
-        - by their associated client ID
-        - directly using the underlying notifications service (FCM, APNs, etc.), thus bypassing registrations to Ably altogether
-  Local Device State:
-    .specification: RSH8
-    .synopsis: |
-      Obtain a `LocalDevice` instance that represents the current state of the device in respect of it being a target for push notifications.
 Realtime:
   .synopsis: |
     Functionality offered by Ably client instances that offer Realtime connectivity.
@@ -352,6 +274,20 @@ Realtime:
     .specification: [RTL6c2, RTP16, TO3g]
     .synopsis: |
       Suppress queuing of messages when connection state antipates imminent connection using the `queueMessages` client option.
+  Push Notifications:
+    .documentation: https://ably.com/docs/realtime/push
+    .specification: [RSH2, RSH3, RSH4, RSH5, RSH6]
+    .synopsis: |
+      Activate this device by registering with the platform specific push notification service (APNs on iOS, FCM on Android).
+      Only available on platforms that support receiving push notifications using
+      [Apple's Push Notification](https://developer.apple.com/notifications/) service
+      or
+      [Google's Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) service
+      as supported by the runtime platform.
+    Local Device State:
+      .specification: RSH8
+      .synopsis: |
+        Obtain a `LocalDevice` instance that represents the current state of the device in respect of it being a target for push notifications.
   Transport Parameters:
     .specification: RTC1f
     .synopsis: |
@@ -420,6 +356,7 @@ REST:
           Make REST publish operations idempotent.
           Enabled by default or can be disabled by setting the `idempotentRestPublishing` client option to `false`.
     Push Notifications:
+      .requires: 'Realtime: Push Notifications'
       .specification: RSH7
       .synopsis: |
         Available on platforms that support receiving push notifications.
@@ -444,6 +381,75 @@ REST:
     .synopsis: |
       Provides a function to issue HTTP REST requests to the Ably endpoints with all the built in functionality of the library such as authentication, pagination, fallback hosts, MessagePack and JSON support etc..
       Convenience for customers who wish to use REST API functionality that is either not documented or is not included in the API for our client libraries.
+  Push Notifications Administration:
+    .documentation: https://ably.com/docs/api/rest-sdk/push-admin
+    .requires: REST
+    .specification: RSH1
+    Channel Subscription:
+      .specification: RSH1c
+      List:
+        .specification: RSH1c1
+        .synopsis: |
+          List channel subscriptions.
+          Paginated.
+          Get a list of push notification subscriptions to channels,
+          using REST API `/push/channelSubscriptions` (`GET`).
+      List Channels:
+        .specification: RSH1c2
+        .synopsis: |
+          List all channels with at least one subscribed device,
+          using REST API `/push/channels` (`GET`).
+          Paginated.
+      Remove:
+        .specification: [RSH1c4, RSH1c5]
+        .synopsis: |
+          Unsubscribe from push notifications for channels.
+          Submit a request to stop receiving push notifications when push messages are published on the specified channels,
+          using REST API `/push/channelSubscriptions` (`DELETE`).
+      Save:
+        .specification: RSH1c3
+        .synopsis: |
+          Subscribe either a single device or all devices associated with a client ID to receive push notifications from messages sent to a channel,
+          using REST API `/push/channelSubscriptions` (`POST`).
+    Device Registration:
+      .specification: RSH1b
+      Get:
+        .specification: RSH1b1
+        .synopsis: |
+          Get details from a registered device.
+          Obtain the details for a device registered for receiving push registrations,
+          using REST API `/push/deviceRegistrations/<deviceId>` (`GET`).
+      List:
+        .specification: RSH1b2
+        .synopsis: |
+          List registered devices.
+          Paginated.
+          Obtain the details for devices registered for receiving push registrations,
+          using REST API `/push/deviceRegistrations` (`GET`).
+      Remove:
+        .specification: [RSH1b4, RSH1b5]
+        .synopsis: |
+          Unregister one or more devices for push notifications,
+          using REST API `/push/deviceRegistrations` (`DELETE`).
+          For a single device the REST API endpoint is suffixed `/<deviceId>` (`remove`).
+          Alternatively query parameters are used to find a device or devices
+          by `clientId` (`removeWhere`).
+      Save:
+        .specification: RSH1b3
+        .synopsis: |
+          Update a device registration, as an upsert,
+          using REST API `/push/deviceRegistrations/<deviceId>` (`PUT`).
+    Publish:
+      .documentation:
+        - https://ably.com/docs/rest/push#publish
+        - https://ably.com/docs/rest-api#push-publish
+        - https://ably.com/docs/general/push/publish#direct-publishing
+      .specification: RSH1a
+      .synopsis: |
+        Deliver a push notification to devices, addressing recipient(s):
+        - registered to Ably by device ID
+        - by their associated client ID
+        - directly using the underlying notifications service (FCM, APNs, etc.), thus bypassing registrations to Ably altogether
   Request Identifiers:
     .requires: 'Debugging: Error Information'
     .specification: [RSC7c, TO3p]

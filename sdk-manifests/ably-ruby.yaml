@@ -19,19 +19,6 @@ compliance:
     JSON:
     Maximum Message Size:
     MessagePack:
-  Push Notifications:
-    Administration:
-      Channel Subscription:
-        List:
-        List Channels:
-        Remove:
-        Save:
-      Device Registration:
-        Get:
-        List:
-        Remove:
-        Save:
-      Publish:
   Realtime:
     Authentication:
     Channel:
@@ -87,6 +74,18 @@ compliance:
         Idempotence:
       Release:
     Opaque Request:
+    Push Notifications Administration:
+      Channel Subscription:
+        List:
+        List Channels:
+        Remove:
+        Save:
+      Device Registration:
+        Get:
+        List:
+        Remove:
+        Save:
+      Publish:
     Request Identifiers:
     Request Timeout:
     Service:

@@ -17,19 +17,6 @@ compliance:
   Protocol:
     JSON:
     MessagePack:
-  Push Notifications:
-    Administration:
-      Channel Subscription:
-        List:
-        List Channels:
-        Remove:
-        Save:
-      Device Registration:
-        Get:
-        List:
-        Remove:
-        Save:
-      Publish:
   REST:
     Authentication:
       Authorize:
@@ -53,6 +40,18 @@ compliance:
         Subscribe:
       Release:
     Opaque Request:
+    Push Notifications Administration:
+      Channel Subscription:
+        List:
+        List Channels:
+        Remove:
+        Save:
+      Device Registration:
+        Get:
+        List:
+        Remove:
+        Save:
+      Publish:
     Request Timeout:
     Service:
       Get Time:
