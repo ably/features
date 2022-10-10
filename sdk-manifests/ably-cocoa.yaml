@@ -104,7 +104,7 @@ compliance:
       REST Follows Realtime:
       Retry Count:
       Retry Duration:
-        .caveat: |
+        .caveats: |
           `httpMaxRetryDuration` is declared, but not used anywhere in the codebase.
       Retry Timeout:
     Host:
@@ -114,10 +114,10 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
-      .caveat: |
+      .caveats: |
         `httpOpenTimeout` is declared, but not used anywhere in the codebase.
     Proxy:
-      .caveat: |
+      .caveats: |
         Only for web socket and only by reading system settings.
 variants:
   iOS:
