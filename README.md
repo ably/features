@@ -141,9 +141,9 @@ The names of feature nodes (those not prefixed with a dot '`.`' to denote them a
 
 - not use abbreviations
 - use plural form only if it's strictly necessary - i.e.:
-  - use plural form when the concept being captured is _always_ dealing with many things - e.g. `Options`, `Options: Agents` and `Push Notifications`
+  - use plural form when the concept being captured is _always_ dealing with many things - e.g. `Agent Identifier: Agents`, `REST: Statistics` and `Realtime: Push Notifications`
   - use plural form when the plurality is utterly baked into the naming of the primary type involved - e.g. `Options: Token Details`
-  - do not use plural form when the feature links to a primary type and includes methods or properties that involve with that type in both singular and plural contexts - e.g. `Push Notifications: Administration: Device Registration`
+  - do not use plural form when the feature links to a primary type and includes methods or properties that involve with that type in both singular and plural contexts - e.g. `REST: Push Notifications Administration: Device Registration`
 
 This is so that we keep a consistent 'tone of voice', making feature names that are easily comprehensible by human readers and sit alongside one another congruously.
 

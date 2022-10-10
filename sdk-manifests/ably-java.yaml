@@ -21,22 +21,6 @@ compliance:
   Protocol:
     JSON:
     MessagePack:
-  Push Notifications:
-    Activation:
-      .variants: Android
-    Administration:
-      Channel Subscription:
-        List:
-        List Channels:
-        Remove:
-        Save:
-      Device Registration:
-        Get:
-        List:
-        Remove:
-        Save:
-      Publish:
-    Local Device State:
   Realtime:
     Authentication:
     Channel:
@@ -61,6 +45,9 @@ compliance:
       State Events:
     Message Echoes:
     Message Queuing:
+    Push Notifications:
+      .variants: Android
+      Local Device State:
     Transport Parameters:
   REST:
     Authentication:
@@ -71,6 +58,18 @@ compliance:
         List Subscriptions:
         Subscribe:
     Opaque Request:
+    Push Notifications Administration:
+      Channel Subscription:
+        List:
+        List Channels:
+        Remove:
+        Save:
+      Device Registration:
+        Get:
+        List:
+        Remove:
+        Save:
+      Publish:
     Request Identifiers:
       .caveats: |
         Returned `ErrorInfo` instances for failed requests do not include the request identifier.
