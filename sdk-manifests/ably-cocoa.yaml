@@ -117,3 +117,6 @@ compliance:
     Connection Open Timeout:
       .synopsis: |
         `httpOpenTimeout` is declared, but not used anywhere in the codebase.
+    Proxy:
+      .caveat: |
+        Only for web socket and only by reading system settings.
