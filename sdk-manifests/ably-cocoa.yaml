@@ -5,7 +5,6 @@ compliance:
   Agent Identifier:
     Agents:
     Operating System:
-      .variants: [iOS, macOS, tvOS, watchOS]
   Authentication:
     API Key:
     Token:
@@ -120,3 +119,7 @@ compliance:
     Proxy:
       .caveat: |
         Only for web socket and only by reading system settings.
+variants:
+  iOS:
+  macOS:
+  tvOS:
