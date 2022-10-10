@@ -1,577 +1,119 @@
 %YAML 1.2
 ---
-Agent Identifier:
-  .specification: RSC7d
-  .synopsis: |
-    Send an `Ably-Agent` HTTP header for REST and Realtime Websocket connections,
-    identifying the library version,
-    as well as relevant information describing any underlying layers and the client platform.
-  Agents:
-    .specification: RSC7d6
-    .synopsis: |
-      Supply additional product/version key-value pairs using an `agents` client option.
-      For use only by other Ably-authored SDKs, on a need-to-have basis.
-  Operating System:
-    .synopsis: |
-      Include a product component indicating the runtime OS type and version.
-  Runtime:
-    .synopsis: |
-      Include a product component indicating the type of runtime, as discrete from the OS type.
-      This does not always include a version (e.g. for `browser` runtime emitted by `ably-js`
-      and the `uwp` runtime emitted by `ably-dotnet`).
-Authentication:
-  .documentation:
-    - https://ably.com/docs/core-features/authentication
-  .specification: [AO1, AO2, RSC17, RSA7, RSA15, RTN2d, TO3a]
-  .synopsis: |
-    Mechanisms for authenticating with the Ably service.
-  API Key:
-    .documentation:
-      - https://ably.com/docs/core-features/authentication#basic-authentication
-    .specification: [RSA11, RSC1, TO3j1, AO2a]
-    .synopsis: |
-      Use an Ably API key for authentication.
-      Specified using the `key` client option.
-      The key consists of a name and secret separated by a colon.
-      Should only be used server-side in production applications.
-      Client-side applications should always use token authentication in production.
-  Token:
-    .documentation:
-      - https://ably.com/docs/core-features/authentication#token-authentication
-    .specification: [RSA4, RSA14, TO3j4, TO3j11, RSA7a4]
-    .synopsis: |
-      Have a trusted device, such as one of your own servers possessing an API key configured via the dashboard, create short-lived access tokens for this client.
-      The trusted device uses the API key to distribute time-limited tokens with limited sets of access rights or capabilities, or with specific identities to untrusted clients.
-      The `useTokenAuth` client option can be used to specify that the client library should not use basic authentication,
-      guaranteeing failure if none of `authCallback`, `authUrl`, `token` or `tokenDetails` are also supplied in client options.
-      The `defaultTokenParams` client option overrides client library defaults for `TokenParams`.
-    Callback:
-      .specification: [RSA4a, RSA4, TO3j5, AO2b]
-      .synopsis: |
-        Supply a callback as the `authCallback` client option to obtain authentication tokens using user-supplied logic.
-    Literal:
-      .specification: [RSA4a, RSA4, RSC1, TO3j2, TO3j3]
-      .synopsis: |
-        Provide a literal `token` or `tokenDetails` in client options.
-        Mostly only used for testing, since tokens are short-lived - this method does not provide the client library with a means to renew the token automatically when the previous one expires.
-    URL:
-      .specification:
-        [RSA8c, TO3j6, TO3j7, TO3j8, TO3j9, AO2c, AO2d, AO2e, AO2f, RSA4]
-      .synopsis: |
-        `authUrl`, `authMethod`, `authHeaders` and `authParams`:
-        Service `Auth#requestToken` calls by querying a provided URL (`authURL` client option) to obtain a token request, or the token itself.
-        Support specification of other HTTP request properties (method, headers and params) using the `authMethod`, `authHeaders` and `authParams` client options respectively.
-      Query Time:
-        .specification: [TO3j10, RSA9d, RSA10k, AO2g]
-        .synopsis: |
-          Query the Ably service for the current time instead of relying on a locally-available time of day when issuing a token request.
-          Enabled using `queryTime` client option.
-Debugging:
-  .synopsis: |
-    Behaviours that are not necessarily suitable for production environments,
-    however may need to be enabled - even when running against production environments and executing on end-customer/consumer devices - to debug issues.
-  Error Information:
-    .specification: [TI1, TI2]
-    .synopsis: |
-      Receive details of Ably service errors in Ably's conformed `ErrorInfo` structure.
-      Includes `code`, `message` and `statusCode`.
-  Logs:
-    .specification: [TO3b, TO3c]
-    .synopsis: |
-      Set the level of log messages to generate and where to write them to, using the `logLevel` and `logHandler` client options.
-      Typically a handler/sink and a verbosity level, but some logging systems may express
-      this differently for idiomatic reasons that make sense for the language, framework
-      or runtime platform.
-Protocol:
-  .synopsis: |
-    Relating to the Ably service protocols used by REST and Realtime client instances.
-  JSON:
-    .specification: [RSC8b, TO3f, G1]
-    .synopsis: |
-      Encode or decode messages as [JSON](https://www.json.org/json-en.html),
-      overriding the default [MessagePack](https://msgpack.org/) by using the `useBinaryProtocol` client option.
-  Maximum Message Size:
-    .specification: [TO3l8, RSL1i, RTL6d1, CD2c]
-    .synopsis: |
-      Set the maximum size of messages that can be published in a single operation using the `maxMessageSize` client option.
-  MessagePack:
-    .specification: [RSC8a, RSL4c, G1]
-    .synopsis: |
-      Encode or decode messages in binary format with [MessagePack](https://msgpack.org/).
-      MessagePack, often abbreviated to MsgPack, is the default for runtime environments that have a suitable level of support for binary data.
-Push Notifications:
-  Activation:
-    .specification: [RSH2, RSH3, RSH4, RSH5, RSH6]
-    .synopsis: |
-      Only available on platforms that support receiving push notifications.
-  Administration:
-    .documentation: https://ably.com/docs/rest/push#push-admin
-    .requires: REST
-    .specification: RSH1
-    Channel Subscription:
-      .specification: RSH1c
-      List:
-        .specification: RSH1c1
-        .synopsis: |
-          List channel subscriptions.
-          Paginated.
-          Get a list of push notification subscriptions to channels,
-          using REST API `/push/channelSubscriptions` (`GET`).
-      List Channels:
-        .specification: RSH1c2
-        .synopsis: |
-          List all channels with at least one subscribed device,
-          using REST API `/push/channels` (`GET`).
-          Paginated.
-      Remove:
-        .specification: [RSH1c4, RSH1c5]
-        .synopsis: |
-          Unsubscribe from push notifications for channels.
-          Submit a request to stop receiving push notifications when push messages are published on the specified channels,
-          using REST API `/push/channelSubscriptions` (`DELETE`).
-      Save:
-        .specification: RSH1c3
-        .synopsis: |
-          Subscribe either a single device or all devices associated with a client ID to receive push notifications from messages sent to a channel,
-          using REST API `/push/channelSubscriptions` (`POST`).
-    Device Registration:
-      .specification: RSH1b
-      Get:
-        .specification: RSH1b1
-        .synopsis: |
-          Get details from a registered device.
-          Obtain the details for a device registered for receiving push registrations,
-          using REST API `/push/deviceRegistrations/<deviceId>` (`GET`).
-      List:
-        .specification: RSH1b2
-        .synopsis: |
-          List registered devices.
-          Paginated.
-          Obtain the details for devices registered for receiving push registrations,
-          using REST API `/push/deviceRegistrations` (`GET`).
-      Remove:
-        .specification: [RSH1b4, RSH1b5]
-        .synopsis: |
-          Unregister one or more devices for push notifications,
-          using REST API `/push/deviceRegistrations` (`DELETE`).
-          For a single device the REST API endpoint is suffixed `/<deviceId>` (`remove`).
-          Alternatively query parameters are used to find a device or devices
-          by `clientId` (`removeWhere`).
-      Save:
-        .specification: RSH1b3
-        .synopsis: |
-          Update a device registration, as an upsert,
-          using REST API `/push/deviceRegistrations/<deviceId>` (`PUT`).
-    Publish:
-      .documentation:
-        - https://ably.com/docs/rest/push#publish
-        - https://ably.com/docs/rest-api#push-publish
-        - https://ably.com/docs/general/push/publish#direct-publishing
-      .specification: RSH1a
-      .synopsis: |
-        Deliver a push notification to devices, addressing recipient(s):
-        - registered to Ably by device ID
-        - by their associated client ID
-        - directly using the underlying notifications service (FCM, APNs, etc.), thus bypassing registrations to Ably altogether
-  Local Device State:
-    .specification: RSH8
-    .synopsis: |
-      Obtain a `LocalDevice` instance that represents the current state of the device in respect of it being a target for push notifications.
-Realtime:
-  .synopsis: |
-    Functionality offered by Ably client instances that offer Realtime connectivity.
+common-version: 1.2.0-alpha.1
+compliance:
+  Agent Identifier:
+    Agents:
+    Operating System:
+      .variants: [iOS, macOS, tvOS, watchOS]
   Authentication:
-    Get Confirmed Client Identifier:
-      .specification: [RTC4, RTC17, RSA7a, RSA7b, RSA12, RSA8f, CD2a]
-      .synopsis: |
-        Get the `clientId` confirmed with the Ably service for this client instance, once a connection has been established.
-  Channel:
-    Attach:
-      .specification: [RTL4, RTL5]
-      .synopsis: |
-        Explicit, discrete methods to attach and detach channels.
-        Not all applications need this, due to our implicit-attach-on-subscribe behaviour
-        ([`RTL7c`](https://docs.ably.com/client-lib-development-guide/features/#RTL7c)).
-    Encryption:
-      .specification: [RTL16, TB2b, RTS3c]
-      .synopsis: |
-        Configure a `cipher`, specifying encryption algorithm and attributes.
-        Used for subscribe and publish on this channel.
-    History:
-      .documentation:
-        - https://ably.com/docs/realtime/history
-      .specification: [RTL10, CP2a, RTL15a]
-      .synopsis: |
-        Retrieve continuous message history up to the exact point a realtime channel was attached.
-        Paginated.
-        This includes both messages persisted for the default duration of two minutes, and messages persisted for 24-72 by enabling the `persist all messages` channel rule.
-        Includes the capability to only retrieve messages prior to the moment that the channel was attached or emitted an `UPDATE` indicating loss of continuity.
-    Mode:
-      .documentation:
-        - https://faqs.ably.com/what-are-channel-mode-flags-and-how-do-i-use-them
-      .specification: [RTL16, TB2d, TR3, RTS3c]
-      .synopsis: |
-        Specify a subset of the permissions given in your token/key for use with this channel, specified using channel mode flags.
-
-        This feature uses Ably service-side filtering, so it can be used to save unnecessary messages counting towards your usage such as:
-        - preventing presence updates going to all users
-        - attaching to a channel to enter presence, specifying that messages on that channel should not be received
-
-        This feature differs from capabilities in two ways:
-        - It's optional and specified by the client itself, versus capabilities which are mandatory and specified by the key or customer's auth server
-        - It's more granualar - for example we have a `subscribe` capability, but that doesn't distinguish between message and presence subscriptions, whereas modes can
-    Presence:
-      .documentation:
-        - https://ably.com/docs/realtime/presence
-      .specification: [RTL9, RTP1, RTP2, RTP4, RTP5, RTP13, RTP16, RTP17, RTP18, RTP19]
-      Enter:
-        .specification: [RTP8, RTP10]
-        .synopsis: |
-          Enter or leave presence on channels for this client.
-        Client:
-          .specification: [RTP14, RTP15]
-          .synopsis: |
-            Enter or leave presence for a given `clientId`,
-            not necessarily the id for this client.
+    API Key:
+    Token:
+      Callback:
+      Literal:
+      URL:
+        Query Time:
+  Debugging:
+    Error Information:
+    Logs:
+  Protocol:
+    JSON:
+    MessagePack:
+  Push Notifications:
+    Activation:
+    Administration:
+      Channel Subscription:
+        List:
+        List Channels:
+        Remove:
+        Save:
+      Device Registration:
+        Get:
+        List:
+        Remove:
+        Save:
+      Publish:
+    Local Device State:
+  Realtime:
+    Authentication:
+      Get Confirmed Client Identifier:
+    Channel:
+      Attach:
+      Encryption:
+      History:
+      Mode:
+      Presence:
+        Enter:
+          Client:
+        Get:
+        History:
+        Subscribe:
+        Update:
+          Client:
+      Publish:
+      Retry Timeout:
+      State Events:
+      Subscribe:
+        Deltas:
+        Rewind:
+    Connection:
+      Disconnected Retry Timeout:
+      Get Identifier:
+      Lifecycle Control:
+      Ping:
+      Recovery:
+      State Events:
+      Suspended Retry Timeout:
+    Message Echoes:
+    Message Queuing:
+    Transport Parameters:
+  REST:
+    Authentication:
+      Authorize:
+      Create Token Request:
+      Get Client Identifier:
+      Request Token:
+    Channel:
+      Encryption:
+      Existence Check:
       Get:
-        .specification: RTP11
-        .synopsis: |
-          Obtain a list of the current members of the channel.
-          Optional parameters include `waitForSync` (defaults to `true`), `clientId` and `connectionId`.
       History:
-        .specification: RTP12
-        .synopsis: |
-          Paginated.
-      Subscribe:
-        .specification: [RTP6, RTP7]
-        .synopsis: |
-          Subscribe or unsubscribe for presence events on channels for this client.
-      Update:
-        .specification: RTP9
-        Client:
-          .specification: RTP15
-          .synopsis: |
-            Update presence data and/or extras for a `clientId`,
-            not necessarily the id for this client.
-    Publish:
-      .specification: RTL6
-      .synopsis: |
-        Send a message on this channel.
-    Retry Timeout:
-      .specification: [RTL13b, TO3l7]
-      .synopsis: |
-        Override the default value using the `channelRetryTimeout` client option.
-        Channel reattachement is attempted after this amount of time in the `SUSPENDED` connection state,
-        following a server-initiated channel detach, if the connection state is `CONNECTED`.
-    State Events:
-      .specification:
-        [RTL2, TH1, TH2, TH3, TH4, TH5, RTN11d, RTL4e, RTL3a, RTL4g, RTL14, RTL24, RTP5]
-      .synopsis: |
-        Receive `ChannelEvent` events when channel state changes.
-        The current `ChannelState` can be queried (e.g. via a `state` property on the channel instance).
-        Also, access to an error reason object when the channel is in a state of disruption (for example `FAILED`, `DETACHED` or `SUSPENDED`).
-    Subscribe:
-      .specification: [RTL7, RTL8]
-      .synopsis: |
-        Subscribe or unsubscribe for messages on channels for this client.
-      Deltas:
-        .documentation:
-          - https://ably.com/docs/realtime/channels/channel-parameters/deltas
-          - https://ably.com/blog/message-delta-compression
-        .specification: [RTL16, RTL18, RTL19, RTL20, PC1, PC2, PC3, TO3o, TM2i, TB2c, RTS3c]
-        .synopsis: |
-          Subscribe to and decode VCDiff-encoded delta streams.
-          SDKs may choose to offer this only if a plugin is supplied via client options
-          (optional functionality).
-          Deltas are enabled for a channel by setting the `delta` channel parameter to `vcdiff` using the `setOptions` method on the channel.
-      Rewind:
-        .documentation:
-          - https://ably.com/docs/realtime/channels/channel-parameters/rewind
-          - https://ably.com/blog/channel-rewind
-        .specification: [RTL16, TB2c, RTS3c]
-        .synopsis: |
-          The option to specify that attachment to this channel start from a given number of messages or point in time in the past.
-          This is done by setting the `rewind` channel parameter using the `setOptions` method on the channel.
-  Connection:
-    .specification: RTC2
-    Disconnected Retry Timeout:
-      .specification: [TO3l1, RTN14d]
-      .synopsis: |
-        Override the default value using the `disconnectedRetryTimeout` client option.
-        Reconnection is attempted after this amount of time in the `DISCONNECTED` connection state.
-    Get Identifier:
-      .specification: RTN8
-      .synopsis: |
-        Get the `id` of the connection, which is a public string provided by the Ably service and is unique for this connection.
-        Unavailable until connected.
-    Lifecycle Control:
-      .specification: [RTC1b, RTN3, RTL4b1, TO3e, RTC15, RTC16, RTN11, RTN12]
-      .synopsis: |
-        Disable the automatic initiation of a connection when a client instance is instantiated using the `autoConnect` client option.
-        Requires the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
-    Ping:
-      .specification: RTN13
-      .synopsis: |
-        Send a heartbeat message to the Ably service and returns the time taken to receive a corresponding heartbeat in response, or an error if the operation failed.
-        This can be useful for measuring true roundtrip client to Ably server latency for a simple message, or for checking that an underlying transport is responding currently.
-    Recovery:
-      .specification:
-        [RTN9, RTN10, RTN16, RTC1c, TO3i, RTN11d, RTN15a, RTN15b, RTN15d]
-      .synopsis: |
-        Recover a connection by explicitly providing a recovery key when instantiating a Realtime client instance,
-        where that recovery key has been sourced from a previous instance.
-
-        Client instances may provide:
-        - a unique private connection `key` provided by the Ably service that can be used to publish over REST on behalf of a Realtime connection
-        - a `serial` attribute, set from the `connectionSerial` received from the Ably service when `CONNECTED` state is confirmed
-          (TODO establish why this is user-facing at all)
-
-        Client instances must provide:
-        - a `recoveryKey`, commposed from the connection key, latest connection serial (`connectionSerial`) and the current message serial (`msgSerial`)
-    State Events:
-      .specification: [RTN4, RTN25]
-      .synopsis: |
-        Get connection state, as well as receive events when connection state changes.
-        Also provides access to an error reason object in case of failure.
-    Suspended Retry Timeout:
-      .specification: [TO3l2, RTN14e]
-      .synopsis: |
-        Override the default value using the `suspendedRetryTimeout` client option.
-        Reconnection is attempted after this amount of time in the `SUSPENDED` connection state.
-  # TODO (DF1a) connectionStateTtl [ably-java]
-  # TODO (DF1b) realtimeRequestTimeout [ably-java]
-  # TODO asyncHttpThreadpoolSize [ably-java]
-  # TODO pushFullWait [ably-java]
-  # TODO localStorage [ably-java]
-  Message Echoes:
-    .specification: [RTC1a, RTL7f, TO3h]
-    .synopsis: |
-      Suppress messages originating from this connection from being echoed back on the same connection,
-      using the `echoMessages` client option.
-  Message Queuing:
-    .specification: [RTL6c2, RTP16, TO3g]
-    .synopsis: |
-      Suppress queuing of messages when connection state antipates imminent connection using the `queueMessages` client option.
-  Transport Parameters:
-    .specification: RTC1f
-    .synopsis: |
-      Send opaque string key/value pairs to the service on connection using the `transportParams` client option.
-REST:
-  .synopsis: |
-    Functionality offered by Ably client instances that offer support for REST operations.
-  Authentication:
-    .specification: RSC5
-    Authorize:
-      .specification: RSA10
-    Create Token Request:
-      .specification: RSA9
-    Get Client Identifier:
-      .specification: [RSA7, RSC17, RSA12]
-    Request Token:
-      .specification: RSA8e
-  Channel:
-    .specification: [RSN1, RTC3]
-    Encryption:
-      .specification: [RSL7, TB2b, RSN3c]
-      .synopsis: |
-        Configure a `cipher`, specifying encryption algorithm and attributes.
-        Used for subscribe and publish on this channel.
-        `AES` with `CBC`, `PKCS#7` with a default key length of 256 bits, as well as support for `AES128`.
-    Existence Check:
-      .specification: [RSN2, RTS2]
-      .synopsis: Discover if a channel exists with a given name.
-    Get:
-      .specification: [RSN3a, RTS3a]
-      .synopsis: Get or create a channel instance with a given name.
-    History:
-      .documentation:
-        - https://ably.com/docs/rest/history
-        - https://ably.com/docs/core-features/history
-      .specification: RSL2
-      .synopsis: |
-        Paginated.
-    Iterate:
-      .specification: [RSN2, RTS2]
-      .synopsis: Enumerate local channel instances.
-    Name:
-      # to be formally specified: https://github.com/ably/docs/issues/1416
-      .synopsis: Get the channel name.
-    Presence:
-      .specification: [RSL3, RSP1, RSP2]
-      History:
-        .documentation: https://ably.com/docs/rest/presence#presence-history
-        .specification: RSP4
-        .synopsis: |
-          Paginated.
-      Member List:
-        .documentation: https://ably.com/docs/rest/presence#member-list
-        .specification: RSP3
-        .synopsis: |
-          Paginated.
-    Publish:
-      .specification: RSL1
-      .synopsis: |
-        Send a message on this channel.
-      Idempotence:
-        .documentation:
-          - https://ably.com/blog/introducing-idempotent-publishing
-        .specification: [RSL1k, RTL6a1, TO3n]
-        .synopsis: |
-          Make REST publish operations idempotent.
-          Enabled by default or can be disabled by setting the `idempotentRestPublishing` client option to `false`.
-    Push Notifications:
-      .specification: RSH7
-      .synopsis: |
-        Available on platforms that support receiving push notifications.
-        A `PushChannel` interface, which is made available via the `push` property on REST and Realtime channel instances.
-      List Subscriptions:
-        .documentation: https://docs.ably.com/api/rest-api/#list-channel-subscriptions
-        .specification: RSH7e
-        .synopsis: |
-          Retrieve `PushChannelSubscription` object(s) describing push notification subscriptions to this channel,
-          matching either the current `clientId` or `deviceId`.
-      Subscribe:
-        .documentation: https://docs.ably.com/api/rest-api/#post-channel-subscription
-        .specification: [RSH7a, RSH7b, RSH7c, RSH7d]
-        .synopsis: |
-          Subscribe either a single device or all devices associated with a `clientId` to receive push notifications from messages sent to a channel.
-          Also supports explicit unsubscribe.
-    Release:
-      .specification: [RSN4, RTS4]
-      .synopsis: Free up resources consumed by a local channel instance.
-  Opaque Request:
-    .specification: [RSC19, RTC9]
-    .synopsis: |
-      Provides a function to issue HTTP REST requests to the Ably endpoints with all the built in functionality of the library such as authentication, pagination, fallback hosts, MessagePack and JSON support etc..
-      Convenience for customers who wish to use REST API functionality that is either not documented or is not included in the API for our client libraries.
-  Request Identifiers:
-    .requires: 'Debugging: Error Information'
-    .specification: [RSC7c, TO3p]
-    .synopsis: |
-      Add a query string parameter, based on a source of randomness, to all REST requests.
-      Enabled using the `addRequestIds` client option.
-      For failed requests, the request identifier is included in the returned `ErrorInfo`.
-  Request Timeout:
-    .specification: TO3l4
-    .synopsis: |
-      Override the default value of the `httpRequestTimeout` client option,
-      the timeout for any single HTTP request and response.
+      Iterate:
+      Name:
+      Presence:
+        History:
+        Member List:
+      Publish:
+        Idempotence:
+      Push Notifications:
+        List Subscriptions:
+        Subscribe:
+      Release:
+    Opaque Request:
+    Request Identifiers:
+    Request Timeout:
+    Service:
+      Get Time:
+    Statistics:
+      Query:
+    Support Hyperlink on Request Failure:
   Service:
-    .synopsis: |
-      Global operations against the Ably service, not necessarily specific to the Ably application project being used.
-    Get Time:
-      .specification: [RSC16, RTC6]
+    Environment:
+    Fallbacks:
+      Hosts:
+      Internet Up Check:
+      REST Follows Realtime:
+      Retry Count:
+      Retry Duration:
+        .caveat: |
+          `httpMaxRetryDuration` is declared, but not used anywhere in the codebase.
+      Retry Timeout:
+    Host:
+  Testing:
+    Disable TLS:
+    TCP Insecure Port:
+    TCP Secure Port:
+  Transport:
+    Connection Open Timeout:
       .synopsis: |
-        Obtain the Ably service time, to millisecond precision.
-        This may be required by clients that do not have access to a sufficiently well maintained time source, to provide timestamps for use in token requests.
-  Statistics:
-    .documentation: https://ably.com/docs/general/statistics
-    .synopsis: |
-      Operations relating to Ably application statistics (a.k.a. 'stats').
-    Query:
-      .specification: [RSC6, RTC5]
-      .synopsis: |
-        Obtain statistics at 1 minute intervals, or aggregated up to the hour, day, or month.
-        Uses the `/stats` REST endpoint.
-        Paginated.
-        Results are provided aggregated across all channels in use in the application in the specified period and may be used to track usage against account quotas.
-  Support Hyperlink on Request Failure:
-    .requires: 'Debugging: Error Information'
-    .specification: TI4
-    .synopsis: |
-      Receive `ErrorInfo` instances that include an `href` member, populated if provided by the service response, containing an Internet hyperlink for more information on the failure.
-Service:
-  .synopsis: |
-    Relating to how REST and Realtime client instances communicate with the Ably service,
-    in particular relating to resilience, fallbacks, etc..
-  Environment:
-    .requires: 'Service: Fallbacks'
-    .specification: [RSC11b, RSC15g, RSC15i, RTC1e, RTN17a, TO3k1]
-    .synopsis: |
-      Set the `environment` for REST and Realtime connections, for example to `sandbox` or a customer specific provisioning.
-  Fallbacks:
-    .specification: [RSC15b, RSC15d, RSC15h, RSC15j, RTN17b, RTN17c, RTN17d, RSC15k]
-    Hosts:
-      .specification: [RSC15b2, RSC15g, RTN17b2, TO3k6]
-      .synopsis: |
-        Override the default fallback hosts, for REST and Realtime connections, using the `fallbackHosts` client option.
-        Defaults are autogenerated from `environment` so this option is only required for customers using custom CNAMEs who have been given an explicit list of fallbacks.
-    Internet Up Check:
-      .specification: RTN17c
-      .synopsis: |
-        Use an HTTP `GET` to `https://internet-up.ably-realtime.com/is-the-internet-up.txt` before trying the next fallback host,
-        upon failure of a Realtime connection.
-    REST Follows Realtime:
-      .requires: REST, Realtime
-      .specification: RTN17e
-      .synopsis: |
-        When the Realtime client is connected to a fallback host endpoint, then for the duration that the transport is connected to that host,
-        all HTTP REST requests are first attempted to that same host.
-    Retry Count:
-      .requires: REST
-      .specification: [TO3l5, RSC15a]
-      .synopsis: |
-        Override the default value of the `httpMaxRetryCount` client option,
-        the maximum number of fallback hosts to use as a fallback when an HTTP request to the primary host is unreachable or indicates that it is unserviceable,
-        applicable to REST operations.
-    Retry Duration:
-      .requires: REST
-      .specification: TO3l6
-      .synopsis: |
-        Override the default value of the `httpMaxRetryDuration` client option,
-        the maximum elapsed time in which fallback host retries for HTTP requests will be attempted,
-        applicable to REST operations.
-    Retry Timeout:
-      .requires: REST
-      .specification: [TO3l10, RSC15f]
-      .synopsis: |
-        Override the default value of the `fallbackRetryTimeout` client option, applicable to REST operations.
-        After a failed request to the default endpoint, followed by a successful request to a fallback endpoint),
-        this is the period in milliseconds before HTTP requests are retried against the default endpoint.
-  Host:
-    .specification: [RSC11, RSC12, RSC15b1, RSC15e, RSC15f, RTC1d, RTN17b1, TO3k3]
-    .synopsis: |
-      Override the REST encpoint using `restHost` client option,
-      or the Realtime endpoint using the `realtimeHost` client option.
-Testing:
-  .synopsis: |
-    Behaviours that are not suitable for production environments.
-    These options should only be overridden or otherwise utilised when testing against development environments.
-  Disable TLS:
-    .specification: [TO3d, RSC18]
-    .synopsis: |
-      Disable Transport Layer Security using the `tls` client option.
-      It is enabled by default and should only be overridden for development environments.
-  TCP Insecure Port:
-    .specification: [TO3k4, RSC15b1, RTN17b1]
-    .synopsis: |
-      Override the default value of the `port` client option,
-      the TCP port to be used for insecure connections, where TLS (Transport Layer Security) has been disabled.
-  TCP Secure Port:
-    .specification: [TO3k5, RSC15b1, RTN17b1]
-    .synopsis: |
-      Override the default value of the `tlsPort` client option,
-      the TCP port to be used for secure connections using TLS (Transport Layer Security).
-Transport:
-  .synopsis: |
-    Relating to the network transports used by REST and Realtime client instances,
-    specifically features specific to HTTP and TCP.
-  Connection Open Timeout:
-    .specification: TO3l3
-    .synopsis: |
-      Override the default value of the `httpOpenTimeout` client option,
-      the timeout for opening the connection, available in the client library if supported by the transport.
-  HTTP/2:
-    .synopsis: |
-      Handle connectivity to an HTTP/2 endpoint, with the ability to fallback to using HTTP/1.1 if the endpoint doesn't support HTTP/2.
-  Maximum Frame Size:
-    .specification: [TO3l9, CD2d]
-    .synopsis: |
-      Override the default value of the `maxFrameSize` client option,
-      the maximum size of a single REST POST body or Realtime Websocket frame.
-  Proxy:
-    .synopsis: |
-      `proxy`:
-      Specify an HTTP proxy server to use for making REST and Realtime connections through.
-      Typically includes options for `host`, `port`, `username`, `password` and HTTP authentication type.
-      May also include option to specify host names that are not to be proxied.
+        `httpOpenTimeout` is declared, but not used anywhere in the codebase.
