@@ -212,7 +212,7 @@ We will add checks in [#64](https://github.com/ably/features/issues/64).
 
 ### `ClientOptions#logExceptionReportingUrl`
 
-Specified by [TO3m](https://docs.ably.com/client-lib-development-guide/features/#TO3m)
-and [RSC20](https://docs.ably.com/client-lib-development-guide/features/#RSC20).
+Specified by [TO3m](https://sdk.ably.com/builds/ably/specification/main/features/#TO3m)
+and [RSC20](https://sdk.ably.com/builds/ably/specification/main/features/#RSC20).
 
 Will be removed under [ably/docs#1381](https://github.com/ably/docs/issues/1381).
