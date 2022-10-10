@@ -115,7 +115,7 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
-      .synopsis: |
+      .caveat: |
         `httpOpenTimeout` is declared, but not used anywhere in the codebase.
     Proxy:
       .caveat: |
