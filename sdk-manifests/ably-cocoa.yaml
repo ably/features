@@ -19,21 +19,6 @@ compliance:
   Protocol:
     JSON:
     MessagePack:
-  Push Notifications:
-    Activation:
-    Administration:
-      Channel Subscription:
-        List:
-        List Channels:
-        Remove:
-        Save:
-      Device Registration:
-        Get:
-        List:
-        Remove:
-        Save:
-      Publish:
-    Local Device State:
   Realtime:
     Authentication:
       Get Confirmed Client Identifier:
@@ -66,6 +51,9 @@ compliance:
       Suspended Retry Timeout:
     Message Echoes:
     Message Queuing:
+    Push Notifications:
+      .variants: iOS
+      Local Device State:
     Transport Parameters:
   REST:
     Authentication:
@@ -90,6 +78,18 @@ compliance:
         Subscribe:
       Release:
     Opaque Request:
+    Push Notifications Administration:
+      Channel Subscription:
+        List:
+        List Channels:
+        Remove:
+        Save:
+      Device Registration:
+        Get:
+        List:
+        Remove:
+        Save:
+      Publish:
     Request Identifiers:
     Request Timeout:
     Service:
