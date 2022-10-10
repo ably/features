@@ -19,19 +19,6 @@ compliance:
     JSON:
     Maximum Message Size:
     MessagePack:
-  Push Notifications:
-    Administration:
-      Channel Subscription:
-        List:
-        List Channels:
-        Remove:
-        Save:
-      Device Registration:
-        Get:
-        List:
-        Remove:
-        Save:
-      Publish:
   Realtime:
     Authentication:
     Channel:
@@ -39,8 +26,8 @@ compliance:
 
       # setOptions on existing channel instance is missing (i.e. it works but is inelegant, requiring soft-deprecated mechanism)
       # see:
-      # - https://docs.ably.com/client-lib-development-guide/features/#RSN3c
-      # - https://docs.ably.com/client-lib-development-guide/features/#RTS3c
+      # - https://sdk.ably.com/builds/ably/specification/main/features/#RSN3c
+      # - https://sdk.ably.com/builds/ably/specification/main/features/#RTS3c
       Encryption:
 
       History:
@@ -87,6 +74,18 @@ compliance:
         Idempotence:
       Release:
     Opaque Request:
+    Push Notifications Administration:
+      Channel Subscription:
+        List:
+        List Channels:
+        Remove:
+        Save:
+      Device Registration:
+        Get:
+        List:
+        Remove:
+        Save:
+      Publish:
     Request Identifiers:
     Request Timeout:
     Service:
