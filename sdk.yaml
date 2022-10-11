@@ -361,6 +361,15 @@ REST:
         .synopsis: |
           Make REST publish operations idempotent.
           Enabled by default or can be disabled by setting the `idempotentRestPublishing` client option to `false`.
+      Parameters for Query String:
+        .documentation:
+          - https://github.com/ably/docs/issues/737
+          - https://github.com/ably/docs/issues/1017
+          - https://faqs.ably.com/why-are-some-rest-publishes-on-a-channel-slow-and-then-typically-faster-on-subsequent-publishes
+        .specification: RSL1l
+        .synopsis: |
+          Supply parameters to be encoded using normal querystring-encoding and then sent as part of the HTTP request query string for individual REST publish operations.
+          Used to change Ably service behaviour, for example setting the boolean `quickAck` option to `true`.
     Push Notifications:
       .requires: 'Realtime: Push Notifications'
       .specification: RSH7
