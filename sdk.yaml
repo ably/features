@@ -109,6 +109,10 @@ Realtime:
         Get the `clientId` confirmed with the Ably service for this client instance, once a connection has been established.
   Channel:
     Attach:
+      .documentation:
+        - https://ably.com/docs/realtime/channels#channel-lifecycle
+        - https://ably.com/docs/realtime/channels#channel-detach
+        - https://faqs.ably.com/does-an-attached-channel-receive-messages-even-if-subscribe-has-not-been-called
       .specification: [RTL4, RTL5]
       .synopsis: |
         Explicit, discrete methods to attach and detach channels.
@@ -196,9 +200,16 @@ Realtime:
         The current `ChannelState` can be queried (e.g. via a `state` property on the channel instance).
         Also, access to an error reason object when the channel is in a state of disruption (for example `FAILED`, `DETACHED` or `SUSPENDED`).
     Subscribe:
+      .documentation:
+        - https://ably.com/docs/realtime/channels#subscribing
+        - https://ably.com/docs/realtime/channels#implicit-attach
       .specification: [RTL7, RTL8, TM1, TM2, TM4]
       .synopsis: |
-        Subscribe or unsubscribe for messages on channels for this client.
+        Subscribe or unsubscribe for messages on channels for this client, using one of the following forms:
+        - all messages
+        - only messages with a specific value in their `name` member
+
+        The SDK will send a request to the Ably service to attach the channel if it is not already attached.
       Deltas:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/deltas
