@@ -39,6 +39,8 @@ compliance:
         List Subscriptions:
         Subscribe:
       Release:
+      Status:
+        Channel Details: # https://github.com/ably/ably-php/pull/159
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:
