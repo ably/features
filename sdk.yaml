@@ -232,7 +232,7 @@ Realtime:
     Incremental Backoff:
       .specification: RTB1
       .synopsis: |
-        Use backoff and jitter coefficients to make the constant `disconnectedRetryTimeout` and `channelRetryTimeout` values variable at runtime.
+        Use backoff and jitter coefficients to vary the `disconnectedRetryTimeout` and `channelRetryTimeout` values at runtime.
         This eases pressure on the Ably service when many client instances get disconnected at the same time,
         since they won't all attempt to re-establish connection at the same time as one another.
     Lifecycle Control:
