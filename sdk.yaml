@@ -391,6 +391,26 @@ REST:
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
+    Status:
+      .documentation: https://ably.com/docs/rest/channel-status
+      .synopsis: |
+        Access information about channels from the Ably service.
+      Channel Details:
+        .documentation: https://ably.com/docs/rest/channel-status#metadata-rest
+        .specification: RSL8
+        .synopsis: |
+          Retrieve channel metadata from the Ably service, presented as a `ChannelDetails` instance, including global occupancy.
+          This feature is also known as channel lifecycle status.
+      Enumerate:
+        .documentation: https://ably.com/docs/rest/channel-status#enumeration-rest
+        .synopsis: |
+          Retrieve information on all active channels in this Ably application,
+          using REST API `/channels`.
+          Paginated.
+
+          Support for:
+          - querying only those channels whose name starts with a given `prefix`
+          - choosing return type as either `ChannelDetails` instances (the default) or just channel names
   Opaque Request:
     .specification: [RSC19, RTC9]
     .synopsis: |
