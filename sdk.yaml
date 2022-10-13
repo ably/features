@@ -122,7 +122,7 @@ Realtime:
     History:
       .documentation:
         - https://ably.com/docs/realtime/history
-      .specification: [RTL10, CP2a, RTL15a]
+      .specification: [RTL10, CP2a, RTL15a, TM1, TM2, TM4]
       .synopsis: |
         Retrieve continuous message history up to the exact point a realtime channel was attached.
         Paginated.
@@ -196,7 +196,7 @@ Realtime:
         The current `ChannelState` can be queried (e.g. via a `state` property on the channel instance).
         Also, access to an error reason object when the channel is in a state of disruption (for example `FAILED`, `DETACHED` or `SUSPENDED`).
     Subscribe:
-      .specification: [RTL7, RTL8]
+      .specification: [RTL7, RTL8, TM1, TM2, TM4]
       .synopsis: |
         Subscribe or unsubscribe for messages on channels for this client.
       Deltas:
@@ -332,7 +332,7 @@ REST:
       .documentation:
         - https://ably.com/docs/rest/history
         - https://ably.com/docs/core-features/history
-      .specification: RSL2
+      .specification: [RSL2, TM1, TM2, TM4]
       .synopsis: |
         Paginated.
     Iterate:
