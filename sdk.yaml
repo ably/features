@@ -176,9 +176,12 @@ Realtime:
             Update presence data and/or extras for a `clientId`,
             not necessarily the id for this client.
     Publish:
-      .specification: RTL6
+      .specification: [RTL6, TM1, TM2, TM4]
       .synopsis: |
-        Send a message on this channel.
+        Send a message on this channel, using one of the following forms:
+        - a single `Message` instance
+        - an array of `Message` instances
+        - as discrete `name` and `data` payload message components, used to publish a single `Message`
     Retry Timeout:
       .specification: [RTL13b, TO3l7]
       .synopsis: |
@@ -345,9 +348,12 @@ REST:
         .synopsis: |
           Paginated.
     Publish:
-      .specification: RSL1
+      .specification: [RSL1, TM1, TM2, TM4]
       .synopsis: |
-        Send a message on this channel.
+        Send a message on this channel, using one of the following forms:
+        - a single `Message` instance
+        - an array of `Message` instances
+        - as discrete `name` and `data` payload message components, used to publish a single `Message`
       Idempotence:
         .documentation:
           - https://ably.com/blog/introducing-idempotent-publishing
