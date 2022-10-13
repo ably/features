@@ -234,7 +234,7 @@ Realtime:
       .synopsis: |
         Use backoff and jitter coefficients to make the constant `disconnectedRetryTimeout` and `channelRetryTimeout` values variable at runtime.
         This eases pressure on the Ably service when many client instances get disconnected at the same time,
-        because they'll not all attempt to retry connecting at the same time as one another.
+        since they won't all attempt to re-establish connection at the same time as one another.
     Lifecycle Control:
       .specification: [RTC1b, RTN3, RTL4b1, TO3e, RTC15, RTC16, RTN11, RTN12]
       .synopsis: |
