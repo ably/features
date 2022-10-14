@@ -7,7 +7,10 @@
     @apply text-2xl font-bold;
   }
   ul {
-    @apply list-disc pl-5;
+    @apply list-disc pl-5 mb-2;
+  }
+  p {
+    @apply mb-2;
   }
   code {
     @apply text-slate-600 bg-amber-100;
