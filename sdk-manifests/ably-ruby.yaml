@@ -73,6 +73,8 @@ compliance:
       Publish:
         Idempotence:
       Release:
+      Status:
+        Channel Details: # https://github.com/ably/ably-ruby/pull/365
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:

@@ -4,6 +4,7 @@ common-version: 1.2.0-alpha.1
 compliance:
   Agent Identifier:
     Agents:
+    Operating System:
   Authentication:
     API Key:
     Token:
@@ -17,6 +18,42 @@ compliance:
   Protocol:
     JSON:
     MessagePack:
+  Realtime:
+    Authentication:
+      Get Confirmed Client Identifier:
+    Channel:
+      Attach:
+      Encryption:
+      History:
+      Mode:
+      Presence:
+        Enter:
+          Client:
+        Get:
+        History:
+        Subscribe:
+        Update:
+          Client:
+      Publish:
+      Retry Timeout:
+      State Events:
+      Subscribe:
+        Deltas:
+        Rewind:
+    Connection:
+      Disconnected Retry Timeout:
+      Get Identifier:
+      Lifecycle Control:
+      Ping:
+      Recovery:
+      State Events:
+      Suspended Retry Timeout:
+    Message Echoes:
+    Message Queuing:
+    Push Notifications:
+      .variants: iOS
+      Local Device State:
+    Transport Parameters:
   REST:
     Authentication:
       Authorize:
@@ -39,8 +76,6 @@ compliance:
         List Subscriptions:
         Subscribe:
       Release:
-      Status:
-        Channel Details: # https://github.com/ably/ably-php/pull/159
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:
@@ -54,18 +89,23 @@ compliance:
         Remove:
         Save:
       Publish:
+    Request Identifiers:
     Request Timeout:
     Service:
       Get Time:
     Statistics:
       Query:
+    Support Hyperlink on Request Failure:
   Service:
     Environment:
     Fallbacks:
       Hosts:
       Internet Up Check:
+      REST Follows Realtime:
       Retry Count:
       Retry Duration:
+        .caveats: |
+          `httpMaxRetryDuration` is declared, but not used anywhere in the codebase.
       Retry Timeout:
     Host:
   Testing:
@@ -74,4 +114,12 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
+      .caveats: |
+        `httpOpenTimeout` is declared, but not used anywhere in the codebase.
     Proxy:
+      .caveats: |
+        Only for web socket and only by reading system settings.
+variants:
+  iOS:
+  macOS:
+  tvOS:

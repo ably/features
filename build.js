@@ -399,6 +399,7 @@ function titleForLink(url) {
     ['ably.com/blog', 'blog'],
     ['ably.com/docs', 'docs'],
     ['faqs.ably.com', 'faq'],
+    ['github.com/ably/.*/issues', 'issue'],
   ];
 
   const foundPair = titlesForPrefixes.find((element) => (new RegExp(`https://${element[0]}/`)).test(url));

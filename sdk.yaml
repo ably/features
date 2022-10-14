@@ -109,6 +109,10 @@ Realtime:
         Get the `clientId` confirmed with the Ably service for this client instance, once a connection has been established.
   Channel:
     Attach:
+      .documentation:
+        - https://ably.com/docs/realtime/channels#channel-lifecycle
+        - https://ably.com/docs/realtime/channels#channel-detach
+        - https://faqs.ably.com/does-an-attached-channel-receive-messages-even-if-subscribe-has-not-been-called
       .specification: [RTL4, RTL5]
       .synopsis: |
         Explicit, discrete methods to attach and detach channels.
@@ -122,7 +126,7 @@ Realtime:
     History:
       .documentation:
         - https://ably.com/docs/realtime/history
-      .specification: [RTL10, CP2a, RTL15a]
+      .specification: [RTL10, CP2a, RTL15a, TM1, TM2, TM4]
       .synopsis: |
         Retrieve continuous message history up to the exact point a realtime channel was attached.
         Paginated.
@@ -176,9 +180,12 @@ Realtime:
             Update presence data and/or extras for a `clientId`,
             not necessarily the id for this client.
     Publish:
-      .specification: RTL6
+      .specification: [RTL6, TM1, TM2, TM4]
       .synopsis: |
-        Send a message on this channel.
+        Send a message on this channel, using one of the following forms:
+        - a single `Message` instance
+        - an array of `Message` instances
+        - as discrete `name` and `data` payload message components, used to publish a single `Message`
     Retry Timeout:
       .specification: [RTL13b, TO3l7]
       .synopsis: |
@@ -193,9 +200,16 @@ Realtime:
         The current `ChannelState` can be queried (e.g. via a `state` property on the channel instance).
         Also, access to an error reason object when the channel is in a state of disruption (for example `FAILED`, `DETACHED` or `SUSPENDED`).
     Subscribe:
-      .specification: [RTL7, RTL8]
+      .documentation:
+        - https://ably.com/docs/realtime/channels#subscribing
+        - https://ably.com/docs/realtime/channels#implicit-attach
+      .specification: [RTL7, RTL8, TM1, TM2, TM4]
       .synopsis: |
-        Subscribe or unsubscribe for messages on channels for this client.
+        Subscribe or unsubscribe for messages on channels for this client, using one of the following forms:
+        - all messages
+        - only messages with a specific value in their `name` member
+
+        The SDK will send a request to the Ably service to attach the channel if it is not already attached.
       Deltas:
         .documentation:
           - https://ably.com/docs/realtime/channels/channel-parameters/deltas
@@ -226,6 +240,12 @@ Realtime:
       .synopsis: |
         Get the `id` of the connection, which is a public string provided by the Ably service and is unique for this connection.
         Unavailable until connected.
+    Incremental Backoff:
+      .specification: RTB1
+      .synopsis: |
+        Use backoff and jitter coefficients to vary the `disconnectedRetryTimeout` and `channelRetryTimeout` values at runtime.
+        This eases pressure on the Ably service when many client instances get disconnected at the same time,
+        since they won't all attempt to re-establish connection at the same time as one another.
     Lifecycle Control:
       .specification: [RTC1b, RTN3, RTL4b1, TO3e, RTC15, RTC16, RTN11, RTN12]
       .synopsis: |
@@ -323,7 +343,7 @@ REST:
       .documentation:
         - https://ably.com/docs/rest/history
         - https://ably.com/docs/core-features/history
-      .specification: RSL2
+      .specification: [RSL2, TM1, TM2, TM4]
       .synopsis: |
         Paginated.
     Iterate:
@@ -345,9 +365,12 @@ REST:
         .synopsis: |
           Paginated.
     Publish:
-      .specification: RSL1
+      .specification: [RSL1, TM1, TM2, TM4]
       .synopsis: |
-        Send a message on this channel.
+        Send a message on this channel, using one of the following forms:
+        - a single `Message` instance
+        - an array of `Message` instances
+        - as discrete `name` and `data` payload message components, used to publish a single `Message`
       Idempotence:
         .documentation:
           - https://ably.com/blog/introducing-idempotent-publishing
@@ -355,6 +378,15 @@ REST:
         .synopsis: |
           Make REST publish operations idempotent.
           Enabled by default or can be disabled by setting the `idempotentRestPublishing` client option to `false`.
+      Parameters for Query String:
+        .documentation:
+          - https://github.com/ably/docs/issues/737
+          - https://github.com/ably/docs/issues/1017
+          - https://faqs.ably.com/why-are-some-rest-publishes-on-a-channel-slow-and-then-typically-faster-on-subsequent-publishes
+        .specification: RSL1l
+        .synopsis: |
+          Supply parameters to be encoded using normal querystring-encoding and then sent as part of the HTTP request query string for individual REST publish operations.
+          Used to change Ably service behaviour, for example setting the boolean `quickAck` option to `true`.
     Push Notifications:
       .requires: 'Realtime: Push Notifications'
       .specification: RSH7
@@ -376,6 +408,26 @@ REST:
     Release:
       .specification: [RSN4, RTS4]
       .synopsis: Free up resources consumed by a local channel instance.
+    Status:
+      .documentation: https://ably.com/docs/rest/channel-status
+      .synopsis: |
+        Access information about channels from the Ably service.
+      Channel Details:
+        .documentation: https://ably.com/docs/rest/channel-status#metadata-rest
+        .specification: RSL8
+        .synopsis: |
+          Retrieve channel metadata from the Ably service, presented as a `ChannelDetails` instance, including global occupancy.
+          This feature is also known as channel lifecycle status.
+      Enumerate:
+        .documentation: https://ably.com/docs/rest/channel-status#enumeration-rest
+        .synopsis: |
+          Retrieve information on all active channels in this Ably application,
+          using REST API `/channels`.
+          Paginated.
+
+          Support for:
+          - querying only those channels whose name starts with a given `prefix`
+          - choosing return type as either `ChannelDetails` instances (the default) or just channel names
   Opaque Request:
     .specification: [RSC19, RTC9]
     .synopsis: |
