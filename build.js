@@ -23,6 +23,7 @@ const sdkManifestSuffixes = [
   'java',
   'ruby',
   'php',
+  'cocoa',
   'python'
 ];
 
