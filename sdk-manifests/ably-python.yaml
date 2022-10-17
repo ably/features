@@ -40,7 +40,7 @@ compliance:
         Subscribe:
       Release:
       Status:
-        Channel Details:
+        Channel Details: # https://github.com/ably/ably-python/pull/276
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:
