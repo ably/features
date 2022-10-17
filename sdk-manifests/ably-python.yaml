@@ -39,6 +39,8 @@ compliance:
         List Subscriptions:
         Subscribe:
       Release:
+      Status:
+        Channel Details:
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:
