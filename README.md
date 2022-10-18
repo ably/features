@@ -78,12 +78,12 @@ See [the `ably/specification` repository](https://github.com/ably/specification)
 
 ### Future Direction for This Repository
 
-Based on the future directions laid out above for [SDK Manifests](#future-direction-for-the-sdk-manifests) and [the Client Library Features Specification](#future-direction-for-the-client-library-features-specification), we must evolve the way we view and treat this source code repository.
+Based on the future directions laid out above for [SDK Manifests](#future-direction-for-the-sdk-manifests) we must evolve the way we view and treat this source code repository.
 
 This will start with a **well-defined release procedure**:
 
-- Add versioning, _strictly_ conforming to [the requirments Semantic Versioning](https://semver.org/), starting at version `1.2.0` (our epoch), indicating the version of the canonical feature list.
-- Publish the canonical feature list to one or more package management / distribution points, for downstream consumption by SDK repositories as well as other systems at Ably (i.e. developer education / documentation), as part of this new release procedure.
+- [#12](https://github.com/ably/features/issues/12): Add versioning, _strictly_ conforming to [the requirments Semantic Versioning](https://semver.org/), starting at version `1.2.0` (our epoch), indicating the version of the canonical feature list.
+- [#5](https://github.com/ably/features/issues/5): Publish the canonical feature list to one or more package management / distribution points, for downstream consumption by SDK repositories as well as other systems at Ably (i.e. developer education / documentation), as part of this new release procedure.
 
 See also:
 
