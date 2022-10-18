@@ -93,7 +93,7 @@ documentWriter.document((contentWriter) => {
  */
 function renderTableHeaderRow(writer, maximumLevel) {
   writer.class('align-top sticky top-0 bg-blue-700 text-white font-bold');
-  const commonCellStyle = 'pt-1 pb-2 border-y-4 border-white border-r-4 sticky top-0';
+  const commonCellStyle = 'pt-2 pb-2 border-y-4 border-white border-r-4 sticky top-0 align-middle';
   writer.row((rowWriter) => {
     rowWriter.columnSpan(maximumLevel);
     rowWriter.class(`pr-1 text-center ${commonCellStyle}`);
@@ -116,9 +116,13 @@ function renderTableHeaderRow(writer, maximumLevel) {
     // SDK columns
     // eslint-disable-next-line no-restricted-syntax
     for (const sdkManifestSuffix of sdkManifests.keys()) {
-      rowWriter.class(`px-1 text-center ${commonCellStyle}`);
+      rowWriter.class(`px-1 align-middle ${commonCellStyle}`);
       rowWriter.cell((cellContentWriter) => {
+        cellContentWriter.write(
+          '<div class="-rotate-180 m-auto vertical-lr">',
+        );
         cellContentWriter.text(sdkManifestSuffix);
+        cellContentWriter.write('</div>');
       });
     }
   });
