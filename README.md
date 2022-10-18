@@ -7,7 +7,7 @@ _[Ably](https://ably.com) is the platform that powers synchronized digital exper
 
 ## Overview
 
-This repository has been created as the starting point and canonical root for information relating to how we programmatically track Ably features at Ably.
+This repository is the starting point and canonical root for information relating to how we programmatically track Ably features at Ably.
 The focus of the contents of this repository is on our SDKs (sometimes referred to as client libraries).
 Our SDKs provide the primary, language/platform-idiomatic APIs that our customers - software application developers -
 use in order to integrate and leverage the Ably platform in their solutions.
@@ -24,7 +24,7 @@ This will change once all of the issues under [the **1.2.0 Release / GA** milest
 
 The data and code files in this repository are incubating as a prototype, formulating the foundations of Ably's approach to SDK feature tracking going forwards.
 
-These are the pivotal components:
+Within the data and code files in this repository, these are the pivotal components:
 
 | Component | Purpose |
 | ---- | ------- |
