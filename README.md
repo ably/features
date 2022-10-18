@@ -74,21 +74,7 @@ This single source file will remain our reference for:
 - conformed naming for types and their members
 - testing requirements (though it is anticipated that, at some point in the future, we will these from the scope of concern for this source file)
 
-Currently:
-
-- Source location: [`features.textile` in `ably/docs`](https://github.com/ably/docs/blob/main/content/client-lib-development-guide/features.textile)
-- Backlog of tasks: [issues in `ably/docs`](https://github.com/ably/docs/issues?q=is%3Aopen+is%3Aissue+label%3Aclient-lib-spec)
-- Rendered views:
-  - Preview: [docs.ably.com](https://docs.ably.com/client-lib-development-guide/features/)
-  - Published: [ably.com/docs](https://ably.com/docs/client-lib-development-guide/features)
-
-Going forwards, this source file will move from `ably/docs` to `ably/specification` (this work is happening under https://github.com/ably/specification/issues/1).
-It can then more logically be managed alongside other efforts to catalogue and track SDK features. That will include validation:
-
-- **Internal**: ensuring that it is consistent in terms of formatting and relative references to itself
-- **External**: ensuring that 'spec point' references in [the canonical feature list](sdk.yaml) exist in the 'spec' (this source file)
-
-It will probably remain in textile format, for various reasons, at least in the short to medium term.
+See [the `ably/specification` repository](https://github.com/ably/specification) for more details.
 
 ### Future Direction for This Repository
 
