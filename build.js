@@ -24,6 +24,7 @@ const sdkManifestSuffixes = [
   'ruby',
   'php',
   'cocoa',
+  'python',
 ];
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.
