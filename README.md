@@ -216,3 +216,7 @@ Specified by [TO3m](https://sdk.ably.com/builds/ably/specification/main/features
 and [RSC20](https://sdk.ably.com/builds/ably/specification/main/features/#RSC20).
 
 Will be removed under [ably/docs#1381](https://github.com/ably/docs/issues/1381).
+
+## Contributing
+
+For guidance on how to contribute to this project, see [CONTRIBUTING.md](CONTRIBUTING.md).
