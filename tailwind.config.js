@@ -7,7 +7,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    plugin(({ addAblyUtilities }) => {
+    plugin(({ addUtilities: addAblyUtilities }) => {
       const newUtilities = {
         '.vertical-lr': {
           writingMode: 'vertical-lr',

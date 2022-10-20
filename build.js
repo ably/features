@@ -116,7 +116,7 @@ function renderTableHeaderRow(writer, maximumLevel) {
     // SDK columns
     // eslint-disable-next-line no-restricted-syntax
     for (const sdkManifestSuffix of sdkManifests.keys()) {
-      rowWriter.class(`px-1 align-middle ${commonCellStyle}`);
+      rowWriter.class(`px-1 ${commonCellStyle}`);
       rowWriter.cell((cellContentWriter) => {
         cellContentWriter.write('<div class="-rotate-180 m-auto vertical-lr">');
         cellContentWriter.text(sdkManifestSuffix);
