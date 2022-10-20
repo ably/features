@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
@@ -6,13 +7,13 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    plugin(({ addUtilities }) => {
+    plugin(({ addAblyUtilities }) => {
       const newUtilities = {
         '.vertical-lr': {
           writingMode: 'vertical-lr',
         },
       };
-      addUtilities(newUtilities);
+      addAblyUtilities(newUtilities);
     }),
   ],
 };

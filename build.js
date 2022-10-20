@@ -118,9 +118,7 @@ function renderTableHeaderRow(writer, maximumLevel) {
     for (const sdkManifestSuffix of sdkManifests.keys()) {
       rowWriter.class(`px-1 align-middle ${commonCellStyle}`);
       rowWriter.cell((cellContentWriter) => {
-        cellContentWriter.write(
-          '<div class="-rotate-180 m-auto vertical-lr">',
-        );
+        cellContentWriter.write('<div class="-rotate-180 m-auto vertical-lr">');
         cellContentWriter.text(sdkManifestSuffix);
         cellContentWriter.write('</div>');
       });
