@@ -3,11 +3,11 @@
 [![Check](https://github.com/ably/features/actions/workflows/check.yml/badge.svg)](https://github.com/ably/features/actions/workflows/check.yml)
 [![Assemble](https://github.com/ably/features/actions/workflows/assemble.yml/badge.svg)](https://github.com/ably/features/actions/workflows/assemble.yml)
 
-_[Ably](https://ably.com) is the platform that powers synchronized digital experiences in realtime. Whether attending an event in a virtual venue, receiving realtime financial information, or monitoring live car performance data – consumers simply expect realtime digital experiences as standard. Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime for more than 250 million devices across 80 countries each month. Organizations like Bloomberg, HubSpot, Verizon, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale. For more information, see the [Ably documentation](https://ably.com/documentation)._
+_[Ably](https://ably.com) is the platform that powers synchronized digital experiences in realtime. Whether attending an event in a virtual venue, receiving realtime financial information, or monitoring live car performance data – consumers simply expect realtime digital experiences as standard. Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime for more than 250 million devices across 80 countries each month. Organizations like Bloomberg, HubSpot, Verizon, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale. For more information, see the [Ably documentation](https://ably.com/docs)._
 
 ## Overview
 
-This repository has been created as the starting point and canonical root for information relating to how we programmatically track Ably features at Ably.
+This repository is the starting point and canonical root for information relating to how we programmatically track Ably features at Ably.
 The focus of the contents of this repository is on our SDKs (sometimes referred to as client libraries).
 Our SDKs provide the primary, language/platform-idiomatic APIs that our customers - software application developers -
 use in order to integrate and leverage the Ably platform in their solutions.
@@ -24,7 +24,7 @@ This will change once all of the issues under [the **1.2.0 Release / GA** milest
 
 The data and code files in this repository are incubating as a prototype, formulating the foundations of Ably's approach to SDK feature tracking going forwards.
 
-These are the pivotal components:
+Within the data and code files in this repository, these are the pivotal components:
 
 | Component | Purpose |
 | ---- | ------- |
@@ -74,51 +74,20 @@ This single source file will remain our reference for:
 - conformed naming for types and their members
 - testing requirements (though it is anticipated that, at some point in the future, we will these from the scope of concern for this source file)
 
-Currently:
-
-- Source location: [`features.textile` in `ably/docs`](https://github.com/ably/docs/blob/main/content/client-lib-development-guide/features.textile)
-- Backlog of tasks: [issues in `ably/docs`](https://github.com/ably/docs/issues?q=is%3Aopen+is%3Aissue+label%3Aclient-lib-spec)
-- Rendered views:
-  - Preview: [docs.ably.com](https://docs.ably.com/client-lib-development-guide/features/)
-  - Published: [ably.com/docs](https://ably.com/docs/client-lib-development-guide/features)
-
-Going forwards, this source file will move from `ably/docs` to `ably/specification` (this work is happening under https://github.com/ably/specification/issues/1).
-It can then more logically be managed alongside other efforts to catalogue and track SDK features. That will include validation:
-
-- **Internal**: ensuring that it is consistent in terms of formatting and relative references to itself
-- **External**: ensuring that 'spec point' references in [the canonical feature list](sdk.yaml) exist in the 'spec' (this source file)
-
-It will probably remain in textile format, for various reasons, at least in the short to medium term.
+See [the `ably/specification` repository](https://github.com/ably/specification) for more details.
 
 ### Future Direction for This Repository
 
-Based on the future directions laid out above for [SDK Manifests](#future-direction-for-the-sdk-manifests) and [the Client Library Features Specification](#future-direction-for-the-client-library-features-specification), we must evolve the way we view and treat this source code repository.
+Based on the future directions laid out above for [SDK Manifests](#future-direction-for-the-sdk-manifests) we must evolve the way we view and treat this source code repository.
 
 This will start with a **well-defined release procedure**:
 
-- Add versioning, _strictly_ conforming to [the requirments Semantic Versioning](https://semver.org/), starting at version `1.2.0` (our epoch), indicating the version of the canonical feature list.
-- Publish the canonical feature list to one or more package management / distribution points, for downstream consumption by SDK repositories as well as other systems at Ably (i.e. developer education / documentation), as part of this new release procedure.
+- [#12](https://github.com/ably/features/issues/12): Add versioning, _strictly_ conforming to [the requirments Semantic Versioning](https://semver.org/), starting at version `1.2.0` (our epoch), indicating the version of the canonical feature list.
+- [#5](https://github.com/ably/features/issues/5): Publish the canonical feature list to one or more package management / distribution points, for downstream consumption by SDK repositories as well as other systems at Ably (i.e. developer education / documentation), as part of this new release procedure.
 
 See also:
 
 - [ADR66: New home for the features specification (internal)](https://ably.atlassian.net/wiki/spaces/ENG/pages/2278817920/ADR66+New+home+for+the+features+specification)
-
-## Future Direction for Specification Point Adherence Tracking
-
-We have
-[this Google Sheets document](https://docs.google.com/spreadsheets/d/1ZbAfImxRLRKZNe4KPX7b_0BVVI-qyqnvbAco5TFWSQU/edit?usp=sharing)
-which has been used at Ably, by client library SDK developers,
-to indicate adherence to individual
-[feature specification points](https://docs.ably.com/client-lib-development-guide/features/)
-by their
-SDK source codebase.
-_Request permission from your Manager if you would like access to this spreadsheet._
-
-The detail captured in that spreadsheet is an important source of information which should be able to help us understand the level of features specification compliance across our SDKs. As such, it should be considered a valuable source of truth when it comes to working out what features are implemented across our SDKs.
-
-Additionally, it is very likely that we will continue to want to track feature specification point adherence, at that level of fine granularity, going forwards.
-
-What is clear, however, is that a Google Sheets document is probably not the appropriate venue to continue tracking this information. Instead, the currently anticipated solution is that we export the information per-SDK from that spreadsheet and represent it in a simple format as a 'feature specification point adherence checklist' (/ manifest) in each SDK source code repository (CSV, YAML or some other logical textual data format). This would be instantiated via an initial snapshot process, after which it could be evolved atomically as an additional part of the source code of that SDK, with the spreadsheet becoming obsolete once all SDKs have been exported.
 
 ## What makes a Feature?
 
