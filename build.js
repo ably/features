@@ -110,7 +110,7 @@ function renderTableHeaderRow(writer, maximumLevel) {
     // Conceptual Documentation Links and Synopsis
     rowWriter.class(`px-1 ${commonCellStyle}`);
     rowWriter.cell((cellContentWriter) => {
-      cellContentWriter.text('Synopsis and Links to Conceptual Documentation');
+      cellContentWriter.text('Synopsis and Links to Conceptual Documentation!!');
     });
 
     // SDK columns

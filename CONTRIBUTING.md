@@ -22,27 +22,26 @@ in CI:
 
     npm ci
 
-### Lint, Test, Build and Preview
+### Lint, Test, and Preview
 
 Always inspect our
 [GitHub workflow files](.github/workflows/)
-as the canonical reference as to what commands are performed in CI,
-however the following command will lint source files, run tests and build the HTML micro-site:
+as the canonical reference as to what commands are performed in CI.
+
+The following command will lint source files and run tests:
 
 ```bash
-npm run lint && npm test && npm run build
+npm run lint && npm test
 ```
 
-The `npm run build` command generates a folder called `output/` which is
-[intentionally ignored by Git](.gitignore).
-Developers using macOS can open this file in their web browser with:
+To serve the HTML micro-site in your local environment you can use:
 
-    open output/index.html
+```bash
+npm run dev
+```
 
-which will open it using the `file://` URL loading scheme.
-
-If you make a change to a source file then you will need to, at a minimum, execute `npm run build` again and then refresh your browser.
-
-We plan to improve this developer experience when we work on
-[#84](https://github.com/ably/features/issues/84),
-by adding a local development HTTP server.
+The `npm run dev` command generates a folder called `output/` which is
+[intentionally ignored by Git](.gitignore) and then spins up an HTTP server using the [live-server](https://www.npmjs.com/package/live-server)
+dev dependency with hot reloading enabled.
+Using this command will result in the browser of your choice opening a new tab on `http://127.0.0.1:8080/`
+with the features displayed and ready to be edited from the source files.

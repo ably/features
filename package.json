@@ -2,9 +2,11 @@
   "name": "@ably/features",
   "version": "1.2.0-alpha.1",
   "scripts": {
-    "dev": "concurrently \"npm run build\" \"live-server output\"",
+    "dev": "concurrently \"npm run build:dev\" \"live-server output\"",
     "build": "npm-run-all build:generate build:tailwind",
-    "build:generate": "nodemon build.js",
+    "build:dev": "npm-run-all build:generate:dev build:tailwind",
+    "build:generate": "node build.js",
+    "build:generate:dev": "nodemon build.js",
     "build:tailwind": "tailwindcss -i ./main.css -o ./output/tailwind.css --minify",
     "lint": "npm-run-all format:*:check",
     "format:js-code:check": "eslint --max-warnings=0 .",
