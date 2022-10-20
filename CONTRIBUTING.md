@@ -22,7 +22,7 @@ in CI:
 
     npm ci
 
-### Lint, Test, and Preview
+### Lint, Test and Preview
 
 Always inspect our
 [GitHub workflow files](.github/workflows/)
@@ -37,11 +37,11 @@ npm run lint && npm test
 To serve the HTML micro-site in your local environment you can use:
 
 ```bash
-npm run dev
+npm start
 ```
 
-The `npm run dev` command generates a folder called `output/` which is
-[intentionally ignored by Git](.gitignore) and then spins up an HTTP server using the [live-server](https://www.npmjs.com/package/live-server)
-dev dependency with hot reloading enabled.
-Using this command will result in the browser of your choice opening a new tab on `http://127.0.0.1:8080/`
-with the features displayed and ready to be edited from the source files.
+The `npm start` command generates a folder called `output/` which is
+[intentionally ignored by Git](.gitignore) and then spins up an HTTP server using the
+[http-server](https://www.npmjs.com/package/http-server) dev dependency.
+You will then be able to open up on your browser `http://127.0.0.1:8080/`
+with the features matrix displayed and ready to be edited from the source files.
