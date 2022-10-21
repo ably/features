@@ -1,0 +1,8 @@
+{
+  "exec": "npm run build",
+  "ext": "css js yaml",
+  "ignore": [
+    "node_modules/**",
+    "output/**"
+  ]
+}
