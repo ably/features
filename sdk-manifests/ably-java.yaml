@@ -20,17 +20,24 @@ compliance:
     Logs:
   Protocol:
     JSON:
+    Maximum Message Size:
     MessagePack:
   Realtime:
     Authentication:
+      Get Confirmed Client Identifier:
     Channel:
       Attach:
       Encryption:
       History:
       Mode:
       Presence:
+        Enter:
+          Client:
         Get:
+        History:
         Subscribe:
+        Update:
+          Client:
       Publish:
       Retry Timeout:
       State Events:
@@ -38,6 +45,7 @@ compliance:
         Deltas:
         Rewind:
     Connection:
+      Disconnected Retry Timeout:
       Get Identifier:
       Lifecycle Control:
       Ping:
@@ -51,12 +59,24 @@ compliance:
     Transport Parameters:
   REST:
     Authentication:
+      Authorize:
+      Create Token Request:
+      Get Client Identifier:
+      Request Token:
     Channel:
+      Encryption:
+      Get:
+      History:
+      Name:
+      Presence:
+        History:
+        Member List:
       Publish:
         Idempotence:
       Push Notifications:
         List Subscriptions:
         Subscribe:
+      Release:
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:
