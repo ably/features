@@ -5,9 +5,6 @@ compliance:
   Agent Identifier:
     Agents:
     Operating System:
-      .variants: Android
-    Runtime:
-      .variants: JRE
   Authentication:
     API Key:
     Token:
@@ -23,14 +20,20 @@ compliance:
     MessagePack:
   Realtime:
     Authentication:
+      Get Confirmed Client Identifier:
     Channel:
       Attach:
       Encryption:
       History:
       Mode:
       Presence:
+        Enter:
+          Client:
         Get:
+        History:
         Subscribe:
+        Update:
+          Client:
       Publish:
       Retry Timeout:
       State Events:
@@ -38,25 +41,41 @@ compliance:
         Deltas:
         Rewind:
     Connection:
+      Disconnected Retry Timeout:
       Get Identifier:
       Lifecycle Control:
       Ping:
       Recovery:
       State Events:
+      Suspended Retry Timeout:
     Message Echoes:
     Message Queuing:
     Push Notifications:
-      .variants: Android
+      .variants: iOS
       Local Device State:
     Transport Parameters:
   REST:
     Authentication:
+      Authorize:
+      Create Token Request:
+      Get Client Identifier:
+      Request Token:
     Channel:
+      Encryption:
+      Existence Check:
+      Get:
+      History:
+      Iterate:
+      Name:
+      Presence:
+        History:
+        Member List:
       Publish:
         Idempotence:
       Push Notifications:
         List Subscriptions:
         Subscribe:
+      Release:
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:
@@ -71,9 +90,6 @@ compliance:
         Save:
       Publish:
     Request Identifiers:
-      .caveats: |
-        Returned `ErrorInfo` instances for failed requests do not include the request identifier.
-        We will fix this under https://github.com/ably/ably-java/issues/843.
     Request Timeout:
     Service:
       Get Time:
@@ -85,7 +101,11 @@ compliance:
     Fallbacks:
       Hosts:
       Internet Up Check:
+      REST Follows Realtime:
       Retry Count:
+      Retry Duration:
+        .caveats: |
+          `httpMaxRetryDuration` is declared, but not used anywhere in the codebase.
       Retry Timeout:
     Host:
   Testing:
@@ -94,11 +114,12 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
+      .caveats: |
+        `httpOpenTimeout` is declared, but not used anywhere in the codebase.
     Proxy:
+      .caveats: |
+        Only for web socket and only by reading system settings.
 variants:
-  Android:
-    .synopsis: |
-      Builds `aar` artifact(s) for use by applications running on the Android operating system.
-  JRE:
-    .synopsis: |
-      Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).
+  iOS:
+  macOS:
+  tvOS:

@@ -21,6 +21,10 @@ const partialSvg = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="4
 
 const sdkManifestSuffixes = [
   'java',
+  'ruby',
+  'php',
+  'cocoa',
+  'python',
 ];
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.
@@ -89,7 +93,7 @@ documentWriter.document((contentWriter) => {
  */
 function renderTableHeaderRow(writer, maximumLevel) {
   writer.class('align-top sticky top-0 bg-blue-700 text-white font-bold');
-  const commonCellStyle = 'pt-1 pb-2 border-y-4 border-white border-r-4 sticky top-0';
+  const commonCellStyle = 'pt-2 pb-2 border-y-4 border-white border-r-4 sticky top-0 align-middle';
   writer.row((rowWriter) => {
     rowWriter.columnSpan(maximumLevel);
     rowWriter.class(`pr-1 text-center ${commonCellStyle}`);
@@ -112,9 +116,11 @@ function renderTableHeaderRow(writer, maximumLevel) {
     // SDK columns
     // eslint-disable-next-line no-restricted-syntax
     for (const sdkManifestSuffix of sdkManifests.keys()) {
-      rowWriter.class(`px-1 text-center ${commonCellStyle}`);
+      rowWriter.class(`px-1 ${commonCellStyle}`);
       rowWriter.cell((cellContentWriter) => {
+        cellContentWriter.write('<div class="-rotate-180 m-auto vertical-lr">');
         cellContentWriter.text(sdkManifestSuffix);
+        cellContentWriter.write('</div>');
       });
     }
   });
@@ -146,6 +152,7 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
           const {
             specificationPoints,
             documentationUrls,
+            requires,
             synopsis,
           } = new Properties(value);
 
@@ -190,14 +197,36 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
             rowWriter.class(`px-1 ${commonCellStyle}`);
             rowWriter.cell((cellContentWriter) => {
               let empty = true;
+
+              const markdownRequires = requires
+                ? `Requires: ${requires.map((featureNodePath) => `**${featureNodePath.join(': ')}**`).join(' | ')}`
+                : null;
+              const markdown = synopsis
+                ? `${synopsis}${markdownRequires ? `\n${markdownRequires}` : ''}`
+                : markdownRequires;
+
               if (documentationUrls) {
+                const needComplexLayout = !!markdown;
+
+                if (needComplexLayout) {
+                  // With Synopsis and Documentation URLs we need a more complex layout
+                  cellContentWriter.write('<div class="flex flex-row">'); // this div is closed below, after writing documentation URLs
+                  cellContentWriter.write(`<div class="grow">${marked.parse(markdown)}</div>`);
+                  cellContentWriter.write('<div class="grow-0">'); // this div is closed below, after writing documentation URLs
+                }
+
                 cellContentWriter.write(documentationUrls
-                  .map((element) => `<a class="btn btn-blue" href="${element}" target="_blank" rel="noopener">docs</a>`)
+                  .map((element) => `<a class="btn btn-blue" href="${element}" target="_blank" rel="noopener">${titleForLink(element)}</a>`)
                   .join(' '));
+
+                if (needComplexLayout) {
+                  cellContentWriter.write('</div></div>');
+                }
+
                 empty = false;
-              }
-              if (synopsis) {
-                cellContentWriter.write(marked.parse(synopsis));
+              } else if (markdown) {
+                // No Documentation URLs, so simply render the Synopsis.
+                cellContentWriter.write(marked.parse(markdown));
                 empty = false;
               }
               if (empty) {
@@ -212,9 +241,9 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
               let colourClass = 'bg-red-400';
               let svg = crossSvg;
               if (compliance) {
-                const { variants } = compliance;
+                const { caveats, variants } = compliance;
                 const hasPartialSupportForVariants = variants && manifest.isPartialVariantsCoverage(variants);
-                if (hasPartialSupportForVariants) {
+                if (hasPartialSupportForVariants || caveats) {
                   colourClass = 'bg-amber-400';
                   svg = partialSvg;
                 } else {
@@ -297,6 +326,7 @@ function validateStructure(astNode, parentKeys = []) {
 
     case 'PLAIN':
     case 'BLOCK_LITERAL':
+    case 'QUOTE_SINGLE':
       break;
 
     default:
@@ -358,4 +388,22 @@ function validateMapItems(items, parentKeys) {
  */
 function compareKeys(a, b) {
   return a.localeCompare(b, 'en', { sensitivity: 'base' });
+}
+
+/**
+ * Returns a short title to be used as the button label for linking to the given URL.
+ *
+ * @param {url} url The URL to which the button will link.
+ * @returns {string} A short title to be used as a button label.
+ */
+function titleForLink(url) {
+  const titlesForPrefixes = [
+    ['ably.com/blog', 'blog'],
+    ['ably.com/docs', 'docs'],
+    ['faqs.ably.com', 'faq'],
+    ['github.com/ably/.*/issues', 'issue'],
+  ];
+
+  const foundPair = titlesForPrefixes.find((element) => (new RegExp(`https://${element[0]}/`)).test(url));
+  return foundPair ? foundPair[1] : 'link';
 }

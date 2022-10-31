@@ -22,22 +22,25 @@ class Manifest {
    * Locate a node indicating compliance with a particular feature.
    *
    * @param {string[]} featurePath The feature node names, from root, forming a path to the feature.
-   * @returns {Map} The feature node.
+   * @returns {Map|undefined} The feature node, or `undefined` if a node doesn't exist.
    */
   find(featurePath) {
     let node = this.manifest.get(COMPLIANCE_KEY);
+    let notFound = false;
     featurePath.forEach((featurePathComponent) => {
       if (node) {
         node = node.get(featurePathComponent);
-        if (node !== undefined) {
-          if (node !== null && !(node instanceof Map)) {
-            throw new Error(`manifest node with key '${featurePathComponent}' should be a Map but it is of type '${typeof node}'.`);
-          }
+        if (node === undefined) {
+          notFound = true;
+        } else if (node !== null && !(node instanceof Map)) {
+          throw new Error(`manifest node with key '${featurePathComponent}' should be a Map but it is of type '${typeof node}'.`);
         }
+      } else {
+        notFound = true;
       }
     });
-    if (node === undefined) {
-      return null; // not found
+    if (notFound) {
+      return undefined; // not found
     }
     return new Properties(node);
   }

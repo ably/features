@@ -4,10 +4,7 @@ common-version: 1.2.0-alpha.1
 compliance:
   Agent Identifier:
     Agents:
-    Operating System:
-      .variants: Android
     Runtime:
-      .variants: JRE
   Authentication:
     API Key:
     Token:
@@ -20,43 +17,64 @@ compliance:
     Logs:
   Protocol:
     JSON:
+    Maximum Message Size:
     MessagePack:
   Realtime:
     Authentication:
     Channel:
       Attach:
+
+      # setOptions on existing channel instance is missing (i.e. it works but is inelegant, requiring soft-deprecated mechanism)
+      # see:
+      # - https://sdk.ably.com/builds/ably/specification/main/features/#RSN3c
+      # - https://sdk.ably.com/builds/ably/specification/main/features/#RTS3c
       Encryption:
+
       History:
-      Mode:
       Presence:
+        Enter:
+          Client:
         Get:
+        History:
         Subscribe:
+        Update:
+          Client:
       Publish:
       Retry Timeout:
       State Events:
       Subscribe:
-        Deltas:
         Rewind:
     Connection:
+      Disconnected Retry Timeout:
       Get Identifier:
       Lifecycle Control:
       Ping:
       Recovery:
       State Events:
+      Suspended Retry Timeout:
     Message Echoes:
     Message Queuing:
-    Push Notifications:
-      .variants: Android
-      Local Device State:
     Transport Parameters:
   REST:
     Authentication:
+      Authorize:
+      Create Token Request:
+      Get Client Identifier:
+      Request Token:
     Channel:
+      Existence Check:
+      Get:
+      History:
+      Iterate:
+      Name:
+      Presence:
+        History:
+        Member List:
       Publish:
         Idempotence:
-      Push Notifications:
-        List Subscriptions:
-        Subscribe:
+      Release:
+      Status:
+        Channel Details: # https://github.com/ably/ably-ruby/pull/365
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:
@@ -71,21 +89,18 @@ compliance:
         Save:
       Publish:
     Request Identifiers:
-      .caveats: |
-        Returned `ErrorInfo` instances for failed requests do not include the request identifier.
-        We will fix this under https://github.com/ably/ably-java/issues/843.
     Request Timeout:
     Service:
       Get Time:
     Statistics:
       Query:
-    Support Hyperlink on Request Failure:
   Service:
     Environment:
     Fallbacks:
       Hosts:
       Internet Up Check:
       Retry Count:
+      Retry Duration:
       Retry Timeout:
     Host:
   Testing:
@@ -94,11 +109,5 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
-    Proxy:
-variants:
-  Android:
-    .synopsis: |
-      Builds `aar` artifact(s) for use by applications running on the Android operating system.
-  JRE:
-    .synopsis: |
-      Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).
+    HTTP/2: # https://github.com/ably/ably-ruby/pull/197
+    Maximum Frame Size:
