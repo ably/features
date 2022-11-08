@@ -36,10 +36,9 @@ compliance:
         History:
         Member List:
       Publish:
+        Parameters for Query String:
       Release:
         .caveats: Implemented via Rust's Drop trait.
-      Status:
-        Channel Details:
     Opaque Request:
     Service:
       Get Time:
