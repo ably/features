@@ -35,6 +35,15 @@ Within the data and code files in this repository, these are the pivotal compone
 This document aims to not duplicate information that readers/reviewers can gain for themselves by inspecting the source code of the components described in the table above.
 It does, however, aim to expand on concepts and append context - with the hope that this will help readers/reviewers understand the reasons behind design choices made.
 
+## Usage
+
+When we make a new release for this repository we create a new version tag.
+Downstream users can obtain [`sdk.yaml`](sdk.yaml) at a specific version using its GitHub raw URL.
+
+For example version `1.2.0` can be obtained from:
+
+    https://github.com/ably/features/raw/v1.2.0/sdk.yaml
+
 ## Future Direction
 
 ### Future Direction for the SDK Manifests
@@ -75,19 +84,6 @@ This single source file will remain our reference for:
 - testing requirements (though it is anticipated that, at some point in the future, we will these from the scope of concern for this source file)
 
 See [the `ably/specification` repository](https://github.com/ably/specification) for more details.
-
-### Future Direction for This Repository
-
-Based on the future directions laid out above for [SDK Manifests](#future-direction-for-the-sdk-manifests) we must evolve the way we view and treat this source code repository.
-
-This will start with a **well-defined release procedure**:
-
-- [#12](https://github.com/ably/features/issues/12): Add versioning, _strictly_ conforming to [the requirments Semantic Versioning](https://semver.org/), starting at version `1.2.0` (our epoch), indicating the version of the canonical feature list.
-- [#5](https://github.com/ably/features/issues/5): Publish the canonical feature list to one or more package management / distribution points, for downstream consumption by SDK repositories as well as other systems at Ably (i.e. developer education / documentation), as part of this new release procedure.
-
-See also:
-
-- [ADR66: New home for the features specification (internal)](https://ably.atlassian.net/wiki/spaces/ENG/pages/2278817920/ADR66+New+home+for+the+features+specification)
 
 ## What makes a Feature?
 
