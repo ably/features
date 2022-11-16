@@ -50,3 +50,5 @@ with the features matrix displayed and ready to be edited from the source files.
 
 Use our standard [Release Process](https://github.com/ably/engineering/blob/main/sdk/releases.md#release-process), except there is no 'Publish Workflow' to be triggered in this repository.
 This is because downstream users consume the contents of [`sdk.yaml`](sdk.yaml) using its GitHub raw URL for a given version tag (see [Usage](README.md#usage)).
+
+The "Public API" of this repository, when it comes to assessing the "Trigger" for the Version Bump, is the structured presented in [`sdk.yaml`](sdk.yaml) (otherwise known as the canonical feature list).
