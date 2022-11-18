@@ -26,6 +26,7 @@ const sdkManifestSuffixes = [
   'cocoa',
   'python',
   'rust',
+  'go',
 ];
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.
