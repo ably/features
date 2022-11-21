@@ -48,6 +48,7 @@ compliance:
       Ping:
       Recovery:
       State Events:
+      Suspended Retry Timeout:
     Message Echoes:
     Message Queuing:
     Push Notifications:
@@ -61,8 +62,10 @@ compliance:
       Request Token:
     Channel:
       Encryption:
+      Existence Check:
       Get:
       History:
+      Iterate:
       Name:
       Presence:
         History:
@@ -73,6 +76,9 @@ compliance:
         List Subscriptions:
         Subscribe:
       Release:
+      Status:
+        Channel Details:
+        Enumerate:
     Opaque Request:
     Push Notifications Administration:
       Channel Subscription:
@@ -98,7 +104,9 @@ compliance:
     Fallbacks:
       Hosts:
       Internet Up Check:
+      REST Follows Realtime:
       Retry Count:
+      Retry Duration:
       Retry Timeout:
     Host:
   Testing:
@@ -107,4 +115,6 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
+    HTTP/2:
+    Maximum Frame Size:
     Proxy:
