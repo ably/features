@@ -27,7 +27,7 @@ const sdkManifestSuffixes = [
   'python',
   'rust',
   'go',
-  'dotnet'
+  'dotnet',
 ];
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.
