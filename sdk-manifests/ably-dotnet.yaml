@@ -9,7 +9,7 @@ compliance:
     # ably-dotnet .nupkg supports large variety of runtimes, you can check them all here
     # https://www.nuget.org/packages/ably.io#supportedframeworks-body-tab
     Runtime:
-      .variants: ['.Net', '.Net Framework', '.Net Standard', '.Net Core', 'Mono', 'Xamarin', 'Unity']
+      .variants: ['.Net', '.Net Framework', '.Net Standard', '.Net Core', 'Mono']
   Authentication:
     API Key:
     Token:
@@ -161,9 +161,3 @@ variants:
   Mono:
     .synopsis: |
       Builds .nupkg with support for .Net Mono for universal cross-platform app development (https://www.mono-project.com/docs/about-mono/supported-platforms/)
-  Xamarin:
-    .synopsis: |
-      Builds .nupkg with support for Xamarin for cross-platform mobile-app development (https://learn.microsoft.com/en-us/xamarin/get-started/what-is-xamarin)
-  Unity:
-    .synopsis: |
-      Builds .unitypackage for universal cross-platform game development (https://docs.unity3d.com/Manual/scripting-backends.html)    
