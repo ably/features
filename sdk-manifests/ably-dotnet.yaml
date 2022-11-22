@@ -6,8 +6,10 @@ compliance:
     Agents:
     Operating System:
       .variants: ['linux', 'windows', 'macOS', 'android', 'iOS']
+    # ably-dotnet .nupkg supports large variety of runtimes, you can check them all here
+    # https://www.nuget.org/packages/ably.io#supportedframeworks-body-tab
     Runtime:
-      .variants: ['.Net', '.Net Framework', '.Net Standard', '.Net Core', 'Mono', 'Xamarin.Android', 'Xamarin.iOS', 'Unity']
+      .variants: ['.Net', '.Net Framework', '.Net Standard', '.Net Core', 'Mono', 'Xamarin', 'Unity']
   Authentication:
     API Key:
     Token:
@@ -125,14 +127,17 @@ variants:
     .synopsis: |
       Builds .nupkg with support for .Net Core linux (https://learn.microsoft.com/en-us/dotnet/core/install/linux).
       Builds .nupkg with support for .Net 6.0 linux (https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+      Builds .nupkg with support for .Net Mono linux (https://www.mono-project.com/docs/about-mono/supported-platforms/).
   windows:
     .synopsis: |
       Builds .nupkg with support for .Net Core windows (https://learn.microsoft.com/en-us/dotnet/core/install/windows).
       Builds .nupkg with support for .Net 6.0 windows (https://dotnet.microsoft.com/en-us/download/dotnet/6.0). 
+      Builds .nupkg with support for .Net Mono windows (https://www.mono-project.com/docs/about-mono/supported-platforms/).
   macOS:
     .synopsis: |
       Builds .nupkg with support for .Net Core macOS (https://learn.microsoft.com/en-us/dotnet/core/install/macos).
-      Builds .nupkg with support for .Net 6.0 macOS (https://dotnet.microsoft.com/en-us/download/dotnet/6.0). 
+      Builds .nupkg with support for .Net 6.0 macOS (https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+      Builds .nupkg with support for .Net Mono macOS (https://www.mono-project.com/docs/about-mono/supported-platforms/). 
   android:
     .synopsis: |
       Builds .nupkg with support for .Net Mono android (https://www.mono-project.com/docs/about-mono/supported-platforms/)
@@ -141,24 +146,24 @@ variants:
     .synopsis: |
       Builds .nupkg with support for .Net Mono iOS (https://www.mono-project.com/docs/about-mono/supported-platforms/)
       Builds .nupkg with support for .Net 6.0 iOS (https://github.com/xamarin/xamarin-macios). 
-  # .Net Framework:
-  #   .synopsis: |
-  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).
-  # .Net Standard:
-  #   .synopsis: |
-  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).    
-  # .Net Core:
-  #   .synopsis: |
-  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).    
-  # Mono:
-  #   .synopsis: |
-  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).    
-  # Xamarin.Android:
-  #   .synopsis: |
-  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).    
-  # Xamarin.iOS:
-  #   .synopsis: |
-  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).
-  # Unity:
-  #   .synopsis: |
-  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).       
+  .Net:    
+    .synopsis: |
+      Builds .nupkg with support for .Net >=6, SDK for universal cross-platform app development (https://dotnet.microsoft.com/en-us/download/dotnet).
+  .Net Framework:
+    .synopsis: |
+      Builds .nupkg with support for .Net framework >=4.6 for advanced windows only app development (https://dotnet.microsoft.com/en-us/download/dotnet-framework).
+  .Net Standard:
+    .synopsis: |
+      Builds .nupkg with support for .Net standard >=2.0 for supporting multiple platforms (https://learn.microsoft.com/en-us/dotnet/standard/net-standard).
+  .Net Core:
+    .synopsis: |
+      Builds .nupkg with support for .Net Core >=2 for cross-platform app development (https://learn.microsoft.com/en-us/dotnet/core/introduction).  
+  Mono:
+    .synopsis: |
+      Builds .nupkg with support for .Net Mono for universal cross-platform app development (https://www.mono-project.com/docs/about-mono/supported-platforms/)
+  Xamarin:
+    .synopsis: |
+      Builds .nupkg with support for Xamarin for cross-platform mobile-app development (https://learn.microsoft.com/en-us/xamarin/get-started/what-is-xamarin)
+  Unity:
+    .synopsis: |
+      Builds .unitypackage for universal cross-platform game development (https://docs.unity3d.com/Manual/scripting-backends.html)    
