@@ -5,7 +5,9 @@ compliance:
   Agent Identifier:
     Agents:
     Operating System:
+      .variants: ["linux", "windows", "macOS", "android", "iOS"]
     Runtime:
+      .variants: [".Net", ".Net Framework", ".Net Standard", ".Net Core", "Mono", "Xamarin.Android", "Xamarin.iOS", "Unity"]
   Authentication:
     API Key:
     Token:
@@ -118,3 +120,45 @@ compliance:
     HTTP/2:
     Maximum Frame Size:
     Proxy:
+variants:
+  linux:
+    .synopsis: |
+      Builds .nupkg with support for .Net Core linux (https://learn.microsoft.com/en-us/dotnet/core/install/linux).
+      Builds .nupkg with support for .Net 6.0 linux (https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+  windows:
+    .synopsis: |
+      Builds .nupkg with support for .Net Core windows (https://learn.microsoft.com/en-us/dotnet/core/install/windows).
+      Builds .nupkg with support for .Net 6.0 windows (https://dotnet.microsoft.com/en-us/download/dotnet/6.0). 
+  macOS:
+    .synopsis: |
+      Builds .nupkg with support for .Net Core macOS (https://learn.microsoft.com/en-us/dotnet/core/install/macos).
+      Builds .nupkg with support for .Net 6.0 macOS (https://dotnet.microsoft.com/en-us/download/dotnet/6.0). 
+  android:
+    .synopsis: |
+      Builds .nupkg with support for .Net Mono android (https://www.mono-project.com/docs/about-mono/supported-platforms/)
+      Builds .nupkg with support for .Net 6.0 android (https://github.com/xamarin/xamarin-android). 
+  iOS:
+    .synopsis: |
+      Builds .nupkg with support for .Net Mono iOS (https://www.mono-project.com/docs/about-mono/supported-platforms/)
+      Builds .nupkg with support for .Net 6.0 iOS (https://github.com/xamarin/xamarin-macios). 
+  # .Net Framework:
+  #   .synopsis: |
+  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).
+  # .Net Standard:
+  #   .synopsis: |
+  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).    
+  # .Net Core:
+  #   .synopsis: |
+  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).    
+  # Mono:
+  #   .synopsis: |
+  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).    
+  # Xamarin.Android:
+  #   .synopsis: |
+  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).    
+  # Xamarin.iOS:
+  #   .synopsis: |
+  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).
+  # Unity:
+  #   .synopsis: |
+  #     Builds `jar` artifact(s) for use by applications running in a Java Runtime Environment (JRE).       
