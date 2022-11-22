@@ -5,7 +5,7 @@ compliance:
   Agent Identifier:
     Agents:
     Operating System:
-      .variants: ['linux', 'windows', 'macOS', 'android', 'iOS']
+      .variants: ['android', 'iOS', 'linux', 'macOS', 'windows']
     # ably-dotnet .nupkg supports large variety of runtimes, you can check them all here
     # https://www.nuget.org/packages/ably.io#supportedframeworks-body-tab
     Runtime:
