@@ -122,22 +122,7 @@ compliance:
     HTTP/2:
     Maximum Frame Size:
     Proxy:
-variants:
-  linux:
-    .synopsis: |
-      Builds .nupkg with support for .Net Core linux (https://learn.microsoft.com/en-us/dotnet/core/install/linux).
-      Builds .nupkg with support for .Net 6.0 linux (https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
-      Builds .nupkg with support for .Net Mono linux (https://www.mono-project.com/docs/about-mono/supported-platforms/).
-  windows:
-    .synopsis: |
-      Builds .nupkg with support for .Net Core windows (https://learn.microsoft.com/en-us/dotnet/core/install/windows).
-      Builds .nupkg with support for .Net 6.0 windows (https://dotnet.microsoft.com/en-us/download/dotnet/6.0). 
-      Builds .nupkg with support for .Net Mono windows (https://www.mono-project.com/docs/about-mono/supported-platforms/).
-  macOS:
-    .synopsis: |
-      Builds .nupkg with support for .Net Core macOS (https://learn.microsoft.com/en-us/dotnet/core/install/macos).
-      Builds .nupkg with support for .Net 6.0 macOS (https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
-      Builds .nupkg with support for .Net Mono macOS (https://www.mono-project.com/docs/about-mono/supported-platforms/). 
+variants: 
   android:
     .synopsis: |
       Builds .nupkg with support for .Net Mono android (https://www.mono-project.com/docs/about-mono/supported-platforms/)
@@ -146,6 +131,21 @@ variants:
     .synopsis: |
       Builds .nupkg with support for .Net Mono iOS (https://www.mono-project.com/docs/about-mono/supported-platforms/)
       Builds .nupkg with support for .Net 6.0 iOS (https://github.com/xamarin/xamarin-macios). 
+  linux:
+    .synopsis: |
+      Builds .nupkg with support for .Net Core linux (https://learn.microsoft.com/en-us/dotnet/core/install/linux).
+      Builds .nupkg with support for .Net 6.0 linux (https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+      Builds .nupkg with support for .Net Mono linux (https://www.mono-project.com/docs/about-mono/supported-platforms/).
+  macOS:
+    .synopsis: |
+      Builds .nupkg with support for .Net Core macOS (https://learn.microsoft.com/en-us/dotnet/core/install/macos).
+      Builds .nupkg with support for .Net 6.0 macOS (https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+      Builds .nupkg with support for .Net Mono macOS (https://www.mono-project.com/docs/about-mono/supported-platforms/).    
+  windows:
+    .synopsis: |
+      Builds .nupkg with support for .Net Core windows (https://learn.microsoft.com/en-us/dotnet/core/install/windows).
+      Builds .nupkg with support for .Net 6.0 windows (https://dotnet.microsoft.com/en-us/download/dotnet/6.0). 
+      Builds .nupkg with support for .Net Mono windows (https://www.mono-project.com/docs/about-mono/supported-platforms/).
   .Net:    
     .synopsis: |
       Builds .nupkg with support for .Net >=6, SDK for universal cross-platform app development (https://dotnet.microsoft.com/en-us/download/dotnet).
