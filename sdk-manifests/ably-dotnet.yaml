@@ -5,9 +5,9 @@ compliance:
   Agent Identifier:
     Agents:
     Operating System:
-      .variants: ["linux", "windows", "macOS", "android", "iOS"]
+      .variants: ['linux', 'windows', 'macOS', 'android', 'iOS']
     Runtime:
-      .variants: [".Net", ".Net Framework", ".Net Standard", ".Net Core", "Mono", "Xamarin.Android", "Xamarin.iOS", "Unity"]
+      .variants: ['.Net', '.Net Framework', '.Net Standard', '.Net Core', 'Mono', 'Xamarin.Android', 'Xamarin.iOS', 'Unity']
   Authentication:
     API Key:
     Token:
