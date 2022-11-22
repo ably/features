@@ -123,6 +123,18 @@ compliance:
     Maximum Frame Size:
     Proxy:
 variants: 
+  .Net:    
+    .synopsis: |
+      Builds .nupkg with support for .Net >=6, SDK for universal cross-platform app development (https://dotnet.microsoft.com/en-us/download/dotnet).
+  .Net Core:
+    .synopsis: |
+      Builds .nupkg with support for .Net Core >=2 for cross-platform app development (https://learn.microsoft.com/en-us/dotnet/core/introduction).  
+  .Net Framework:
+    .synopsis: |
+      Builds .nupkg with support for .Net framework >=4.6 for advanced windows only app development (https://dotnet.microsoft.com/en-us/download/dotnet-framework).
+  .Net Standard:
+    .synopsis: |
+      Builds .nupkg with support for .Net standard >=2.0 for supporting multiple platforms (https://learn.microsoft.com/en-us/dotnet/standard/net-standard).
   android:
     .synopsis: |
       Builds .nupkg with support for .Net Mono android (https://www.mono-project.com/docs/about-mono/supported-platforms/)
@@ -141,23 +153,11 @@ variants:
       Builds .nupkg with support for .Net Core macOS (https://learn.microsoft.com/en-us/dotnet/core/install/macos).
       Builds .nupkg with support for .Net 6.0 macOS (https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
       Builds .nupkg with support for .Net Mono macOS (https://www.mono-project.com/docs/about-mono/supported-platforms/).    
+  Mono:
+    .synopsis: |
+      Builds .nupkg with support for .Net Mono for universal cross-platform app development (https://www.mono-project.com/docs/about-mono/supported-platforms/)
   windows:
     .synopsis: |
       Builds .nupkg with support for .Net Core windows (https://learn.microsoft.com/en-us/dotnet/core/install/windows).
       Builds .nupkg with support for .Net 6.0 windows (https://dotnet.microsoft.com/en-us/download/dotnet/6.0). 
       Builds .nupkg with support for .Net Mono windows (https://www.mono-project.com/docs/about-mono/supported-platforms/).
-  .Net:    
-    .synopsis: |
-      Builds .nupkg with support for .Net >=6, SDK for universal cross-platform app development (https://dotnet.microsoft.com/en-us/download/dotnet).
-  .Net Framework:
-    .synopsis: |
-      Builds .nupkg with support for .Net framework >=4.6 for advanced windows only app development (https://dotnet.microsoft.com/en-us/download/dotnet-framework).
-  .Net Standard:
-    .synopsis: |
-      Builds .nupkg with support for .Net standard >=2.0 for supporting multiple platforms (https://learn.microsoft.com/en-us/dotnet/standard/net-standard).
-  .Net Core:
-    .synopsis: |
-      Builds .nupkg with support for .Net Core >=2 for cross-platform app development (https://learn.microsoft.com/en-us/dotnet/core/introduction).  
-  Mono:
-    .synopsis: |
-      Builds .nupkg with support for .Net Mono for universal cross-platform app development (https://www.mono-project.com/docs/about-mono/supported-platforms/)
