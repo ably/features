@@ -108,8 +108,3 @@ compliance:
     Disable TLS:
     TCP Insecure Port:
     TCP Secure Port:
-  Transport:
-    Connection Open Timeout:
-    HTTP/2:
-    Maximum Frame Size:
-    Proxy:
