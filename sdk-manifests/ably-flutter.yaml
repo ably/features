@@ -9,6 +9,7 @@ compliance:
   Realtime:
     Channel:
       Attach:
+      History:
       Publish:
       State Events:
       Subscribe:
@@ -16,6 +17,7 @@ compliance:
       State Events:
   REST:
     Channel:
+      History:
       Publish:
     Service:
       Get Time:
