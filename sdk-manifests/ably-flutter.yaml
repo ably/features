@@ -9,6 +9,7 @@ compliance:
   Realtime:
     Channel:
       Attach:
+      Encryption:
       History:
       Presence:
         Enter:
@@ -25,6 +26,7 @@ compliance:
       State Events:
   REST:
     Channel:
+      Encryption:
       History:
       Presence:
         History:
