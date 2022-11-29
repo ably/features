@@ -9,6 +9,7 @@ compliance:
   Realtime:
     Channel:
       Attach:
+      State Events:
     Connection:
       State Events:
   REST:
