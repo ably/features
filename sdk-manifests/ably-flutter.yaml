@@ -42,6 +42,7 @@ compliance:
     Connection:
       Disconnected Retry Timeout:
       Get Identifier:
+      Lifecycle Control:
       State Events:
   REST:
     Channel:
