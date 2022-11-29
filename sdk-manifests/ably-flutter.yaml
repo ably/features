@@ -24,6 +24,7 @@ compliance:
       Attach:
       Encryption:
       History:
+      Mode:
       Presence:
         Enter:
           Client:
