@@ -13,6 +13,9 @@ compliance:
       Presence:
         Enter:
           Client:
+        Get:
+        History:
+        Subscribe:
         Update:
           Client:
       Publish:
