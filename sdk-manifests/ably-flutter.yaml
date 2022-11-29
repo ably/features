@@ -49,6 +49,8 @@ compliance:
       Suspended Retry Timeout:
     Message Echoes:
     Message Queuing:
+    Push Notifications:
+      Local Device State:
   REST:
     Channel:
       Encryption:
