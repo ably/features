@@ -65,5 +65,8 @@ compliance:
         Member List:
       Publish:
         Idempotence:
+      Push Notifications:
+        List Subscriptions:
+        Subscribe:
     Service:
       Get Time:
