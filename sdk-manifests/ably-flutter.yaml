@@ -9,6 +9,7 @@ compliance:
     API Key:
     Token:
       Callback:
+      URL:
   Realtime:
     Channel:
       Attach:
