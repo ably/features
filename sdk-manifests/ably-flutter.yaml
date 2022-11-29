@@ -16,6 +16,9 @@ compliance:
     Logs:
       .caveats: |
         Client options has `logLevel`, as expected, but `logHandler` is deprecated.
+  Protocol:
+    JSON: # not tested in CI for the Flutter plugin GitHub repository
+    MessagePack:
   Realtime:
     Channel:
       Attach:
