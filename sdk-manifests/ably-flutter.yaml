@@ -55,7 +55,10 @@ compliance:
   REST:
     Channel:
       Encryption:
+      Existence Check:
+      Get:
       History:
+      Iterate:
       Presence:
         History:
         Member List:
