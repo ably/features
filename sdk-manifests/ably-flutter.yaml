@@ -44,6 +44,7 @@ compliance:
       Get Identifier:
       Lifecycle Control:
       Ping:
+      Recovery:
       State Events:
   REST:
     Channel:
