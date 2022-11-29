@@ -26,6 +26,9 @@ compliance:
   REST:
     Channel:
       History:
+      Presence:
+        History:
+        Member List:
       Publish:
     Service:
       Get Time:
