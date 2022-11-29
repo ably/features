@@ -10,6 +10,11 @@ compliance:
     Channel:
       Attach:
       History:
+      Presence:
+        Enter:
+          Client:
+        Update:
+          Client:
       Publish:
       State Events:
       Subscribe:
