@@ -38,6 +38,7 @@ compliance:
       State Events:
       Subscribe:
         Deltas: # not tested in CI for the Flutter plugin GitHub repository
+        Rewind: # not tested in CI for the Flutter plugin GitHub repository
     Connection:
       State Events:
   REST:
