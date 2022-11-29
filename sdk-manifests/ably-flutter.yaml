@@ -7,6 +7,7 @@ compliance:
     Token:
       Callback:
   Realtime:
+    Channel:
     Connection:
       State Events:
   REST:
