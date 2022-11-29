@@ -9,6 +9,7 @@ compliance:
   Realtime:
     Channel:
       Attach:
+      Publish:
       State Events:
       Subscribe:
     Connection:
