@@ -64,7 +64,6 @@ compliance:
       Existence Check:
       Get:
       History:
-      Iterate:
       Name:
       Presence:
         History:
@@ -89,6 +88,8 @@ compliance:
         Save:
       Publish:
     Request Timeout:
+    Service:
+      Get Time:
     Statistics:
       Query:
     Support Hyperlink on Request Failure:
@@ -108,5 +109,7 @@ compliance:
     TCP Secure Port:
   Transport:
     Connection Open Timeout:
+    HTTP/2:
+      .caveats: 'Supported in browser'
     Maximum Frame Size:
 
