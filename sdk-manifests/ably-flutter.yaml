@@ -8,6 +8,7 @@ compliance:
       Callback:
   Realtime:
     Channel:
+      Attach:
     Connection:
       State Events:
   REST:
