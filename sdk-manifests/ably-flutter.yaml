@@ -59,6 +59,7 @@ compliance:
       Get:
       History:
       Iterate:
+      Name:
       Presence:
         History:
         Member List:
