@@ -11,6 +11,8 @@ compliance:
       Callback:
       URL:
         Query Time:
+  Debugging:
+    Error Information:
   Realtime:
     Channel:
       Attach:
