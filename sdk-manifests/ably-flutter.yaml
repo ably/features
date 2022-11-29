@@ -46,6 +46,7 @@ compliance:
       Ping:
       Recovery:
       State Events:
+      Suspended Retry Timeout:
   REST:
     Channel:
       Encryption:
