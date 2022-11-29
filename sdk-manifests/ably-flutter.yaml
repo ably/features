@@ -7,6 +7,8 @@ compliance:
     Token:
       Callback:
   Realtime:
+    Connection:
+      State Events:
   REST:
     Service:
       Get Time:
