@@ -1,0 +1,10 @@
+%YAML 1.2
+---
+common-version: 1.2.0-alpha.1
+compliance:
+  Authentication:
+    API Key:
+    Token:
+      Callback:
+  Realtime:
+  REST:
