@@ -15,5 +15,7 @@ compliance:
     Connection:
       State Events:
   REST:
+    Channel:
+      Publish:
     Service:
       Get Time:
