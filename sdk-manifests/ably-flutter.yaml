@@ -13,6 +13,9 @@ compliance:
         Query Time:
   Debugging:
     Error Information:
+    Logs:
+      .caveats: |
+        Client options has `logLevel`, as expected, but `logHandler` is deprecated.
   Realtime:
     Channel:
       Attach:
