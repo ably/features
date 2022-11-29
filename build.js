@@ -27,6 +27,7 @@ const sdkManifestSuffixes = [
   'python',
   'rust',
   'go',
+  'js',
 ].sort();
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.
