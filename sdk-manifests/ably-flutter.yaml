@@ -64,5 +64,6 @@ compliance:
         History:
         Member List:
       Publish:
+        Idempotence:
     Service:
       Get Time:
