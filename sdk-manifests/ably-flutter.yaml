@@ -41,6 +41,7 @@ compliance:
         Rewind: # not tested in CI for the Flutter plugin GitHub repository
     Connection:
       Disconnected Retry Timeout:
+      Get Identifier:
       State Events:
   REST:
     Channel:
