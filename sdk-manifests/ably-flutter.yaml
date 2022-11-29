@@ -51,6 +51,7 @@ compliance:
     Message Queuing:
     Push Notifications:
       Local Device State:
+    Transport Parameters:
   REST:
     Channel:
       Encryption:
