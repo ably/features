@@ -10,6 +10,7 @@ compliance:
     Token:
       Callback:
       URL:
+        Query Time:
   Realtime:
     Channel:
       Attach:
