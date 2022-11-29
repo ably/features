@@ -43,6 +43,7 @@ compliance:
       Disconnected Retry Timeout:
       Get Identifier:
       Lifecycle Control:
+      Ping:
       State Events:
   REST:
     Channel:
