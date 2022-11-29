@@ -34,6 +34,7 @@ compliance:
         Update:
           Client:
       Publish:
+      Retry Timeout:
       State Events:
       Subscribe:
     Connection:
