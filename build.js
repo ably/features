@@ -27,7 +27,7 @@ const sdkManifestSuffixes = [
   'python',
   'rust',
   'go',
-];
+].sort();
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.
 const loadSource = (fileName) => fs.readFileSync(path.resolve(__dirname, fileName)).toString();
@@ -117,14 +117,14 @@ function renderTableHeaderRow(writer, maximumLevel) {
 
     // SDK columns
     // eslint-disable-next-line no-restricted-syntax
-    for (const sdkManifestSuffix of sdkManifests.keys()) {
+    sdkManifestSuffixes.forEach((sdkManifestSuffix) => {
       rowWriter.class(`px-1 ${commonCellStyle}`);
       rowWriter.cell((cellContentWriter) => {
         cellContentWriter.write('<div class="-rotate-180 m-auto vertical-lr">');
         cellContentWriter.text(sdkManifestSuffix);
         cellContentWriter.write('</div>');
       });
-    }
+    });
   });
 }
 
@@ -237,7 +237,8 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
             });
 
             // SDK columns
-            sdkManifests.forEach((manifest) => {
+            sdkManifestSuffixes.forEach((sdkManifestSuffix) => {
+              const manifest = sdkManifests.get(sdkManifestSuffix);
               const compliance = manifest.find([...parentKeys, key]);
 
               let colourClass = 'bg-red-400';
