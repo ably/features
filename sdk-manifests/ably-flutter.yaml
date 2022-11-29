@@ -48,6 +48,7 @@ compliance:
       State Events:
       Suspended Retry Timeout:
     Message Echoes:
+    Message Queuing:
   REST:
     Channel:
       Encryption:
