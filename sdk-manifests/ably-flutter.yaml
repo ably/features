@@ -40,6 +40,7 @@ compliance:
         Deltas: # not tested in CI for the Flutter plugin GitHub repository
         Rewind: # not tested in CI for the Flutter plugin GitHub repository
     Connection:
+      Disconnected Retry Timeout:
       State Events:
   REST:
     Channel:
