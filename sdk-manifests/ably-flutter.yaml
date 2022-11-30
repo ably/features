@@ -68,5 +68,6 @@ compliance:
       Push Notifications:
         List Subscriptions:
         Subscribe:
+    Request Timeout:
     Service:
       Get Time:
