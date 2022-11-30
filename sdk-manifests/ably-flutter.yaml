@@ -77,3 +77,12 @@ compliance:
     Fallbacks:
       Hosts:
       Internet Up Check:
+      REST Follows Realtime:
+        .variants: iOS
+variants:
+  Android:
+    .synopsis: |
+      Supports use by Flutter applications running on the Android operating system.
+  iOS:
+    .synopsis: |
+      Supports use by Flutter applications running on the iOS operating system.
