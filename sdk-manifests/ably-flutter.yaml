@@ -79,6 +79,8 @@ compliance:
       Internet Up Check:
       REST Follows Realtime:
         .variants: iOS
+      Retry Count:
+      Retry Timeout:
 variants:
   Android:
     .synopsis: |
