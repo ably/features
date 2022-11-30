@@ -81,6 +81,7 @@ compliance:
         .variants: iOS
       Retry Count:
       Retry Timeout:
+    Host:
 variants:
   Android:
     .synopsis: |
