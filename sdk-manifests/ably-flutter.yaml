@@ -76,3 +76,4 @@ compliance:
     Environment:
     Fallbacks:
       Hosts:
+      Internet Up Check:
