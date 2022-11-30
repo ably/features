@@ -74,3 +74,5 @@ compliance:
     Support Hyperlink on Request Failure:
   Service:
     Environment:
+    Fallbacks:
+      Hosts:
