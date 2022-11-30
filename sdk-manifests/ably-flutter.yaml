@@ -71,3 +71,4 @@ compliance:
     Request Timeout:
     Service:
       Get Time:
+    Support Hyperlink on Request Failure:
