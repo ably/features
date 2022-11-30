@@ -82,6 +82,10 @@ compliance:
       Retry Count:
       Retry Timeout:
     Host:
+  Testing:
+    Disable TLS:
+    TCP Insecure Port:
+    TCP Secure Port:
 variants:
   Android:
     .synopsis: |
