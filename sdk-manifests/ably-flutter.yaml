@@ -86,6 +86,10 @@ compliance:
     Disable TLS:
     TCP Insecure Port:
     TCP Secure Port:
+  Transport:
+    Connection Open Timeout:
+      # the client option is present in the Cocoa SDK but unused by the implementation (see Cocoa SDK manifest)
+      .variants: Android
 variants:
   Android:
     .synopsis: |
