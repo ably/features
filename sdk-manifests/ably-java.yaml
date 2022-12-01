@@ -45,7 +45,6 @@ compliance:
         Deltas:
         Rewind:
     Connection:
-      Disconnected Retry Timeout:
       Get Identifier:
       Lifecycle Control:
       Ping:
