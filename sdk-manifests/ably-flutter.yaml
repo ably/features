@@ -41,12 +41,18 @@ compliance:
         Rewind: # not tested in CI for the Flutter plugin GitHub repository
     Connection:
       Disconnected Retry Timeout:
+        # the client option is present in the Java SDK but unused by the implementation
+        # tracked by https://github.com/ably/ably-java/issues/168
+        .variants: iOS
       Get Identifier:
       Lifecycle Control:
       Ping:
       Recovery:
       State Events:
       Suspended Retry Timeout:
+        # the client option is present in the Java SDK but unused by the implementation
+        # tracked by https://github.com/ably/ably-java/issues/168
+        .variants: iOS
     Message Echoes:
     Message Queuing:
     Push Notifications:
