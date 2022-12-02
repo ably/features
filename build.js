@@ -29,6 +29,7 @@ const sdkManifestSuffixes = [
   'go',
   'js',
   'dotnet',
+  'flutter',
 ].sort();
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.
