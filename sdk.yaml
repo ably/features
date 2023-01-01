@@ -18,7 +18,7 @@ Agent Identifier:
     .synopsis: |
       Include a product component indicating the type of runtime, as discrete from the OS type.
       This does not always include a version (e.g. for `browser` runtime emitted by `ably-js`
-      and the `uwp` runtime emitted by `ably-dotnet`).
+      and `xamarin-android`/`xamarin-iOS` runtime emitted by `ably-dotnet`).
 Authentication:
   .documentation:
     - https://ably.com/docs/core-features/authentication
