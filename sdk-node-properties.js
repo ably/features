@@ -46,10 +46,10 @@ class Properties {
 
           case 'class':
             // used in the canonical features list
-            if (transformString(value, IDENTITY_TRANSFORM) !== 'Marker') {
-              throw new Error("Class value is not recognised, expected 'Marker'.");
+            if (transformString(value, IDENTITY_TRANSFORM) !== 'Heading') {
+              throw new Error("Class value is not recognised, expected 'Heading'.");
             }
-            this.isMarker = true;
+            this.isHeading = true;
             break;
 
           case 'documentation':

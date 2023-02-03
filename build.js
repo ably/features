@@ -160,13 +160,13 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
             documentationUrls,
             requires,
             synopsis,
-            isMarker,
+            isHeading,
           } = new Properties(value);
 
           console.log(`${consoleIndent}${key}:`);
           const verticalBordersStyle = 'border-slate-300 border-b-2';
           const commonCellStyle = `${verticalBordersStyle} border-r-2`;
-          writer.class(`align-middle tooltip-container${isMarker ? ' bg-slate-200' : ''}`);
+          writer.class(`align-middle tooltip-container${isHeading ? ' bg-slate-200' : ''}`);
           writer.row((rowWriter) => {
             // Indent using empty cells
             for (let i = 1; i <= level; i += 1) {
@@ -181,7 +181,7 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
             if (cellCount > 1) {
               rowWriter.columnSpan(cellCount);
             }
-            rowWriter.class(`pr-3 whitespace-nowrap ${commonCellStyle} ${isMarker ? 'font-bold' : ''}`);
+            rowWriter.class(`pr-3 whitespace-nowrap ${commonCellStyle} ${isHeading ? 'font-bold' : ''}`);
             rowWriter.cell((cellContentWriter) => {
               if (level > 0) {
                 const tip = `<strong>${escape(parentKeys.join(': '))}</strong>: ${escape(key)}`;
@@ -260,10 +260,10 @@ function generateTableRows(writer, maximumLevel, parentKeys, node) {
                 }
               }
 
-              rowWriter.class(`px-1 ${isMarker ? '' : colourClass} ${commonCellStyle}`);
+              rowWriter.class(`px-1 ${isHeading ? '' : colourClass} ${commonCellStyle}`);
               rowWriter.cell((cellContentWriter) => {
                 cellContentWriter.write('<div class="flex justify-center">');
-                cellContentWriter.write(isMarker ? '&nbsp;' : svg);
+                cellContentWriter.write(isHeading ? '&nbsp;' : svg);
                 cellContentWriter.write('</div>');
               });
             });
