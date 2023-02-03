@@ -20,6 +20,7 @@ Agent Identifier:
       This does not always include a version (e.g. for `browser` runtime emitted by `ably-js`
       and `xamarin-android`/`xamarin-iOS` runtime emitted by `ably-dotnet`).
 Authentication:
+  .class: Marker
   .documentation:
     - https://ably.com/docs/core-features/authentication
   .specification: [AO1, AO2, RSC17, RSA7, RSA15, RTN2d, TO3a]
@@ -67,6 +68,7 @@ Authentication:
           Query the Ably service for the current time instead of relying on a locally-available time of day when issuing a token request.
           Enabled using `queryTime` client option.
 Debugging:
+  .class: Marker
   .synopsis: |
     Behaviours that are not necessarily suitable for production environments,
     however may need to be enabled - even when running against production environments and executing on end-customer/consumer devices - to debug issues.
@@ -83,6 +85,7 @@ Debugging:
       this differently for idiomatic reasons that make sense for the language, framework
       or runtime platform.
 Protocol:
+  .class: Marker
   .synopsis: |
     Relating to the Ably service protocols used by REST and Realtime client instances.
   JSON:
@@ -103,11 +106,13 @@ Realtime:
   .synopsis: |
     Functionality offered by Ably client instances that offer Realtime connectivity.
   Authentication:
+    .class: Marker
     Get Confirmed Client Identifier:
       .specification: [RTC4, RTC17, RSA7a, RSA7b, RSA12, RSA8f, CD2a]
       .synopsis: |
         Get the `clientId` confirmed with the Ably service for this client instance, once a connection has been established.
   Channel:
+    .class: Marker
     Attach:
       .documentation:
         - https://ably.com/docs/realtime/channels#channel-lifecycle
@@ -229,6 +234,7 @@ Realtime:
           The option to specify that attachment to this channel start from a given number of messages or point in time in the past.
           This is done by setting the `rewind` channel parameter using the `setOptions` method on the channel.
   Connection:
+    .class: Marker
     .specification: RTC2
     Disconnected Retry Timeout:
       .specification: [TO3l1, RTN14d]
@@ -316,6 +322,7 @@ REST:
   .synopsis: |
     Functionality offered by Ably client instances that offer support for REST operations.
   Authentication:
+    .class: Marker
     .specification: RSC5
     Authorize:
       .specification: RSA10
@@ -326,6 +333,7 @@ REST:
     Request Token:
       .specification: RSA8e
   Channel:
+    .class: Marker
     .specification: [RSN1, RTC3]
     Encryption:
       .specification: [RSL7, TB2b, RSN3c]
@@ -519,6 +527,7 @@ REST:
       Override the default value of the `httpRequestTimeout` client option,
       the timeout for any single HTTP request and response.
   Service:
+    .class: Marker
     .synopsis: |
       Global operations against the Ably service, not necessarily specific to the Ably application project being used.
     Get Time:
@@ -527,6 +536,7 @@ REST:
         Obtain the Ably service time, to millisecond precision.
         This may be required by clients that do not have access to a sufficiently well maintained time source, to provide timestamps for use in token requests.
   Statistics:
+    .class: Marker
     .documentation: https://ably.com/docs/general/statistics
     .synopsis: |
       Operations relating to Ably application statistics (a.k.a. 'stats').
@@ -543,6 +553,7 @@ REST:
     .synopsis: |
       Receive `ErrorInfo` instances that include an `href` member, populated if provided by the service response, containing an Internet hyperlink for more information on the failure.
 Service:
+  .class: Marker
   .synopsis: |
     Relating to how REST and Realtime client instances communicate with the Ably service,
     in particular relating to resilience, fallbacks, etc..
@@ -596,6 +607,7 @@ Service:
       Override the REST encpoint using `restHost` client option,
       or the Realtime endpoint using the `realtimeHost` client option.
 Testing:
+  .class: Marker
   .synopsis: |
     Behaviours that are not suitable for production environments.
     These options should only be overridden or otherwise utilised when testing against development environments.
@@ -615,6 +627,7 @@ Testing:
       Override the default value of the `tlsPort` client option,
       the TCP port to be used for secure connections using TLS (Transport Layer Security).
 Transport:
+  .class: Marker
   .synopsis: |
     Relating to the network transports used by REST and Realtime client instances,
     specifically features specific to HTTP and TCP.
