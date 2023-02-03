@@ -44,6 +44,14 @@ class Properties {
             this.caveats = transformString(value, IDENTITY_TRANSFORM);
             break;
 
+          case 'class':
+            // used in the canonical features list
+            if (transformString(value, IDENTITY_TRANSFORM) !== 'Marker') {
+              throw new Error("Class value is not recognised, expected 'Marker'.");
+            }
+            this.isMarker = true;
+            break;
+
           case 'documentation':
             // used in the canonical features list
             this.documentationUrls = transformStrings(value, (stringValue) => new URL(stringValue));
