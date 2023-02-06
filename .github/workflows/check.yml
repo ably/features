@@ -20,13 +20,9 @@ jobs:
         with:
           node-version: ${{ steps.tool-versions.outputs.nodejs }}
 
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Test and Build
+      - name: "render: Lint, Test and Build"
         run: |
+          npm ci
+          npm run lint
           npm test
           npm run build

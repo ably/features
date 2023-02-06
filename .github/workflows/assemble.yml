@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: ${{ steps.tool-versions.outputs.nodejs }}
 
-      - run: |
+      - name: "render: Build"
+        working-directory: render
+        run: |
           npm ci
           npm run build
 
@@ -36,6 +38,6 @@ jobs:
 
       - uses: ably/sdk-upload-action@v1
         with:
-          sourcePath: output
+          sourcePath: render/output
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           artifactName: matrix
