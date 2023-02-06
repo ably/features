@@ -20,7 +20,6 @@ compliance:
     Maximum Message Size:
     MessagePack:
   Realtime:
-    Authentication:
     Channel:
       Attach:
 

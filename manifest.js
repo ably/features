@@ -81,6 +81,7 @@ class Manifest {
  * @param {Map} canonicalNode The node in the canonical tree to inspect.
  * @param {string[]} path The path to this node, mainly for debugging errors but also to cap recursion depth.
  * @param {Map} manifestNode The node in the manifest to inspect.
+ * @returns {number} The number of direct child nodes underlying manifestNode.
  * @throws If nodes aren't maps or if validation fails.
  */
 function assertFeatures(canonicalNode, path, manifestNode) {
@@ -94,6 +95,7 @@ function assertFeatures(canonicalNode, path, manifestNode) {
     throw new Error(`Canonical node is not a Map, or null, at path "${path}". Type is "${typeof canonicalNode}", Stringified Value is "${canonicalNode}".`);
   }
 
+  let directChildCount = 0;
   manifestNode.forEach((value, key) => {
     if (!isPropertyKey(key)) {
       const fullPath = [...path, key];
@@ -117,11 +119,21 @@ function assertFeatures(canonicalNode, path, manifestNode) {
       //   mapKey: mapValue
       // stringValue: Hello World
 
+      let hasNoChildren = true;
       if (value !== null) {
-        assertFeatures(canonicalValue, fullPath, value);
+        hasNoChildren = (assertFeatures(canonicalValue, fullPath, value) < 1);
       }
+
+      const canonicalProperties = new Properties(canonicalValue);
+      if (hasNoChildren && canonicalProperties.isHeading) {
+        throw new Error(`Canonical node is a Header at path "${fullPath}", yet the manifest node has no children.`);
+      }
+
+      directChildCount += 1;
     }
   });
+
+  return directChildCount;
 }
 
 module.exports = {
