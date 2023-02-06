@@ -30,7 +30,7 @@ Within the data and code files in this repository, these are the pivotal compone
 | ---- | ------- |
 | [`sdk.yaml`](sdk.yaml) | The canonical feature list that Ably SDKs can support, represented as a tree. |
 | [`sdk-manifests/`](sdk-manifests/) | Temporary location (while we prototype) for manifests, per SDK source code repository, declaring what features that SDK supports. These files will ultimately be moved to be managed as peer-level source code in each SDK's source code repository. |
-| [`build.js`](build.js) | Proof-of-concept build tool. The primary purposes of this program, for the time being, are to: (1) validate the structure of data files - canonical feature list and SDK manifest(s); and (2) render a view of the data to enhance understanding and demonstrate utility, both present and potential. |
+| [`build.js`](render/build.js) | Proof-of-concept build tool. The primary purposes of this program, for the time being, are to: (1) validate the structure of data files - canonical feature list and SDK manifest(s); and (2) render a view of the data to enhance understanding and demonstrate utility, both present and potential. |
 
 This document aims to not duplicate information that readers/reviewers can gain for themselves by inspecting the source code of the components described in the table above.
 It does, however, aim to expand on concepts and append context - with the hope that this will help readers/reviewers understand the reasons behind design choices made.
@@ -72,7 +72,7 @@ Within the contents of each SDK repository, the manifest files will be located u
 
 - **Customer Facing Feature Matrix**: We have the information to be able to contribute, with automation, to the contents of the [Ably Feature Support Matrix](https://ably.com/download/sdk-feature-support-matrix):
   - built using a GitHub workflow hosted in a brand new intermediary repository, generating an artifact that can be consumed by the tools used by our developer education and documentation team (probably a public [npm](https://www.npmjs.com/) package)
-- **Full Feature Compliance Matrix**: Primarily for use by the Ably SDK Team, but (as with everything we do, [open for all](https://ably.com/blog/ably-values)) available to be viewed in the public domain. Likely to be an evolution of what you see assembled by [`build.js`](build.js) and uploaded by [the assemble workflow](../workflows/assemble.yml) to `sdk.ably.com`. Providing complete visibility over what features each SDK implements at an appropriate level of granularity.
+- **Full Feature Compliance Matrix**: Primarily for use by the Ably SDK Team, but (as with everything we do, [open for all](https://ably.com/blog/ably-values)) available to be viewed in the public domain. Likely to be an evolution of what you see assembled by [`build.js`](render/build.js) and uploaded by [the assemble workflow](../workflows/assemble.yml) to `sdk.ably.com`. Providing complete visibility over what features each SDK implements at an appropriate level of granularity.
 
 ### Future Direction for the Client Library Features Specification
 
