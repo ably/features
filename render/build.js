@@ -34,7 +34,7 @@ const sdkManifestSuffixes = [
 ].sort();
 
 // Load YAML sources up-front, both for the canonical features list and the SDK manifests.
-const loadSource = (fileName) => fs.readFileSync(path.resolve(__dirname, fileName)).toString();
+const loadSource = (fileName) => fs.readFileSync(path.resolve(__dirname, '..', fileName)).toString();
 const yamlSource = loadSource('sdk.yaml');
 const sdkManifestSources = new Map();
 sdkManifestSuffixes.forEach((sdkManifestSuffix) => {
