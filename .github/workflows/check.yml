@@ -21,7 +21,7 @@ jobs:
           node-version: ${{ steps.tool-versions.outputs.nodejs }}
 
       - name: "core: Lint and Test"
-        working-directory: render
+        working-directory: core
         run: |
           npm ci
           npm run lint
