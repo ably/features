@@ -55,8 +55,15 @@ const parserOptions = {
 const object = YAML.parse(yamlSource, parserOptions);
 const sdkManifests = new Map();
 sdkManifestSources.forEach((sdkManifestSource, sdkManifestSuffix) => {
-  const manifest = new Manifest(YAML.parse(sdkManifestSource, parserOptions), object);
-  sdkManifests.set(sdkManifestSuffix, manifest);
+  try {
+    const manifest = new Manifest(YAML.parse(sdkManifestSource, parserOptions), object);
+    sdkManifests.set(sdkManifestSuffix, manifest);
+  } catch (error) {
+    throw new Error(
+      `Failed manifest parse for ${sdkManifestSuffix}.`,
+      { cause: error },
+    );
+  }
 });
 
 // First Pass: Measure depth.

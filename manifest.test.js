@@ -1,9 +1,42 @@
+/* eslint-disable no-new */
 const { Manifest } = require('./manifest');
 
 // Wrap the provide map in a new map, under the compliance key, as required for a manifest.
 const compliance = (map) => new Map([['compliance', map]]);
 
 describe('Manifest', () => {
+  describe('constructor', () => {
+    it('fails when manifest indicates compliance with a header node but not any of its children', () => {
+      const canonicalMap = new Map([
+        ['Root Node with Heading', new Map([
+          ['.class', 'Heading'],
+          ['Child Node 1', null],
+          ['Child Node 2', new Map([
+            ['.class', 'Heading'],
+          ])],
+        ])],
+      ]);
+
+      [
+        new Map([
+          ['Root Node with Heading', null],
+        ]),
+        new Map([
+          ['Root Node with Heading', new Map([['.caveats', 'Some commentary.']])],
+        ]),
+        new Map([
+          ['Root Node with Heading', new Map([
+            ['Child Node 2', null],
+          ])],
+        ]),
+      ].forEach((manifestMap) => {
+        expect(() => {
+          new Manifest(compliance(manifestMap), canonicalMap);
+        }).toThrow(/^Canonical node is a Header at path ".*", yet the manifest node has no children/);
+      });
+    });
+  });
+
   describe('find', () => {
     const emptyMap = new Map();
     const populatedMap = new Map([
