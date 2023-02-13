@@ -145,10 +145,36 @@ class TableWriter extends Writer {
    * @param {TableRowGenerator} generator Code to populate the table row. Called synchronously.
    */
   row(generator) {
+    generator(this.startRow());
+    this.finishRow();
+  }
+
+  /**
+   * Create a table row. The finishRow() method must be called after the row has been populated using the returned writer.
+   *
+   * @returns {TableRowWriter} The writer to be used to populate content for this row.
+   */
+  startRow() {
+    if (this.inTableRow) {
+      throw new Error('Already within startRow() for this TableWriter.');
+    }
+
     const attributes = this.useAttributes();
     this.write(`<tr ${attributes.join(' ')}>`);
-    generator(new TableRowWriter(this.writeStream));
+    this.inTableRow = true;
+    return new TableRowWriter(this.writeStream);
+  }
+
+  /**
+   * Finish a table row. This method must be called after a matching call to startRow().
+   */
+  finishRow() {
+    if (!this.inTableRow) {
+      throw new Error('Not seen startRow() for this TableWriter.');
+    }
+
     this.write('</tr>');
+    this.inTableRow = false;
   }
 }
 
