@@ -17,8 +17,7 @@
   },
   "homepage": "https://github.com/ably/features",
   "dependencies": {
-    "@ably/features-core": "file:../core",
-    "jsonschema": "^1.4.0"
+    "@ably/features-core": "file:../core"
   },
   "devDependencies": {
     "concurrently": "^7.4.0",
