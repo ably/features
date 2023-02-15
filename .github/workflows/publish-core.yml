@@ -1,0 +1,33 @@
+name: Publish Core
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Read Tool Versions
+        id: tool-versions
+        run: echo "::set-output name=nodejs::$(sed -nr 's/nodejs ([0-9]+)/\1/p' .tool-versions)"
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ steps.tool-versions.outputs.nodejs }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: Prepare, Lint and Test
+        working-directory: core
+        run: |
+          npm ci
+          npm run lint
+          npm run test
+
+      - name: Publish
+        working-directory: core
+        env:
+           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN_FEATURES_CORE }}
+        run: |
+          npm publish
