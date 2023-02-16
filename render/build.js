@@ -11,7 +11,7 @@ const { MatrixGenerator, MatrixConsumer } = require('@ably/features-core/matrix'
 const {
   DocumentWriter,
   TableWriter,
-} = require('./html');
+} = require('@ably/features-core//html');
 
 // from Google Fonts' Icons (originally called 'Close' and 'Done').
 // https://fonts.google.com/icons
