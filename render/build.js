@@ -1,11 +1,5 @@
-const fs = require('fs');
 const path = require('path');
-const YAML = require('yaml');
-
-const { Manifest } = require('@ably/features-core/manifest');
-const { MatrixGenerator } = require('@ably/features-core/matrix');
-const { writeDocument } = require('@ably/features-core/html-matrix-renderer');
-const { validateStructure } = require('@ably/features-core/yaml-structure');
+const { build } = require('@ably/features-core/html-matrix-build');
 
 const sdkManifestSuffixes = [
   'java',
@@ -20,66 +14,16 @@ const sdkManifestSuffixes = [
   'flutter',
 ].sort();
 
-// Load YAML sources up-front, both for the canonical features list and the SDK manifests.
-const loadSource = (fileName) => fs.readFileSync(path.resolve(__dirname, '..', fileName)).toString();
-const yamlSource = loadSource('sdk.yaml');
-const sdkManifestSources = new Map();
-sdkManifestSuffixes.forEach((sdkManifestSuffix) => {
-  sdkManifestSources.set(sdkManifestSuffix, loadSource(`sdk-manifests/ably-${sdkManifestSuffix}.yaml`));
-});
+const resolveSource = (fileName) => path.resolve(__dirname, '..', fileName);
 
-// First Parse: using YAML's mid-level API, rendering a graph of the YAML structure,
-// and then running some of our checks over that structure to check foundational requirements.
-validateStructure(YAML.parseDocument(yamlSource).contents);
-sdkManifestSources.forEach((sdkManifestSource) => {
-  validateStructure(YAML.parseDocument(sdkManifestSource).contents);
-});
+const sdkManifestSourcePaths = new Map(sdkManifestSuffixes.map((sdkManifestSuffix) => [
+  sdkManifestSuffix,
+  resolveSource(`sdk-manifests/ably-${sdkManifestSuffix}.yaml`),
+]));
 
-// Second Parse: using YAML's simplest API, rendering pure JS entities representing our data model
-const parserOptions = {
-  mapAsMap: true,
-};
-const object = YAML.parse(yamlSource, parserOptions);
-const sdkManifests = new Map();
-sdkManifestSources.forEach((sdkManifestSource, sdkManifestSuffix) => {
-  try {
-    const manifest = new Manifest(YAML.parse(sdkManifestSource, parserOptions), object);
-    sdkManifests.set(sdkManifestSuffix, manifest);
-  } catch (error) {
-    throw new Error(
-      `Failed manifest parse for ${sdkManifestSuffix}.`,
-      { cause: error },
-    );
-  }
-});
-
-const sortedManifests = sdkManifestSuffixes.map((suffix) => sdkManifests.get(suffix));
-const generator = new MatrixGenerator(object, sortedManifests);
-
-// First Pass: Measure depth.
-const arbitraryMaximumDepth = 10;
-const levelCount = generator.generate(arbitraryMaximumDepth);
-console.log(`levelCount = ${levelCount}`);
-
-// Create output directory in standard location within working directory.
-// The expectation is that this tool is run from the root of the repository.
-const outputDirectoryPath = 'output';
-createDirectory(outputDirectoryPath);
-
-writeDocument(
-  path.join(outputDirectoryPath, 'index.html'),
-  generator,
+build(
+  resolveSource('sdk.yaml'),
   sdkManifestSuffixes,
-  levelCount,
+  sdkManifestSourcePaths,
+  'output',
 );
-
-/**
- * Creates a directory at the given path if it doesn't exist, recursively if necessary.
- *
- * @param {string} directoryPath The directory path. Can be relative to current working directory.
- */
-function createDirectory(directoryPath) {
-  if (!fs.existsSync(directoryPath)) {
-    fs.mkdirSync(directoryPath, { recursive: true });
-  }
-}

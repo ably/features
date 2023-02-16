@@ -13,7 +13,8 @@
   "homepage": "https://github.com/ably/features",
   "dependencies": {
     "escape-html": "^1.0.3",
-    "marked": "^4.0.14"
+    "marked": "^4.0.14",
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "eslint": "^8.23.1",
