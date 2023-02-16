@@ -1,13 +1,10 @@
-name: Check
+name: Publish Core
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  check:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,17 +16,18 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ steps.tool-versions.outputs.nodejs }}
+          registry-url: https://registry.npmjs.org/
 
-      - name: "core: Lint and Test"
+      - name: Prepare, Lint and Test
         working-directory: core
         run: |
           npm ci
           npm run lint
-          npm test
+          npm run test
 
-      - name: "render: Lint and Build"
-        working-directory: render
+      - name: Publish
+        working-directory: core
+        env:
+           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN_FEATURES_CORE }}
         run: |
-          npm ci
-          npm run lint
-          npm run build
+          npm publish
