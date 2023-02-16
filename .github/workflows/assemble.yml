@@ -23,6 +23,11 @@ jobs:
         with:
           node-version: ${{ steps.tool-versions.outputs.nodejs }}
 
+      - name: "core: Prepare"
+        working-directory: core
+        run: |
+          npm ci
+
       - name: "render: Build"
         working-directory: render
         run: |

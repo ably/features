@@ -20,10 +20,16 @@ jobs:
         with:
           node-version: ${{ steps.tool-versions.outputs.nodejs }}
 
-      - name: "render: Lint, Test and Build"
-        working-directory: render
+      - name: "core: Lint and Test"
+        working-directory: core
         run: |
           npm ci
           npm run lint
           npm test
+
+      - name: "render: Lint and Build"
+        working-directory: render
+        run: |
+          npm ci
+          npm run lint
           npm run build

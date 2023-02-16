@@ -3,15 +3,17 @@ const fs = require('fs');
 const { marked } = require('marked');
 const path = require('path');
 const YAML = require('yaml');
+
+const {
+  isPropertyKey,
+  Properties,
+} = require('@ably/features-core/sdk-node-properties');
+const { Manifest } = require('@ably/features-core/manifest');
+
 const {
   DocumentWriter,
   TableWriter,
 } = require('./html');
-const {
-  isPropertyKey,
-  Properties,
-} = require('./sdk-node-properties');
-const { Manifest } = require('./manifest');
 
 // from Google Fonts' Icons (originally called 'Close' and 'Done').
 // https://fonts.google.com/icons
