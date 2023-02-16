@@ -1,6 +1,6 @@
 {
   "name": "@ably/features-core",
-  "version": "1.2.0-alpha.1",
+  "version": "1.2.0-alpha.2",
   "scripts": {
     "lint": "eslint --max-warnings=0 .",
     "test": "jest"
