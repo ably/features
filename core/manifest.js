@@ -22,7 +22,7 @@ class Manifest {
    * Locate a node indicating compliance with a particular feature.
    *
    * @param {string[]} featurePath The feature node names, from root, forming a path to the feature.
-   * @returns {Map|undefined} The feature node, or `undefined` if a node doesn't exist.
+   * @returns {Properties|undefined} The manifest's compliance node properties, or `undefined` if a node doesn't exist.
    */
   find(featurePath) {
     let node = this.manifest.get(COMPLIANCE_KEY);
