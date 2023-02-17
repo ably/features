@@ -1,5 +1,5 @@
 const path = require('path');
-const { build } = require('@ably/features-core/html-matrix-build');
+const { build, ManifestObjects } = require('@ably/features-core/html-matrix-build');
 
 const sdkManifestSuffixes = [
   'java',
@@ -21,9 +21,10 @@ const sdkManifestSourcePaths = new Map(sdkManifestSuffixes.map((sdkManifestSuffi
   resolveSource(`sdk-manifests/ably-${sdkManifestSuffix}.yaml`),
 ]));
 
+const sdkManifestObjects = new ManifestObjects(sdkManifestSuffixes, sdkManifestSourcePaths);
+
 build(
   resolveSource('sdk.yaml'),
-  sdkManifestSuffixes,
-  sdkManifestSourcePaths,
+  sdkManifestObjects,
   'output',
 );

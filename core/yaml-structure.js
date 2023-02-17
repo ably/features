@@ -2,6 +2,8 @@ const { compareKeys } = require('./compare');
 
 /**
  * Inspects YAML AST to ensure source constraints are met (e.g. ordered keys).
+ * Used as our First Parse: using YAML's mid-level API, rendering a graph of the YAML structure,
+ * and then running some of our checks over that structure to check foundational requirements.
  *
  * @param {*} astNode The YAML AST node.
  * @param {string[]} parentKeys Parent keys, also indicating the depth of this node. Nodes at root have an empty array.
