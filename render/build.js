@@ -23,6 +23,8 @@ const sdkManifestSourcePaths = new Map(sdkManifestSuffixes.map((sdkManifestSuffi
 
 const sdkManifestObjects = new ManifestObjects(sdkManifestSuffixes, sdkManifestSourcePaths);
 
+console.log(`Feature List Version from ${sdkManifestObjects.objects.size} manifests: ${sdkManifestObjects.commonVersion}`);
+
 build(
   resolveSource('sdk.yaml'),
   sdkManifestObjects,

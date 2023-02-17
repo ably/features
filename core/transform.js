@@ -84,4 +84,5 @@ module.exports = {
   transformPath,
   transformStrings,
   transformString,
+  isString,
 };
