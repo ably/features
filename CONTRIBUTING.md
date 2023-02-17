@@ -63,7 +63,8 @@ To publish a new version of this package:
 
 1. Increment the `version` [in `package.json`](core/package.json)
 2. Run `npm install` from [the `core` folder](core/)
-3. Commit the changes from steps 1 ([`package.json`](core/package.json)) and 2 ([`package-lock.json`](core/package-lock.json)) to the `main` branch
-4. Run [the Publish Core workflow](https://github.com/ably/features/actions/workflows/publish-core.yml) against the `main` branch
+3. Run `npm install` from [the `render` folder](render/)
+4. Commit the changes from steps 1 ([`package.json`](core/package.json)), 2 ([`core`'s `package-lock.json`](core/package-lock.json)) and 3 ([`render`'s `package-lock.json`](render/package-lock.json)) to the `main` branch
+5. Run [the Publish Core workflow](https://github.com/ably/features/actions/workflows/publish-core.yml) against the `main` branch
 
-Steps 1 and 3 will usually be done via a release PR, as outlined in our guidance for [Release Process](https://github.com/ably/engineering/blob/main/sdk/releases.md#release-process).
+Steps 1 thru 4 will usually be done via a release PR, as outlined in our guidance for [Release Process](https://github.com/ably/engineering/blob/main/sdk/releases.md#release-process).
