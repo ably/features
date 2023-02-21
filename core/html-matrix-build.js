@@ -90,17 +90,16 @@ class ManifestObjects {
 /**
  * Renders the canonical feature list to HTML, with SDK columns.
  *
- * @param {string} sdkFeaturesPath The path to the YAML document containing the canonical feature list.
+ * @param {string} canonicalSource The YAML document containing the canonical feature list.
  * @param {ManifestObjects} sdkManifestObjects In memory, having passed initial structural validation and YAML parse.
  * @param {string} outputDirectoryPath The path to the directory to generate the HTML document to.
  */
 const build = (
-  sdkFeaturesPath,
+  canonicalSource,
   sdkManifestObjects,
   outputDirectoryPath,
 ) => {
   // Load YAML source up-front for the canonical features list.
-  const canonicalSource = loadSource(sdkFeaturesPath);
   validateStructure(YAML.parseDocument(canonicalSource).contents);
 
   // Second Parse: using YAML's simplest API, rendering pure JS entities representing our data model
@@ -151,5 +150,6 @@ const build = (
 
 module.exports = {
   build,
+  loadSource,
   ManifestObjects,
 };

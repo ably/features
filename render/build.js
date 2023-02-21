@@ -1,5 +1,5 @@
 const path = require('path');
-const { build, ManifestObjects } = require('@ably/features-core/html-matrix-build');
+const { build, loadSource, ManifestObjects } = require('@ably/features-core/html-matrix-build');
 
 const sdkManifestSuffixes = [
   'java',
@@ -26,7 +26,7 @@ const sdkManifestObjects = new ManifestObjects(sdkManifestSuffixes, sdkManifestS
 console.log(`Feature List Version from ${sdkManifestObjects.objects.size} manifests: ${sdkManifestObjects.commonVersion}`);
 
 build(
-  resolveSource('sdk.yaml'),
+  loadSource(resolveSource('sdk.yaml')),
   sdkManifestObjects,
   'output',
 );
