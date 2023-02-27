@@ -9,6 +9,9 @@ on:
       repository-name:
         required: true
         type: string
+    secrets:
+      ABLY_AWS_ACCOUNT_ID_SDK:
+        required: true
 
 jobs:
   build:
@@ -30,7 +33,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
           aws-region: eu-west-2
-          role-to-assume: arn:aws:iam::${{ secrets.ABLY_AWS_ACCOUNT_ID_SDK}}:role/ably-sdk-builds-${{ inputs.repository-name }}
+          role-to-assume: arn:aws:iam::${{ secrets.ABLY_AWS_ACCOUNT_ID_SDK }}:role/ably-sdk-builds-${{ inputs.repository-name }}
           role-session-name: "${{ github.run_id }}-${{ github.run_number }}"
 
       - uses: ably/sdk-upload-action@v2
