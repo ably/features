@@ -17,7 +17,6 @@ const partialSvg = `<svg xmlns="http://www.w3.org/2000/svg" height="${svgSize}" 
 const verticalBordersStyle = 'border-slate-300 border-b-2';
 
 const title = 'Ably';
-const subTitle = 'SDK Features Matrix';
 
 const commonFeatureCellStyle = `${verticalBordersStyle} border-r-2`;
 
@@ -206,8 +205,15 @@ function renderTableHeaderRow(writer, maximumLevel, sdkManifestSuffixes) {
  * @param {MatrixGenerator} generator To be used to generate the matrix, where this implementation is the consumer.
  * @param {string[]} sdkManifestSuffixes In the order they're to be explored for each feature, same as supplied to the generator.
  * @param {number} levelCount The depth of the canonical features tree being rendered.
+ * @param {string} subTitle The sub-title to be used in tab title and H1. Has a default value which makes sense when viewing multiple SDK manifest columns.
  */
-const writeDocument = (outputFilePath, generator, sdkManifestSuffixes, levelCount) => {
+const writeDocument = (
+  outputFilePath,
+  generator,
+  sdkManifestSuffixes,
+  levelCount,
+  subTitle = 'SDK Features Matrix',
+) => {
   const documentWriter = new DocumentWriter(
     { title: `${subTitle} | ${title}` },
     fs.createWriteStream(outputFilePath),
