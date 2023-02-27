@@ -59,6 +59,9 @@ The "Public API" of this repository, when it comes to assessing the "Trigger" fo
 
 The files maintained within [the `core` folder](core/) define a package which is published to the npm registry [at `@ably/features-core`](https://www.npmjs.com/package/@ably/features-core).
 
+Git tags are not created when new versions of this package are released.
+Tags in this repository are reserved for the canonical feature list (where that version is defined in `render/package.json`).
+
 To publish a new version of this package:
 
 1. Increment the `version` [in `package.json`](core/package.json)
