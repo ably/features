@@ -7,6 +7,7 @@ const { MatrixGenerator } = require('./matrix');
 const { writeDocument } = require('./html-matrix-renderer');
 const { validateStructure } = require('./yaml-structure');
 const { isString } = require('./transform');
+const { extractSpecPoints } = require('./specification');
 
 const loadSource = (filePath) => fs.readFileSync(filePath).toString();
 const yamlParserOptions = { mapAsMap: true };
@@ -94,12 +95,14 @@ class ManifestObjects {
  * @param {ManifestObjects} sdkManifestObjects In memory, having passed initial structural validation and YAML parse.
  * @param {string} outputDirectoryPath The path to the directory to generate the HTML document to.
  * @param {string} subTitle The sub-title to be used in tab title and H1. Has a default value which makes sense when viewing multiple SDK manifest columns.
+ * @param {string} [specificationTextile] The textile source for the specification to coverage report against.
  */
 const build = (
   canonicalSource,
   sdkManifestObjects,
   outputDirectoryPath,
   subTitle = 'SDK Features Matrix',
+  specificationTextile = undefined,
 ) => {
   // Load YAML source up-front for the canonical features list.
   validateStructure(YAML.parseDocument(canonicalSource).contents);
@@ -124,7 +127,7 @@ const build = (
 
   // First Pass: Measure depth.
   const arbitraryMaximumDepth = 10;
-  const levelCount = generator.generate(arbitraryMaximumDepth);
+  const { levelCount, specPoints } = generator.generate(arbitraryMaximumDepth);
   console.log(`levelCount = ${levelCount}`);
 
   // Create output directory in standard location within working directory.
@@ -138,6 +141,17 @@ const build = (
     levelCount,
     subTitle,
   );
+
+  if (!specificationTextile) {
+    return;
+  }
+
+  const allSpecPoints = extractSpecPoints(specificationTextile);
+  allSpecPoints.forEach((specPoint) => {
+    if (!specPoints.has(specPoint)) {
+      console.log(`Spec point not covered: ${specPoint}`);
+    }
+  });
 };
 
 /**
