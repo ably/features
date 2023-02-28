@@ -138,21 +138,22 @@ const build = (
     levelCount,
     subTitle,
   );
-
-  /**
-   * Creates a directory at the given path if it doesn't exist, recursively if necessary.
-   *
-   * @param {string} directoryPath The directory path. Can be relative to current working directory.
-   */
-  function createDirectory(directoryPath) {
-    if (!fs.existsSync(directoryPath)) {
-      fs.mkdirSync(directoryPath, { recursive: true });
-    }
-  }
 };
+
+/**
+ * Creates a directory at the given path if it doesn't exist, recursively if necessary.
+ *
+ * @param {string} directoryPath The directory path. Can be relative to current working directory.
+ */
+function createDirectory(directoryPath) {
+  if (!fs.existsSync(directoryPath)) {
+    fs.mkdirSync(directoryPath, { recursive: true });
+  }
+}
 
 module.exports = {
   build,
   loadSource,
+  createDirectory,
   ManifestObjects,
 };
