@@ -146,10 +146,16 @@ const build = (
     return;
   }
 
-  const allSpecPoints = extractSpecPoints(specificationTextile);
-  allSpecPoints.forEach((specPoint) => {
-    if (!specPoints.has(specPoint)) {
-      console.log(`Spec point not covered: ${specPoint}`);
+  const canonicalSpecPoints = extractSpecPoints(specificationTextile);
+  canonicalSpecPoints.forEach((canonicalSpecPoint) => {
+    let found = false;
+    specPoints.forEach((specPoint) => {
+      if (canonicalSpecPoint.startsWith(specPoint)) {
+        found = true;
+      }
+    });
+    if (!found) {
+      console.log(`Spec point not covered: ${canonicalSpecPoint}`);
     }
   });
 };
