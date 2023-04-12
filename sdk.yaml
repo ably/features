@@ -257,6 +257,13 @@ Realtime:
       .synopsis: |
         Disable the automatic initiation of a connection when a client instance is instantiated using the `autoConnect` client option.
         Requires the presence of `connect` and `close` methods on client instances, allowing the application to control when the connection process is started, as well explicitly requesting connection closure.
+    OS Connectivity Events:
+      .specification: [RTN20, RTN15]
+      .synopsis: |
+        Listen to Operating System network connectivity events
+        When `CONNECTED`, `CONNECTING`, or `DISCONNECTING` and the underlying internet connection is no longer available, the connection should transition to `DISCONNECTED`.
+        When `DISCONNECTED` or `SUSPENDED` and the underlying internet connection becomes available, the client should immediately re-attempt connection.
+        When `CONNECTING` and the underlying internet connection becomes available, the client should abandon the in-progress connection attempt and start a new connection attempt.
     Ping:
       .specification: RTN13
       .synopsis: |
