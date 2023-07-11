@@ -7,6 +7,8 @@ const { MatrixGenerator } = require('./matrix');
 const { writeDocument } = require('./html-matrix-renderer');
 const { validateStructure } = require('./yaml-structure');
 const { isString } = require('./transform');
+const { extractSpecPoints } = require('./specification');
+const { getHigherVersion } = require('./get-higher-version');
 
 const loadSource = (filePath) => fs.readFileSync(filePath).toString();
 const yamlParserOptions = { mapAsMap: true };
@@ -51,7 +53,7 @@ class ManifestObjects {
       }
     });
 
-    // Ensure that all objects contain a top-level key with a value indicating the
+    // Ensure that all objects contain a top-level key with a value indicating the latest
     // version of the canonical feature list to which this manifest aligns.
     let commonVersion;
     objects.forEach((object, suffix) => {
@@ -66,13 +68,7 @@ class ManifestObjects {
         if (version.trim().length < 1) {
           throw new Error('common-version may not be empty.');
         }
-        if (commonVersion) {
-          if (commonVersion !== version) {
-            throw new Error(`common-version '${version}' must match '${commonVersion}' from previously processed manifests.`);
-          }
-        } else {
-          commonVersion = version;
-        }
+        commonVersion = getHigherVersion(commonVersion, version);
       } catch (error) {
         throw new Error(
           `Failed common version locate for manifest with ${suffix}.`,
@@ -94,12 +90,14 @@ class ManifestObjects {
  * @param {ManifestObjects} sdkManifestObjects In memory, having passed initial structural validation and YAML parse.
  * @param {string} outputDirectoryPath The path to the directory to generate the HTML document to.
  * @param {string} subTitle The sub-title to be used in tab title and H1. Has a default value which makes sense when viewing multiple SDK manifest columns.
+ * @param {string} [specificationTextile] The textile source for the specification to coverage report against.
  */
 const build = (
   canonicalSource,
   sdkManifestObjects,
   outputDirectoryPath,
   subTitle = 'SDK Features Matrix',
+  specificationTextile = undefined,
 ) => {
   // Load YAML source up-front for the canonical features list.
   validateStructure(YAML.parseDocument(canonicalSource).contents);
@@ -124,7 +122,7 @@ const build = (
 
   // First Pass: Measure depth.
   const arbitraryMaximumDepth = 10;
-  const levelCount = generator.generate(arbitraryMaximumDepth);
+  const { levelCount, specPoints } = generator.generate(arbitraryMaximumDepth);
   console.log(`levelCount = ${levelCount}`);
 
   // Create output directory in standard location within working directory.
@@ -138,6 +136,23 @@ const build = (
     levelCount,
     subTitle,
   );
+
+  if (!specificationTextile) {
+    return;
+  }
+
+  const canonicalSpecPoints = extractSpecPoints(specificationTextile);
+  canonicalSpecPoints.forEach((canonicalSpecPoint) => {
+    let found = false;
+    specPoints.forEach((specPoint) => {
+      if (canonicalSpecPoint.startsWith(specPoint)) {
+        found = true;
+      }
+    });
+    if (!found) {
+      console.log(`Spec point not covered: ${canonicalSpecPoint}`);
+    }
+  });
 };
 
 /**

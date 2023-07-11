@@ -76,6 +76,13 @@ class VoidConsumer extends MatrixConsumer {
   onIgnoredNode() { }
 }
 
+class MatrixSummary {
+  constructor(levelCount, specPoints) {
+    this.levelCount = levelCount;
+    this.specPoints = specPoints;
+  }
+}
+
 class MatrixGenerator {
   /**
    * @param {Map} canonicalFeatureList The canonical feature list.
@@ -91,16 +98,21 @@ class MatrixGenerator {
    *
    * @param {number} maximumDepth The maximum depth, previously measured or arbitrary.
    * @param {MatrixConsumer} [consumer] To be called during the exploration.
-   * @returns {number} The number of levels found.
+   * @returns {MatrixSummary} A summary, which includes the number of levels found.
    */
   generate(maximumDepth, consumer) {
-    return generateMatrix(
+    const specPoints = new Set();
+
+    const levelCount = generateMatrix(
       this.manifests,
       consumer ?? new VoidConsumer(),
       maximumDepth,
       [],
       this.canonicalFeatureList,
+      specPoints,
     );
+
+    return new MatrixSummary(levelCount, specPoints);
   }
 }
 
@@ -112,9 +124,10 @@ class MatrixGenerator {
  * @param {number} maximumLevel The maximum depth, previously measured or arbitrary.
  * @param {string[]} parentKeys Parent keys, also indicating the depth of this node. Nodes at root have an empty array.
  * @param {*} node The canonical feature node.
+ * @param {Set} specPoints Where to accumulate spec points, as strings.
  * @returns {number} The number of levels, including this node and its children.
  */
-function generateMatrix(manifests, consumer, maximumLevel, parentKeys, node) {
+function generateMatrix(manifests, consumer, maximumLevel, parentKeys, node, specPoints) {
   const level = parentKeys.length;
   if (level > maximumLevel) {
     throw new Error(`Maximum depth limit exceeded (${maximumLevel}).`);
@@ -135,13 +148,20 @@ function generateMatrix(manifests, consumer, maximumLevel, parentKeys, node) {
         });
         consumer.onFeatureFinished();
 
-        const depth = generateMatrix(manifests, consumer, maximumLevel, [...parentKeys, key], value);
+        const depth = generateMatrix(manifests, consumer, maximumLevel, [...parentKeys, key], value, specPoints);
         maximumDepth = Math.max(maximumDepth, 1 + depth);
+
+        const { specificationPoints } = properties;
+        if (specificationPoints) {
+          specificationPoints.forEach((specificationPoint) => {
+            specPoints.add(specificationPoint);
+          });
+        }
       }
     });
   } else if (Array.isArray(node)) {
     node.forEach((element) => {
-      const depth = generateMatrix(manifests, consumer, maximumLevel, parentKeys, element);
+      const depth = generateMatrix(manifests, consumer, maximumLevel, parentKeys, element, specPoints);
       maximumDepth = Math.max(maximumDepth, depth);
     });
   } else if (node instanceof String || typeof node === 'string') {
