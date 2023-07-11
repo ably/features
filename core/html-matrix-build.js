@@ -8,6 +8,7 @@ const { writeDocument } = require('./html-matrix-renderer');
 const { validateStructure } = require('./yaml-structure');
 const { isString } = require('./transform');
 const { extractSpecPoints } = require('./specification');
+const { getHigherVersion } = require('./get-higher-version');
 
 const loadSource = (filePath) => fs.readFileSync(filePath).toString();
 const yamlParserOptions = { mapAsMap: true };
@@ -52,7 +53,7 @@ class ManifestObjects {
       }
     });
 
-    // Ensure that all objects contain a top-level key with a value indicating the
+    // Ensure that all objects contain a top-level key with a value indicating the latest
     // version of the canonical feature list to which this manifest aligns.
     let commonVersion;
     objects.forEach((object, suffix) => {
@@ -67,13 +68,7 @@ class ManifestObjects {
         if (version.trim().length < 1) {
           throw new Error('common-version may not be empty.');
         }
-        if (commonVersion) {
-          if (commonVersion !== version) {
-            throw new Error(`common-version '${version}' must match '${commonVersion}' from previously processed manifests.`);
-          }
-        } else {
-          commonVersion = version;
-        }
+        commonVersion = getHigherVersion(commonVersion, version);
       } catch (error) {
         throw new Error(
           `Failed common version locate for manifest with ${suffix}.`,
