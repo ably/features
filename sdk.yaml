@@ -164,6 +164,10 @@ Realtime:
           .synopsis: |
             Enter or leave presence for a given `clientId`,
             not necessarily the id for this client.
+        Extras:
+          .specification: [RTP8e, RTP10a]
+          .synopsis: |
+            Optional data and/or extras can be included.
       Get:
         .specification: RTP11
         .synopsis: |
@@ -184,6 +188,10 @@ Realtime:
           .synopsis: |
             Update presence data and/or extras for a `clientId`,
             not necessarily the id for this client.
+        Extras:
+          .specification: [RTP9a]
+          .synopsis: |
+            Optional data and/or extras can be included.
     Publish:
       .specification: [RTL6, TM1, TM2, TM4]
       .synopsis: |

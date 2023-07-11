@@ -62,10 +62,14 @@ async function main() {
 
   console.log(`Feature List Version from ${sdkManifestObjects.objects.size} manifests: ${sdkManifestObjects.commonVersion}`);
 
+  const specTextile = await fetch('https://github.com/ably/specification/raw/main/textile/features.textile');
+
   build(
     loadSource(resolveSource('sdk.yaml')),
     sdkManifestObjects,
     'output',
+    undefined,
+    specTextile,
   );
 }
 
