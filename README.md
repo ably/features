@@ -40,9 +40,9 @@ It does, however, aim to expand on concepts and append context - with the hope t
 When we make a new release for this repository we create a new version tag.
 Downstream users can obtain [`sdk.yaml`](sdk.yaml) at a specific version using its GitHub raw URL.
 
-For example version `1.2.0` can be obtained from:
+For example version `1.2.3` can be obtained from:
 
-    https://github.com/ably/features/raw/v1.2.0/sdk.yaml
+    https://github.com/ably/features/raw/v1.2.3/sdk.yaml
 
 ## Future Direction
 
