@@ -70,8 +70,6 @@ Within the contents of each SDK repository, the manifest files will be located u
 
 #### Estate-wide Magic
 
-- **Customer Facing Feature Matrix**: We have the information to be able to contribute, with automation, to the contents of the [Ably Feature Support Matrix](https://ably.com/download/sdk-feature-support-matrix):
-  - built using a GitHub workflow hosted in a brand new intermediary repository, generating an artifact that can be consumed by the tools used by our developer education and documentation team (probably a public [npm](https://www.npmjs.com/) package)
 - **Full Feature Compliance Matrix**: Primarily for use by the Ably SDK Team, but (as with everything we do, [open for all](https://ably.com/blog/ably-values)) available to be viewed in the public domain. Likely to be an evolution of what you see assembled by [`build.js`](render/build.js) and uploaded by [the assemble workflow](../workflows/assemble.yml) to `sdk.ably.com`. Providing complete visibility over what features each SDK implements at an appropriate level of granularity.
 
 ### Future Direction for the Client Library Features Specification
